@@ -1,5 +1,15 @@
 [
  {
+  "versao": "3.23.3",
+  "data": "2026-10-05",
+  "titulo": "Troca de ferramenta na base, programa só dos recortes e balão de ajuda no i",
+  "itens": [
+   "Troca de ferramenta na base: o programa sobe, leva o cabeçote até o X e o Y da base, troca e volta ao ponto. A router não para mais em cima da peça para trocar.",
+   "Conferir e simular ganhou o Só recortes: só os vazados internos, sem o contorno, para furar uma peça que já foi cortada.",
+   "O i das opções do Projeto e do Gerador abre o balão de ajuda das Configurações, e Sobras e Configurações ficaram mais enxutas."
+  ]
+ },
+ {
   "versao": "3.23.2",
   "data": "2026-10-05",
   "titulo": "Vídeos no Início, etapa 2 e Gerador mais compactos",
