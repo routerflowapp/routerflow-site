@@ -1,5 +1,15 @@
 [
  {
+  "versao": "3.23.0",
+  "data": "2026-10-05",
+  "titulo": "Conferir e simular cabe na tela do notebook, etiquetas por chapa",
+  "itens": [
+   "Conferir e simular sem rolar a tela: lista das chapas com rolagem própria, desenho até o fim da janela e a faixa dos passos com Voltar ao Projeto e Ir para a Produção.",
+   "Etiquetas da chapa logo abaixo das abas das chapas, busca nos modelos do Gerador de peças e clique na linha do histórico para reabrir o projeto.",
+   "Programa com linhas numeradas mostra o tipo certo de cada operação (o só furos aparecia como contorno e rasgo), e a fresa invertida não cobre mais a borda da porta no desenho."
+  ]
+ },
+ {
   "versao": "3.22.4",
   "data": "2026-10-02",
   "titulo": "Simulador sem parada misteriosa nas trocas de ferramenta",
