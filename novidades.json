@@ -1,5 +1,15 @@
 [
  {
+  "versao": "3.23.2",
+  "data": "2026-10-05",
+  "titulo": "Vídeos no Início, etapa 2 e Gerador mais compactos",
+  "itens": [
+   "Vídeos de como funciona no Início: cada parte do programa explicada em poucos minutos, com um clique para assistir.",
+   "Etapa 2 do Projeto menor, com o ícone i ao lado de cada opção explicando para que ela serve.",
+   "Gerador de peças mais compacto, com o botão Adicionar à lista no alto do formulário."
+  ]
+ },
+ {
   "versao": "3.23.1",
   "data": "2026-10-05",
   "titulo": "Chapas numeradas no projeto e LED ou rasgo a mais no Gerador",

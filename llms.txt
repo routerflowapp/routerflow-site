@@ -32,7 +32,7 @@ Idioma: português do Brasil. Público: marcenarias e fábricas de móveis plane
 - Consultor RouterFlow, WhatsApp (34) 99162-7276, https://wa.me/5534991627276
 - E-mail: routerflowapp@gmail.com
 - Instagram: https://www.instagram.com/routerflow/
-- YouTube: https://www.youtube.com/@routerflow
+- YouTube: https://www.youtube.com/@routerflow (vídeos de cada tela, do arquivo do projeto à router, e curtos de menos de um minuto; a página inicial do site tem a seção Veja funcionando)
 - Download da última versão: https://www.routerflow.com.br/#baixar (instalador .exe em https://github.com/routerflowapp/routerflow-site/releases/latest)
 
 ## Páginas
