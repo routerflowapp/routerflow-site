@@ -1,5 +1,15 @@
 [
  {
+  "versao": "3.23.1",
+  "data": "2026-10-05",
+  "titulo": "Chapas numeradas no projeto e LED ou rasgo a mais no Gerador",
+  "itens": [
+   "Cada chapa tem o número dela no projeto (1, 2, 3) nas abas, nas etiquetas, no mapa, em Conferir e simular e na Produção: três materiais não são mais três chapa 1.",
+   "Etiquetas da chapa em azul logo abaixo das abas; Etiquetas de todas em azul claro no alto.",
+   "Gerador de peças: perfil de LED e rasgo a mais em qualquer modelo, formulário em linhas com a unidade no campo, e lista e etapas do Projeto mais limpas."
+  ]
+ },
+ {
   "versao": "3.23.0",
   "data": "2026-10-05",
   "titulo": "Conferir e simular cabe na tela do notebook, etiquetas por chapa",
