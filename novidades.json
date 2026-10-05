@@ -1,5 +1,14 @@
 [
  {
+  "versao": "3.23.4",
+  "data": "2026-10-05",
+  "titulo": "Etiquetas, mapa e ficha também em PDF",
+  "itens": [
+   "Cada impresso sai também em PDF na pasta Para imprimir: leve para outro computador, mesmo antigo, e imprima de qualquer leitor de PDF.",
+   "O PDF sai igual ao impresso, na mesma medida de papel, e fica pronto alguns segundos depois das chapas, sem atrasar a geração."
+  ]
+ },
+ {
   "versao": "3.23.3",
   "data": "2026-10-05",
   "titulo": "Troca de ferramenta na base, programa só dos recortes e balão de ajuda no i",
