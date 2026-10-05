@@ -1,5 +1,14 @@
 [
  {
+  "versao": "3.23.5",
+  "data": "2026-10-05",
+  "titulo": "Simulador mostra a troca de ferramenta no magazine",
+  "itens": [
+   "Na troca de ferramenta, a cabeça do simulador vai até o magazine, deixa a ferramenta no lugar dela, pega a nova e volta para seguir o corte, como na router.",
+   "O painel da controladora acompanha o X, o Y e o Z da cabeça durante a troca."
+  ]
+ },
+ {
   "versao": "3.23.4",
   "data": "2026-10-05",
   "titulo": "Etiquetas, mapa e ficha também em PDF",
