@@ -1,5 +1,15 @@
 [
  {
+  "versao": "3.23.6",
+  "data": "2026-10-06",
+  "titulo": "Troca de ferramenta automática corrigida",
+  "itens": [
+   "A troca automática sai como T4 M6, com o número antes do M6. Com M6 T4 a router trocava para a ferramenta que já estava na cabeça e ficava parada.",
+   "Na troca automática a própria máquina vai ao magazine; a ida à base ficou só para a troca manual.",
+   "As configurações já salvas são corrigidas sozinhas ao abrir o programa."
+  ]
+ },
+ {
   "versao": "3.23.5",
   "data": "2026-10-05",
   "titulo": "Simulador mostra a troca de ferramenta no magazine",
