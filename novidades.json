@@ -1,5 +1,15 @@
 [
  {
+  "versao": "3.23.7",
+  "data": "2026-10-06",
+  "titulo": "Coifa de exaustão desce, furo numa descida e spindle parado na troca",
+  "itens": [
+   "Coifa de exaustão: o M150 da INMES sai no começo e depois de cada troca de ferramenta, e o código pode ser trocado em Configurações, Corte.",
+   "Furo de uma descida só: broca com passe pequeno vira 20 mm sozinha e toda ferramenta nova já vem com 20 mm.",
+   "O spindle para (M05) antes de cada troca automática de ferramenta."
+  ]
+ },
+ {
   "versao": "3.23.6",
   "data": "2026-10-06",
   "titulo": "Troca de ferramenta automática corrigida",
