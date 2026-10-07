@@ -1,5 +1,15 @@
 [
  {
+  "versao": "3.24.0",
+  "data": "2026-10-07",
+  "titulo": "Sua router do jeito que ela é: uma ferramenta, régua ou carrossel",
+  "itens": [
+   "Em Configurações, Corte, escolha como a sua router troca de ferramenta: uma só (troca na mão), magazine em régua ou carrossel, com as posições.",
+   "Máquina de uma ferramenta: além do completo, sai um programa por etapa, na ordem. Troque a fresa, zere o Z e rode o próximo. O simulador mostra a sua máquina.",
+   "Privacidade: dá para desligar os contadores de uso e os erros, e a cópia da configuração no suporte não leva mais o estoque de sobras."
+  ]
+ },
+ {
   "versao": "3.23.8",
   "data": "2026-10-07",
   "titulo": "Porta com vários vidros e canto oval",

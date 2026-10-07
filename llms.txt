@@ -24,7 +24,7 @@ Idioma: português do Brasil. Público: marcenarias e fábricas de móveis plane
 ## Requisitos e preço
 
 - Windows 10 ou 11, 64 bits. Instalador único (RouterFlow-Setup-<versão>.exe), que cuida do WebView2 se faltar.
-- Licença anual: R$ 2.490,00 por ano, com 2 computadores da mesma empresa e o programa completo. PIX à vista com 10% de desconto (R$ 2.241,00). Cartão de crédito em até 12x, com o acréscimo da operadora. Computador a mais na mesma empresa: R$ 1.245,00 por ano. Sem adesão e sem mensalidade. Atualizações e suporte pelo WhatsApp incluídos.
+- Licença anual: R$ 2.899,00 por ano, com 2 computadores da mesma empresa e o programa completo. PIX à vista com 10% de desconto (R$ 2.609,10). Cartão de crédito em até 12x, com o acréscimo da operadora. Computador a mais na mesma empresa: R$ 1.449,50 por ano. Sem adesão e sem mensalidade. Atualizações e suporte pelo WhatsApp incluídos.
 - Ativação: o programa mostra um código da máquina em Ajuda, Licença; o cliente envia o código com razão social, CNPJ, e-mail e telefone; recebe a chave e cola no programa. Sem cadastro.
 
 ## Contato
@@ -40,3 +40,4 @@ Idioma: português do Brasil. Público: marcenarias e fábricas de móveis plane
 - [Página inicial](https://www.routerflow.com.br/): como funciona, o que sai, recursos, preço, novidades de cada versão, download e contato.
 - [Manual de uso e configuração](https://www.routerflow.com.br/manual.html): instalação, licença, cada campo das Configurações (pós-processador, ferramentas com avanço, mergulho e passe recomendados por tipo, corte, mesa e vácuo, chapas e folgas), projeto passo a passo, editor de chapas, Router, Produção, Sobras, impressos e problemas comuns, com imagens de cada tela.
 - [Novidades por versão em JSON](https://www.routerflow.com.br/novidades.json): versão, data, título e itens de cada atualização.
+- [Privacidade e dados pessoais (LGPD)](https://www.routerflow.com.br/privacidade.html): que dados o RouterFlow trata, para quê, com quem ficam, por quanto tempo e como pedir acesso ou exclusão.
