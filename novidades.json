@@ -1,5 +1,13 @@
 [
  {
+  "versao": "3.24.1",
+  "data": "2026-10-07",
+  "titulo": "Peça com cantos pronta no Gerador",
+  "itens": [
+   "Modelo novo Peça com cantos: cada canto vivo, arredondado, chanfrado ou oval, com medida na largura e na altura, sem desenhar."
+  ]
+ },
+ {
   "versao": "3.24.0",
   "data": "2026-10-07",
   "titulo": "Sua router do jeito que ela é: uma ferramenta, régua ou carrossel",
