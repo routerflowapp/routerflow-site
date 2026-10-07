@@ -1,5 +1,15 @@
 [
  {
+  "versao": "3.23.8",
+  "data": "2026-10-07",
+  "titulo": "Porta com vários vidros e canto oval",
+  "itens": [
+   "Porta quadro com vidro: quantos vidros quiser, um embaixo do outro ou lado a lado, com o tamanho de cada vidro, cada travessa e cada moldura configuráveis.",
+   "Peça personalizada: canto oval, com uma medida na largura e outra na altura, para aquela curva larga no alto da peça.",
+   "Simulador: você escolhe onde fica o magazine da sua router (atrás, na frente ou de um lado) e a troca aparece lá. Programa da INMES sem número de linha, igual ao do Aspire."
+  ]
+ },
+ {
   "versao": "3.23.7",
   "data": "2026-10-06",
   "titulo": "Coifa de exaustão desce, furo numa descida e spindle parado na troca",
