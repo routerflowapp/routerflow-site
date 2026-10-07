@@ -1,5 +1,15 @@
 [
  {
+  "versao": "3.24.2",
+  "data": "2026-10-07",
+  "titulo": "Antes de tudo: medir as ferramentas no probe",
+  "itens": [
+   "Na troca automática, o programa começa lembrando de medir no probe cada ferramenta que ele usa, e a Produção mostra o aviso no alto.",
+   "Antes de mandar para a máquina, a Produção pede para confirmar a medida de cada ferramenta nova. Pergunta só uma vez por ferramenta.",
+   "Máquina de uma ferramenta: o programa de cada etapa não usa mais a medida guardada no comando, só o Z que você zerou."
+  ]
+ },
+ {
   "versao": "3.24.1",
   "data": "2026-10-07",
   "titulo": "Peça com cantos pronta no Gerador",
