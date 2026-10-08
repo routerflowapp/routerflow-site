@@ -1,5 +1,14 @@
 [
  {
+  "versao": "3.25.0",
+  "data": "2026-10-08",
+  "titulo": "Fresa de arredondar borda",
+  "itens": [
+   "Ferramenta nova: Fresa de arredondar borda, cadastrada com o diâmetro e o raio do perfil. A peça com borda arredondada ganha espaço em volta no encaixe.",
+   "Correções e melhorias internas."
+  ]
+ },
+ {
   "versao": "3.24.3",
   "data": "2026-10-08",
   "titulo": "Tirar peça no editor e programa só da sobra",
