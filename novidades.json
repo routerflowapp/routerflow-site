@@ -1,5 +1,14 @@
 [
  {
+  "versao": "3.24.3",
+  "data": "2026-10-08",
+  "titulo": "Tirar peça no editor e programa só da sobra",
+  "itens": [
+   "No editor, a peça selecionada pode ser tirada do projeto (botão Tirar a peça ou tecla Delete): não é cortada nem entra nas etiquetas. Dá para devolver depois.",
+   "Em Conferir e simular, + Só sobra gera o programa só com os cortes da sobra da chapa, mesmo com Cortar a sobra desligado no projeto."
+  ]
+ },
+ {
   "versao": "3.24.2",
   "data": "2026-10-07",
   "titulo": "Antes de tudo: medir as ferramentas no probe",
