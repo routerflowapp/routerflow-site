@@ -1,5 +1,25 @@
 [
  {
+  "versao": "3.27.0",
+  "data": "2026-10-09",
+  "titulo": "Montador completo e projeto num lugar só",
+  "itens": [
+   "Montador de ambiente: monte no 3D ou na parede de frente, paredes em L ou em U, e o catálogo em abas com torre quente, balcão de canto, roupeiro, gabinete, rack, painel de TV, geladeira e fogão, arrastados direto para o 3D.",
+   "Um projeto só, do rascunho ao corte: Início e Meus projetos mostram a mesma situação (Rascunho, Gerado, Cortando, Pronto).",
+   "Gerador mais limpo, com os menus Forma, Espelhar e Mais. Tema escuro saiu. Correções e melhorias internas."
+  ]
+ },
+ {
+  "versao": "3.26.1",
+  "data": "2026-10-09",
+  "titulo": "Montador no 3D e Meus projetos",
+  "itens": [
+   "Montador no 3D com o mouse do Promob: rodinha aproxima e arrasta, rodinha mais botão gira, clique escolhe, arrastar move, botão direito abre o menu.",
+   "Portas e gavetas abrem e fecham no 3D, e dá para ocultar portas, aéreos, tampo ou fundos para ver por dentro.",
+   "Meus projetos: tudo o que você faz (Promob, planilha, Gerador e Montador) num lugar só, salvo sozinho com o nome do cliente, no OneDrive ou Google Drive se quiser."
+  ]
+ },
+ {
   "versao": "3.26.0",
   "data": "2026-10-09",
   "titulo": "Gerador de peças mais completo",
