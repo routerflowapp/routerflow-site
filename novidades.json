@@ -1,5 +1,15 @@
 [
  {
+  "versao": "3.27.1",
+  "data": "2026-10-09",
+  "titulo": "Montador: mexa em qualquer peça",
+  "itens": [
+   "Botão direito em qualquer peça do 3D (lateral, porta, tampo, prateleira): Editar abre no editor da peça personalizada, com os furos, rasgos e dobradiças dela. Também dá para tirar a peça ou voltar ao original.",
+   "Peça solta: desenhe qualquer peça e ponha de frente na parede, deitada ou em pé de lado, arrastando como os módulos.",
+   "Sair do Montador no botão do alto, nos dois modos."
+  ]
+ },
+ {
   "versao": "3.27.0",
   "data": "2026-10-09",
   "titulo": "Montador completo e projeto num lugar só",
