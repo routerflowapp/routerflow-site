@@ -1,5 +1,15 @@
 [
  {
+  "versao": "3.26.0",
+  "data": "2026-10-09",
+  "titulo": "Gerador de peças mais completo",
+  "itens": [
+   "Montador de ambiente: a parede reta ou em L com balcões, gaveteiros, aéreos e armários altos arrastados com o mouse, tampo corrido e a lista de peças pronta. E 7 modelos novos, como a torre de aprendizagem e o painel 3D.",
+   "Peça personalizada: canal livre com o mouse, texto, logo em V ou relevo, furação em série, repetir, borda por lado, desfazer, medidas clicáveis e contorno de DXF ou SVG.",
+   "Caderno de montagem para quem monta na obra: vista explodida, peças com o código da etiqueta e passo a passo. E mais: modelos em galeria, Minhas peças e padrões da marcenaria."
+  ]
+ },
+ {
   "versao": "3.25.1",
   "data": "2026-10-08",
   "titulo": "Peça personalizada mais limpa",
