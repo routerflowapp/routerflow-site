@@ -1,5 +1,15 @@
 [
  {
+  "versao": "3.25.1",
+  "data": "2026-10-08",
+  "titulo": "Peça personalizada mais limpa",
+  "itens": [
+   "Peça personalizada: o desenho fica à esquerda e a prévia 3D ao lado, sem precisar rolar a tela. Barra do desenho numa linha.",
+   "A prévia 3D enquadra a peça inteira também na coluna estreita.",
+   "Correções e melhorias internas."
+  ]
+ },
+ {
   "versao": "3.25.0",
   "data": "2026-10-08",
   "titulo": "Fresa de arredondar borda",
