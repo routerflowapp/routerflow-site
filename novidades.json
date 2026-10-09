@@ -1,5 +1,15 @@
 [
  {
+  "versao": "3.27.2",
+  "data": "2026-10-09",
+  "titulo": "Montador começa do zero",
+  "itens": [
+   "O Montador abre vazio, com o quadro Novo ambiente: cliente, formato das paredes (reta, em L ou em U) com a planta desenhada, medidas e pé-direito.",
+   "Botão Novo: outro ambiente (o atual fica salvo em Meus projetos), apagar tudo e começar do zero, ou carregar o exemplo de cozinha.",
+   "Botão Paredes muda o formato e as medidas a qualquer hora, sem perder os móveis."
+  ]
+ },
+ {
   "versao": "3.27.1",
   "data": "2026-10-09",
   "titulo": "Montador: mexa em qualquer peça",
