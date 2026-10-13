@@ -1,5 +1,13 @@
 [
  {
+  "versao": "3.27.5",
+  "data": "2026-10-13",
+  "titulo": "Botão do caderno de montagem à vista",
+  "itens": [
+   "Lista de peças do Gerador: o botão Caderno de montagem voltou a ter o nome, em destaque, e o Salvar também ganhou o texto."
+  ]
+ },
+ {
   "versao": "3.27.4",
   "data": "2026-10-13",
   "titulo": "Prévia sem tela em branco",
