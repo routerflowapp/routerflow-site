@@ -1,5 +1,13 @@
 [
  {
+  "versao": "3.27.4",
+  "data": "2026-10-13",
+  "titulo": "Prévia sem tela em branco",
+  "itens": [
+   "Prévia: Montado, Explodido e Peças só aparecem quando há o que mostrar. Com o ambiente vazio, aparece a sala com um aviso do que fazer, e a escolha volta quando as peças aparecem."
+  ]
+ },
+ {
   "versao": "3.27.3",
   "data": "2026-10-13",
   "titulo": "Montador com ambientes prontos e cabeceira nova",
