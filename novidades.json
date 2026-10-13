@@ -1,5 +1,15 @@
 [
  {
+  "versao": "3.27.3",
+  "data": "2026-10-13",
+  "titulo": "Montador com ambientes prontos e cabeceira nova",
+  "itens": [
+   "Montador: ambientes prontos (cozinha reta, em L e em U, quarto, banheiro, lavanderia e sala de TV), Meus módulos para guardar os seus, busca no catálogo, Ocupar o vão e Aéreos sobre todos os balcões. Tela mais limpa.",
+   "Cabeceira em várias formas: cantos arredondados, chanfrados ou em arco para dentro, arco no topo ou no meio, ondulada, com friso acompanhando a borda.",
+   "O Gerador de peças sempre abre na lista com os nomes dos modelos."
+  ]
+ },
+ {
   "versao": "3.27.2",
   "data": "2026-10-09",
   "titulo": "Montador começa do zero",
