@@ -1,5 +1,14 @@
 [
  {
+  "versao": "3.28.0",
+  "data": "2026-10-13",
+  "titulo": "Canto curvo encaixado",
+  "itens": [
+   "Canto curvo com base e tampo por fora e o revestimento encaixado: espigas nos trechos retos entram na borda da base e do tampo e ficam rente à face.",
+   "Na prévia 3D do canto curvo, o revestimento fica na medida certa da peça."
+  ]
+ },
+ {
   "versao": "3.27.5",
   "data": "2026-10-13",
   "titulo": "Botão do caderno de montagem à vista",
