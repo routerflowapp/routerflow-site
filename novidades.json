@@ -1,5 +1,15 @@
 [
  {
+  "versao": "3.28.1",
+  "data": "2026-10-15",
+  "titulo": "Canto curvo que dobra sem quebrar",
+  "itens": [
+   "Cortes de flexão mais juntos: você diz quanto de madeira fica entre um corte e outro (padrão 3 mm), e os cortes passam um pouco da curva.",
+   "Revestimento fresado na curva: a router tira todo o MDF do trecho curvo e fica só a pele.",
+   "Canto curvo com ripas e tudo encaixado: os montantes atravessam o tampo e a base, sem parafuso."
+  ]
+ },
+ {
   "versao": "3.28.0",
   "data": "2026-10-13",
   "titulo": "Canto curvo encaixado",
