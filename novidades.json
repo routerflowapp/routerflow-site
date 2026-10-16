@@ -1,5 +1,14 @@
 [
  {
+  "versao": "3.29.0",
+  "data": "2026-10-16",
+  "titulo": "Mesa com engrosso chanfrado",
+  "itens": [
+   "Gerador de peças, Tampos: mesa com os cantos chanfrados e o engrosso em 8 peças coladas por baixo, posicionadas por cavilhas que casam no tampo e em cada peça.",
+   "A borda de fora do engrosso sai chanfrada com a fresa V. Com base em caixa no meio."
+  ]
+ },
+ {
   "versao": "3.28.1",
   "data": "2026-10-15",
   "titulo": "Canto curvo que dobra sem quebrar",
