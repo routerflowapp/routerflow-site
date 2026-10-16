@@ -1,5 +1,15 @@
 [
  {
+  "versao": "3.29.1",
+  "data": "2026-10-16",
+  "titulo": "Rasgos do Promob e mesa com mais opções",
+  "itens": [
+   "Rasgo do Promob que corria no sentido errado e saía da peça agora segue o lado em que cabe. Se passar da peça, é cortado na borda, com aviso.",
+   "Sem o programa do verso, a peça com usinagem dos dois lados (como a lateral direita da gaveta) entra virada: você escolhe se fica em cima o rasgo ou a marcação.",
+   "Mesa com engrosso: cantos ovais e quantas camadas de engrosso quiser."
+  ]
+ },
+ {
   "versao": "3.29.0",
   "data": "2026-10-16",
   "titulo": "Mesa com engrosso chanfrado",
