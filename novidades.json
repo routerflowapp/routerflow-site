@@ -1,5 +1,14 @@
 [
  {
+  "versao": "3.29.2",
+  "data": "2026-10-19",
+  "titulo": "Etiqueta mais fácil de ler",
+  "itens": [
+   "Etiqueta 100 x 60 com letra maior: número da caixa e medidas grandes no alto, o nome da peça em destaque, cliente, ambiente e material maiores.",
+   "A etiqueta sai sem a logo, que virava um quadrado preto na impressora térmica: fica só RouterFlow.com.br."
+  ]
+ },
+ {
   "versao": "3.29.1",
   "data": "2026-10-16",
   "titulo": "Rasgos do Promob e mesa com mais opções",
