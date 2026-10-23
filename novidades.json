@@ -1,5 +1,15 @@
 [
  {
+  "versao": "3.30.2",
+  "data": "2026-10-23",
+  "titulo": "Editor mais completo e faixa dos passos igual em todas as telas",
+  "itens": [
+   "O Projeto ganhou a mesma faixa dos passos de Conferir e simular e da Produção, com Voltar e o próximo passo à direita.",
+   "Editor das chapas: travar a peça no lugar, selecionar várias (Shift+clique), encostar na borda ou na vizinha e alinhar, e Refazer.",
+   "Refazer o encaixe só desta chapa ou de todas, a partir das chapas como estão, com as peças travadas no lugar."
+  ]
+ },
+ {
   "versao": "3.30.1",
   "data": "2026-10-23",
   "titulo": "Etiqueta do tamanho do seu rolo",
