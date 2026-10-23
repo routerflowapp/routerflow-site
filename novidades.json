@@ -1,5 +1,15 @@
 [
  {
+  "versao": "3.30.1",
+  "data": "2026-10-23",
+  "titulo": "Etiqueta do tamanho do seu rolo",
+  "itens": [
+   "Configurações, Etiquetas das peças: os tamanhos de rolo mais vendidos ou a medida em mm, até o meio milímetro. A 100 x 60 continua o padrão.",
+   "A etiqueta acompanha o tamanho: letras, desenho e espaços; na alta o desenho vai embaixo. E uma etiqueta de teste com régua para acertar a impressora.",
+   "Editor das chapas: Girar 90° dá a volta nas 4 posições sem perder a forma da peça, e Espelhar (tecla E) vira a peça em L para juntar a sobra."
+  ]
+ },
+ {
   "versao": "3.30.0",
   "data": "2026-10-23",
   "titulo": "Peça em cima do desenho",
