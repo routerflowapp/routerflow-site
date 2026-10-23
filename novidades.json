@@ -1,5 +1,14 @@
 [
  {
+  "versao": "3.30.0",
+  "data": "2026-10-23",
+  "titulo": "Peça em cima do desenho",
+  "itens": [
+   "Peça personalizada com Desenho por baixo: foto, imagem ou PDF do desenho na escala certa, e a foto tirada de lado sai reta pelos 4 cantos.",
+   "Clique dentro da peça no desenho e o RouterFlow faz o contorno sozinho, com as curvas; ou leia todas as peças pintadas para a lista."
+  ]
+ },
+ {
   "versao": "3.29.5",
   "data": "2026-10-23",
   "titulo": "Curvas lisas",
