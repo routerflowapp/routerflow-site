@@ -1,5 +1,24 @@
 [
  {
+  "versao": "3.29.5",
+  "data": "2026-10-23",
+  "titulo": "Curvas lisas",
+  "itens": [
+   "As curvas saem lisas, sem quinas: cada arco é dividido em retas curtas, com no máximo 0,03 mm de desvio da curva.",
+   "Nas retas a fresa vai no avanço normal e nas curvas reduz para 60% (ajuste em Configurações, Corte, Avanço nas curvas)."
+  ]
+ },
+ {
+  "versao": "3.29.4",
+  "data": "2026-10-23",
+  "titulo": "Pendrive conferido e impressos em PDF",
+  "itens": [
+   "O programa salvo no pendrive é lido de volta e conferido: cópia vazia ou incompleta avisa na hora, e o arquivo vazio não abre.",
+   "Para imprimir fica só com o PDF de cada folha, e o Gerador avisa quando a peça mudou e ainda não está na lista.",
+   "Peça com usinagem nas duas faces: ao gerar, o RouterFlow pergunta se vai com o verso ou qual face fica em cima."
+  ]
+ },
+ {
   "versao": "3.29.3",
   "data": "2026-10-22",
   "titulo": "Etiqueta toda em preto",
