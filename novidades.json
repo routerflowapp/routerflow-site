@@ -1,5 +1,35 @@
 [
  {
+  "versao": "3.39.0",
+  "data": "2026-10-24",
+  "titulo": "Vitrine com 68 produtos prontos",
+  "itens": [
+   "Mais 16 produtos: porta-guardanapos, suporte de taças e garrafa, porta-papel-toalha, porta-brincos, suporte de violão, mesa e bancada de parede com mãos francesas, prateleira com mãos francesas, balanço infantil, escada de pet, floreira de janela, estante de plantas, porta-canetas, porta-tampas, caixa de vinho e caixa de chá.",
+   "A escadinha vai de dois a quatro degraus e o cachepot pode ser retangular.",
+   "As versões 3.37 e 3.38 saem junto nesta: vitrine só com produtos próprios no Montador, termo de uso assinado e miniaturas em Meus projetos e na Produção."
+  ]
+ },
+ {
+  "versao": "3.38.0",
+  "data": "2026-10-24",
+  "titulo": "Vitrine com 52 produtos prontos",
+  "itens": [
+   "Mais 28 produtos na vitrine, do que mais se vende nas lojas de arquivos: porta-retrato, luminária, porta-copos, petisqueira, suporte de vaso, cachepot, jardim vertical, sapateira, porta-temperos, estante infantil, caixa de ferramentas, suporte de monitor e de fone, estação de carga, casa de boneca, mesa infantil com banquinhos, encaixe de formas, resta um, tabuleiro de xadrez e damas, escadinha e casinha de cachorro.",
+   "Todos entram no Montador de ambiente e saem com DXF, programa da router, etiquetas e caderno de montagem.",
+   "Manual do app completo de novo (a 3.37.0 saiu sem os capítulos do Gerador)."
+  ]
+ },
+ {
+  "versao": "3.37.0",
+  "data": "2026-10-24",
+  "titulo": "Vitrine com produtos próprios, termo de uso assinado e miniaturas em Meus projetos",
+  "itens": [
+   "Projetos prontos agora são produtos que não existem como modelo: porta-vinho que equilibra, cabideiro de pinos, adega de parede, caixa com tampa, organizadores, bandeja com alças, suportes de notebook, celular e livro, painel de ferramentas, jogo da velha, tangram, cama de pet, comedouro, casinha de passarinho e cadeira de duas tábuas. Todos entram também no Montador de ambiente.",
+   "Termo de uso completo antes do primeiro programa ir para a máquina: nome, documento e assinatura na tela, guardados em PDF na pasta do RouterFlow.",
+   "Meus projetos mostra a miniatura da chapa ao lado do nome; a miniatura da Produção ficou clara, com os cortes em azul."
+  ]
+ },
+ {
   "versao": "3.36.0",
   "data": "2026-10-24",
   "titulo": "Prova no ar do comando e avanço nas curvas pelo raio",
