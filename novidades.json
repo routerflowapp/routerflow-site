@@ -1,5 +1,65 @@
 [
  {
+  "versao": "3.36.0",
+  "data": "2026-10-24",
+  "titulo": "Prova no ar do comando e avanço nas curvas pelo raio",
+  "itens": [
+   "Gerar a prova no ar, em Configurações, Pós-processador: dois minutos na máquina sem chapa (quadrado, círculo em arco e em retas, canto de 45 graus, onda de retas curtas) para ver se o comando hesita; depois marque Rodou liso ou Hesitou.",
+   "O avanço nas curvas agora tem teto pelo raio, como os comandos fazem: curva apertada vai mais devagar, curva aberta vai no avanço cheio (campo Avanço de referência no raio 5 mm, em Corte).",
+   "Conferir e simular avisa quando um programa faz as curvas em retas curtas sem arco nenhum, onde a máquina freia, e diz como ligar os arcos."
+  ]
+ },
+ {
+  "versao": "3.35.0",
+  "data": "2026-10-24",
+  "titulo": "Curvas em arco: o programa sai do jeito que a sua router entende",
+  "itens": [
+   "Escolha o comando da router em Configurações, Pós-processador (DDCS Expert da INMES e da Mach CNC, Syntec, Weihong, Mach3, GRBL, Fanuc, MASSO, Centroid): as curvas e os cantos arredondados saem como arcos G2/G3, uma linha só, e a máquina faz a curva lisa sem frear a cada reta.",
+   "Quem importou o .pp da INMES já sai com arcos no formato que a máquina recebe do Aspire. Sem comando escolhido, o programa continua em retas, que qualquer máquina lê.",
+   "Primeira abertura com um projeto de exemplo já gerado (cozinha com chapas, programa, etiquetas e caderno), os Primeiros passos levam você de tópico em tópico, e um termo lembra o que conferir antes do primeiro programa ir para a máquina."
+  ]
+ },
+ {
+  "versao": "3.34.0",
+  "data": "2026-10-24",
+  "titulo": "Peças que faltavam: pé em chapa, prateleira de canto, rodapé e frente de gaveta com cava",
+  "itens": [
+   "Pé em chapa cônico ou reto, com vão em arco, lingueta no tampo ou cavilha, simples ou em X; prateleira de canto em quarto de círculo, gota ou triângulo, com os furos dos pinos; rodapé do balcão com o recorte das pontas e as sapatas.",
+   "A gaveta completa sai com a frente: lisa ou com puxador cava de qualquer tipo, já com os furos de fixação por dentro.",
+   "No Montador, Aparador e Escrivaninha prontos em Sala e escritório."
+  ]
+ },
+ {
+  "versao": "3.33.0",
+  "data": "2026-10-24",
+  "titulo": "Projetos prontos: a vitrine dentro da licença",
+  "itens": [
+   "No Gerador, Projetos prontos: mesa de centro, mesa lateral em C, banco, banquinho infantil, torre, estante, prateleira, caixa de oficina, porta-chaves e relógio, com a foto em 3D, o gasto de chapa e o tempo na router; o cartão aberto gira em 3D.",
+   "Diga a espessura da chapa que você tem (e o tamanho, quando dá) e a peça entra na lista com o encaixe calculado para ela; sai com DXF, programa, etiquetas e caderno de montagem.",
+   "A vitrine cresce sem atualizar o programa: novos projetos chegam pela internet, assinados pelo RouterFlow. Dois modelos novos no catálogo: mesa de centro encaixada e mesa lateral em C."
+  ]
+ },
+ {
+  "versao": "3.32.0",
+  "data": "2026-10-24",
+  "titulo": "Gerador de peças novo: foto dos modelos, prévia no centro e medidas em cartões",
+  "itens": [
+   "O catálogo mostra a foto de cada modelo, em grupos de oficina (Portas e frentes, Gavetas, Módulos, Painéis, Tampos e pés...); a prévia fica no meio, grande, e as medidas em cartões à direita.",
+   "Clique na medida escrita na prévia (desenho ou 3D) e mude ali mesmo. Em notebook o catálogo recolhe e a prévia ganha a altura toda; em tela estreita viram abas Modelo, Medidas e Lista.",
+   "Abre mais rápido: o 3D carrega por partes depois da tela, as fotos ficam guardadas e a prévia não é refeita quando as medidas não mudaram."
+  ]
+ },
+ {
+  "versao": "3.31.0",
+  "data": "2026-10-24",
+  "titulo": "Todos os projetos numa pasta só, com Lixeira e cópia semanal",
+  "itens": [
+   "Tudo o que você gera fica em Documentos, RouterFlow, Projetos, com uma cópia do CSV ou da lista dentro de cada projeto: apagar o arquivo original não perde mais nada.",
+   "Projeto ou lista excluída vai para a Lixeira do RouterFlow e fica 30 dias com Restaurar em Meus projetos; uma vez por semana sai uma cópia em zip dos projetos.",
+   "Na primeira abertura o RouterFlow oferece trazer os projetos antigos para a pasta nova. A pasta pode ficar no OneDrive, Google Drive ou na rede."
+  ]
+ },
+ {
   "versao": "3.30.2",
   "data": "2026-10-23",
   "titulo": "Editor mais completo e faixa dos passos igual em todas as telas",

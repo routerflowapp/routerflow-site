@@ -235,3 +235,14 @@ body.lb-open { overflow: hidden; }
   .vid-shorts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .vl-th { width: 96px; }
 }
+
+/* 3.34.0: Tudo num lugar só (o que a oficina junta hoje x no RouterFlow) */
+.unico { max-width: 1000px; margin: 0 auto; display: grid; gap: 10px; }
+.un-head { display: grid; grid-template-columns: 1fr 1.3fr; gap: 14px; font-weight: 800; color: var(--primary); padding: 0 18px 4px; font-size: 15px; letter-spacing: .02em; text-transform: uppercase; }
+.un-row { display: grid; grid-template-columns: 1fr 1.3fr; gap: 14px; align-items: stretch; }
+.un-hoje, .un-rf { border-radius: var(--r-lg); padding: 14px 18px; font-size: 15px; line-height: 1.45; }
+.un-hoje { background: var(--surface-bright); border: 1px dashed var(--outline-variant); color: var(--on-surface-variant); display: flex; align-items: center; }
+.un-rf { background: var(--surface-bright); border: 2px solid var(--secondary); color: var(--on-surface); position: relative; padding-left: 44px; }
+.un-rf::before { content: ""; position: absolute; left: 16px; top: 21px; width: 12px; height: 7px; border-left: 3px solid var(--secondary); border-bottom: 3px solid var(--secondary); transform: rotate(-45deg); }
+.un-foot { max-width: 1000px; margin: 22px auto 0; text-align: center; font-size: 17px; color: var(--on-surface); }
+@media (max-width: 700px) { .un-row, .un-head { grid-template-columns: 1fr; gap: 6px; } .unico { gap: 18px; } .un-head span:last-child { display: none; } .un-hoje { padding: 10px 16px; font-size: 14px; } }
