@@ -26,8 +26,11 @@
 <meta name="twitter:image" content="https://www.routerflow.com.br/img/og.png">
 <link rel="icon" href="img/logo.png">
 <link rel="apple-touch-icon" href="img/logo.png">
-<link rel="preload" as="image" href="img/app-inicio.png">
-<link rel="stylesheet" href="site.css?v=20261024">
+<link rel="preload" as="image" href="img/app-projeto.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="site.css?v=20261025">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -137,18 +140,15 @@
 <body>
 <a class="skip" href="#main">Ir para o conteúdo</a>
 <header class="top">
-  <a class="brand" href="#" aria-label="RouterFlow, página inicial"><img src="img/logo.png" alt="" width="36" height="36"><span>RouterFlow</span></a>
+  <a class="brand" href="#" aria-label="RouterFlow, página inicial"><img src="img/logo.png" alt="" width="34" height="34"><span>RouterFlow</span></a>
   <button class="menu-btn" id="menu-btn" aria-label="Abrir o menu" aria-expanded="false" aria-controls="menu">Menu</button>
   <nav id="menu" aria-label="Seções do site">
     <a href="#videos">Vídeos</a>
     <a href="#como">Como funciona</a>
-    <a href="#saida">O que sai</a>
     <a href="#recursos">Recursos</a>
     <a href="#unico">Tudo num lugar só</a>
-    <a href="#leva">O que você leva</a>
     <a href="#preco">Preço</a>
     <a href="#faq">Dúvidas</a>
-    <a href="#novidades">Novidades</a>
     <a href="manual.html">Manual</a>
     <a href="#baixar">Baixar</a>
     <a href="#contato" class="cta">Falar no WhatsApp</a>
@@ -157,23 +157,27 @@
 
 <main id="main">
 <section class="hero" aria-labelledby="h-hero">
-  <div class="hero-text">
-    <p class="kicker">Para marcenarias com router CNC</p>
-    <h1 id="h-hero">Do projeto à router sem digitar peça, sem plugin e sem CAM.</h1>
-    <p class="lead">Você exporta a lista de peças do seu software de projeto. O RouterFlow monta as chapas, gera o programa pronto para a sua router e imprime as etiquetas, tudo com o nome do cliente. Em minutos.</p>
-    <ul class="hero-list">
-      <li><b>Programa da router pronto</b> para cada chapa: furos, rasgos e contornos, na ordem certa.</li>
-      <li><b>Chapa bem aproveitada</b>: encaixe automático e as sobras do estoque usadas antes de abrir chapa nova.</li>
-      <li><b>Chão de fábrica organizado</b>: etiquetas, mapa das chapas, ficha de produção e tempo de máquina.</li>
-    </ul>
-    <div class="actions">
-      <a class="btn go" href="https://wa.me/5534991627276?text=Ol%C3%A1%2C%20quero%20ver%20o%20RouterFlow%20funcionando%20com%20um%20projeto%20meu" target="_blank" rel="noopener">Ver funcionando com um projeto meu</a>
-      <a class="btn outline" href="#baixar">Baixar o instalador</a>
-    </div>
-    <p class="fine">Mande o CSV de um projeto seu pelo WhatsApp e veja as chapas e os programas prontos. Windows 10 ou 11.</p>
+  <p class="kicker">Para marcenarias com router CNC</p>
+  <h1 id="h-hero">Da lista de peças à router. Sem digitar peça, sem plugin, sem CAM.</h1>
+  <p class="lead">Exporte a lista do seu software de projeto, ou crie as peças e o ambiente aqui mesmo. O RouterFlow monta as chapas, gera o programa pronto para a sua router, confere no simulador e imprime as etiquetas. Tudo com o nome do cliente, em minutos.</p>
+  <div class="actions">
+    <a class="btn go" href="https://wa.me/5534991627276?text=Ol%C3%A1%2C%20quero%20ver%20o%20RouterFlow%20funcionando%20com%20um%20projeto%20meu" target="_blank" rel="noopener">Ver funcionando com um projeto meu</a>
+    <a class="btn ghost" href="#baixar">Baixar o instalador</a>
   </div>
-  <img class="hero-shot zoom" src="img/app-projeto.png" alt="RouterFlow: chapa de MDF com as peças encaixadas, eixos da máquina e os botões de etiquetas, mapa, ficha e router" width="2560" height="1640" fetchpriority="high">
+  <p class="fine">Mande o CSV de um projeto seu pelo WhatsApp e receba as chapas e os programas prontos. Windows 10 ou 11.</p>
+  <div class="hero-pills">
+    <span>Nesting por material</span><span>Programa .nc por chapa</span><span>Simulador 3D com veredito</span><span>Gerador com 68 modelos</span><span>Montador de ambiente</span><span>Etiquetas e produção</span>
+  </div>
 </section>
+<div class="hero-shot-wrap">
+  <img class="hero-shot zoom" src="img/app-projeto.png" alt="RouterFlow: chapa de MDF com as peças encaixadas, eixos da máquina e os botões de etiquetas, mapa, ficha e router" width="2560" height="1640" fetchpriority="high">
+  <div class="stats">
+    <div><b>68</b><span>modelos de peça pelas medidas</span></div>
+    <div><b>13</b><span>projetos prontos na vitrine</span></div>
+    <div><b>9</b><span>comandos de router atendidos</span></div>
+    <div><b>1</b><span>valor por ano, tudo incluído</span></div>
+  </div>
+</div>
 
 <!-- videos:inicio -->
 <section id="videos" class="block" aria-labelledby="h-videos">
@@ -214,8 +218,9 @@
 <!-- videos:fim -->
 
 <section id="porque" class="block alt" aria-labelledby="h-porque">
-  <h2 id="h-porque">O problema que o RouterFlow resolve</h2>
-  <p class="sub">A router CNC não lê o projeto do seu software de móveis. Entre o projeto pronto e a chapa cortada, alguém precisa transformar cada peça em programa. É aí que se perde tempo, chapa e dinheiro.</p>
+  <span class="eyebrow">O problema</span>
+  <h2 id="h-porque">Entre o projeto pronto e a chapa cortada, alguém digita tudo de novo</h2>
+  <p class="sub">A router não lê o projeto do seu software de móveis. É nessa passagem que se perde tempo, chapa e dinheiro. O RouterFlow faz a passagem inteira.</p>
   <div class="ad">
     <div class="antes">
       <h3>Hoje, sem o RouterFlow</h3>
@@ -234,99 +239,118 @@
         <li>Um programa só, sem plugin e sem CAM. Quem usa o Aspire continua usando, pelo DXF.</li>
         <li>Encaixe automático, e as sobras do estoque entram antes de abrir chapa inteira.</li>
         <li>Etiqueta de cada peça com cliente, ambiente, medidas e fitas de borda.</li>
-        <li>Tempo estimado de cada chapa e de quanto falta para terminar o projeto.</li>
+        <li>Tempo estimado de cada chapa e o simulador dizendo se pode cortar.</li>
       </ul>
     </div>
   </div>
   <div class="who">
-    <div><h3>Para quem é</h3><p>Marcenarias e fábricas de móveis planejados que têm router CNC e desenham num software de projeto que exporta CSV. MDF, MDP e compensado, com ou sem mesa de vácuo.</p></div>
-    <div><h3>O que substitui</h3><p>O plugin pago de exportação em DXF, o CAM para montar os programas, a digitação de peças e a planilha de etiquetas.</p></div>
-    <div><h3>O que você precisa</h3><p>Um computador com Windows e o CSV do plano de corte do seu software de projeto. Uma planilha do Excel com as medidas também serve.</p></div>
+    <div><h3>Para quem é</h3><p>Marcenarias e fábricas de móveis planejados com router CNC. MDF, MDP e compensado, com ou sem mesa de vácuo.</p></div>
+    <div><h3>O que substitui</h3><p>O plugin de exportação em DXF, o CAM, o gerador de peças, a loja de arquivos prontos e a planilha de etiquetas.</p></div>
+    <div><h3>O que você precisa</h3><p>Um computador com Windows e o CSV do plano de corte, uma planilha do Excel ou só as medidas: o Gerador faz o resto.</p></div>
   </div>
 </section>
 
 <section id="como" class="block" aria-labelledby="h-como">
-  <h2 id="h-como">Como funciona</h2>
-  <p class="sub">Configure a sua máquina uma vez (ferramentas e o jeito que ela lê o programa). Depois, todo projeto é assim:</p>
+  <span class="eyebrow">Como funciona</span>
+  <h2 id="h-como">Configure a máquina uma vez. Depois, todo projeto é assim</h2>
+  <p class="sub">Quatro passos, sem sair do programa.</p>
   <ol class="steps">
-    <li class="step"><span>1</span><h3>Exporte a lista de peças</h3><p>No seu software de projeto, o mesmo CSV do plano de corte, com furos, rasgos e fitas. Ou uma planilha do Excel. Arraste para o RouterFlow.</p></li>
-    <li class="step"><span>2</span><h3>As chapas saem montadas</h3><p>Separadas por material e espessura, com o melhor encaixe e as sobras do estoque. Quer mudar? Arraste a peça e pronto.</p></li>
-    <li class="step"><span>3</span><h3>Confira e mande para a router</h3><p>Em Conferir e simular, veja a fresa cortando a chapa em 3D, com o tempo e o veredito: pode cortar, confira ou não corte. Na Produção, salve no pendrive ou mande pela rede.</p></li>
-    <li class="step"><span>4</span><h3>Imprima e corte</h3><p>Etiquetas, mapa das chapas e ficha de produção. Na máquina, marque cada chapa feita e veja quanto falta.</p></li>
+    <li class="step"><span>1</span><h3>Traga a lista de peças</h3><p>O CSV do plano de corte, uma planilha do Excel, ou as peças criadas no Gerador e no Montador de ambiente. Arraste para o RouterFlow.</p></li>
+    <li class="step"><span>2</span><h3>As chapas saem montadas</h3><p>Por material e espessura, com o melhor encaixe e as sobras do estoque. Quer mudar? Arraste a peça e pronto.</p></li>
+    <li class="step"><span>3</span><h3>Confira e mande para a router</h3><p>Veja a fresa cortando em 3D, com o tempo e o veredito: pode cortar, confira ou não corte. Salve no pendrive ou mande pela rede.</p></li>
+    <li class="step"><span>4</span><h3>Imprima e corte</h3><p>Etiquetas, mapa das chapas, ficha de produção e caderno de montagem. Na máquina, marque cada chapa feita e veja quanto falta.</p></li>
   </ol>
-  <figure class="shot"><img class="zoom" src="img/app-simulador.png" alt="Simulador do RouterFlow: a chapa em 3D com o pórtico e a fresa cortando, a régua do Z, os controles de velocidade e o veredito Pode cortar ao lado" width="2560" height="2040" loading="lazy"><figcaption>Antes de cortar, o simulador mostra a fresa andando pelo programa, o material saindo e o veredito: a profundidade de cada ferramenta, a mesa, os rápidos e o spindle conferidos.</figcaption></figure>
+  <figure class="shot"><img class="zoom" src="img/app-simulador.png" alt="Simulador do RouterFlow: a chapa em 3D com o pórtico e a fresa cortando, a régua do Z, os controles de velocidade e o veredito Pode cortar ao lado" width="2732" height="1640" loading="lazy"><figcaption>Antes de cortar, o simulador mostra a fresa andando pelo programa, o material saindo e o veredito: profundidade de cada ferramenta, mesa, rápidos e spindle conferidos.</figcaption></figure>
   <p class="more">Quer ver cada tela e cada botão? <a href="manual.html">O manual completo</a> mostra tudo, do primeiro acesso à chapa cortada.</p>
 </section>
 
 <section id="saida" class="block alt" aria-labelledby="h-saida">
-  <h2 id="h-saida">O que sai de cada projeto</h2>
-  <p class="sub">Tudo com o nome do cliente e do ambiente, lido do próprio CSV. Pasta, arquivos e impressos seguem o mesmo padrão.</p>
+  <span class="eyebrow">O que sai</span>
+  <h2 id="h-saida">De cada projeto, tudo com o nome do cliente</h2>
+  <p class="sub">Pasta, arquivos e impressos seguem o mesmo padrão, lido do próprio projeto.</p>
   <div class="cards">
-    <div class="card"><h3>Programas da router (.nc)</h3><p>Um .nc por chapa com furos, rasgos e contornos em sequência, rampa de entrada e zonas de vácuo. O nome do arquivo diz o que ele faz: completo, só furos, só rasgos ou só contornos. Verso espelhado quando a peça tem usinagem atrás. Furos, rasgos e contornos separados se você preferir rodar por etapas.</p></div>
-    <div class="card"><h3>DXF por material</h3><p>Todas as chapas do material num arquivo só, já na orientação e na origem da sua mesa. Layers com nomes fixos para quem usa o Aspire ou outro CAM.</p></div>
-    <div class="card"><h3>Etiquetas das peças</h3><p>Cliente, ambiente, módulo, peça, material, IDs e código, medidas e o desenho da peça com as fitas de borda e a face de alinhamento. Etiqueta de 100 x 60 mm para impressora de etiquetas, ou oito por folha A4.</p></div>
-    <div class="card"><h3>Mapa das chapas</h3><p>Uma folha por chapa com as peças numeradas, medidas, sentido do veio e a sobra que fica. Fica ao lado da máquina para identificar cada peça na saída.</p></div>
-    <div class="card"><h3>Ficha de produção</h3><p>Materiais, chapas, aproveitamento, metros de fita por cor, ferragens do projeto, arquivos gerados e os avisos a conferir antes de cortar.</p></div>
-    <div class="card"><h3>Listas em planilha</h3><p>Lista de peças, fitagem por aresta e ferragens em CSV, para abrir no Excel ou no seu sistema.</p></div>
+    <div class="card"><h3>Programas da router (.nc)</h3><p>Um por chapa, com furos, rasgos e contornos em sequência, rampa de entrada, zonas de vácuo e as curvas em arco no formato do seu comando. Verso espelhado quando a peça tem usinagem atrás.</p></div>
+    <div class="card"><h3>DXF por material</h3><p>Todas as chapas do material num arquivo só, na orientação e na origem da sua mesa. Layers com nomes fixos para quem usa o Aspire ou outro CAM.</p></div>
+    <div class="card"><h3>Etiquetas das peças</h3><p>Cliente, ambiente, módulo, peça, medidas, fitas de borda e o desenho da peça. No tamanho do seu rolo de etiquetas ou oito por folha A4.</p></div>
+    <div class="card"><h3>Mapa das chapas</h3><p>Uma folha por chapa com as peças numeradas, medidas, sentido do veio e a sobra que fica. Fica ao lado da máquina.</p></div>
+    <div class="card"><h3>Ficha de produção</h3><p>Materiais, chapas, aproveitamento, metros de fita por cor, ferragens, arquivos gerados e os avisos a conferir antes de cortar.</p></div>
+    <div class="card"><h3>Caderno de montagem</h3><p>Para quem monta na obra: cada móvel explodido com as peças numeradas pelo código da etiqueta, as ferragens e o passo a passo.</p></div>
   </div>
   <div class="gallery">
     <figure><img class="zoom" src="img/rel-etiquetas.png" alt="Etiquetas das peças impressas pelo RouterFlow, com cliente, ambiente, módulo, medidas e desenho com as fitas de borda" width="1800" height="2400" loading="lazy"><figcaption>Etiquetas</figcaption></figure>
     <figure><img class="zoom" src="img/rel-mapa_chapas.png" alt="Mapa das chapas: uma folha por chapa com as peças numeradas e a sobra" width="1800" height="2400" loading="lazy"><figcaption>Mapa das chapas</figcaption></figure>
-    <figure><img class="zoom" src="img/rel-ficha_producao.png" alt="Ficha de produção com materiais, chapas, aproveitamento, fita de borda, ferragens e arquivos gerados" width="1800" height="2400" loading="lazy"><figcaption>Ficha de produção</figcaption></figure>
+    <figure><img class="zoom" src="img/app-caderno.png" alt="Caderno de montagem do RouterFlow: um balcão com a vista explodida, as peças numeradas com o código da etiqueta e como fica montado" width="1520" height="2000" loading="lazy"><figcaption>Caderno de montagem</figcaption></figure>
   </div>
 </section>
 
 <section id="recursos" class="block" aria-labelledby="h-recursos">
-  <h2 id="h-recursos">Feito dentro da oficina</h2>
-  <p class="sub">Os recursos na ordem do menu do programa: Meus projetos, Projeto, Gerador de peças, Conferir e simular, Produção e Sobras.</p>
+  <span class="eyebrow">Recursos</span>
+  <h2 id="h-recursos">Feito dentro da oficina, na ordem do menu do programa</h2>
+  <p class="sub">Meus projetos, Projeto, Gerador de peças, Conferir e simular, Produção e Sobras. Cada um faz uma parte do caminho até a router.</p>
   <div class="features">
-    <div><h3>Meus projetos</h3><p>Tudo o que a marcenaria faz num lugar só, com o nome do cliente: projetos do Promob ou de outro CSV, de planilha, do Gerador e do Montador, com a situação de cada um (rascunho, gerado, cortando, pronto). Salva sozinho, e as listas podem ficar no OneDrive ou no Google Drive da própria marcenaria.</p></div>
-    <div><h3>Projeto: chapa bem aproveitada</h3><p>Doze combinações de estratégia por material, fica a que gasta menos chapa e deixa a maior sobra. Respeita veio, folga e margem, desvia de áreas com defeito e usa as sobras do estoque antes de abrir chapa inteira. Tampo em L, peça com arco e letra entram pela forma: as menores ocupam o canto vazio.</p></div>
-    <div><h3>Projeto: qualquer lista de peças</h3><p>O CSV do software de projeto, uma planilha do Excel ou a lista de outro programa: uma janela mostra as colunas do arquivo e você diz qual é qual, e o RouterFlow lembra. Vários arquivos de uma vez entram nas mesmas chapas.</p></div>
-    <div><h3>Editor de chapas</h3><p>Origem em qualquer canto, chapa deitada na tela, eixos desenhados. Arraste, gire, troque peças de chapa, marque defeitos e regrave tudo junto: DXF, programas, etiquetas e mapa. O projeto fica salvo para reabrir.</p></div>
-    <div><h3>Gerador de peças</h3><p>Sem lista? Escolha entre 60 modelos, na lista ou em cartões, e digite as medidas: porta com dobradiça, porta com cava de todos os tipos, provençal, porta com placa encaixada, canto curvo com ripas e montantes, pé revestido, tampo orgânico, cava 45, porta com vidro, gaveta pelo vão, lateral com linha 32, tampo com cuba e cooktop, painel ripado, ondulado e em lâminas, frente curva com cortes de flexão, muxarabi, texto em V com as fontes do Windows, letras vazadas e letra caixa, banco e mesa encaixados. Sai com recortes, rebaixos, relevo 3D, V-carve e encaixes com dog-bone, sem desenhar. E quando nenhum modelo serve, a peça personalizada: arraste os nós ou traga o contorno de um DXF ou SVG, e ponha furos, furação em série, rasgos, canal livre, texto, logo em V ou em relevo e bordas chanfradas ou arredondadas onde quiser. A peça que você desenhou vira modelo seu, em Minhas peças.</p></div>
-    <div><h3>Montador de ambiente</h3><p>A cozinha, o banheiro ou o quarto inteiro, sem outro programa: paredes reta, em L ou em U, e o catálogo com balcões, balcão de canto, torre quente, aéreos, roupeiro, gabinete, rack, painel de TV, geladeira e fogão, arrastados para o 3D com o mouse do jeito que você já usa. Monte no 3D ou na parede de frente. Os módulos encostam um no outro, as portas abrem, e o tampo corrido, a lista de peças e as ferragens saem prontos.</p></div>
-    <div><h3>Caderno de montagem</h3><p>O impresso para quem monta na obra: cada móvel com a vista explodida e as peças numeradas, o código da etiqueta de cada peça, as ferragens e o passo a passo com as peças da vez destacadas. As medidas saem das mesmas peças que a router corta, então batem.</p></div>
-    <div><h3>Módulo completo pelas medidas</h3><p>Balcão, aéreo e gaveteiro inteiros: laterais, base, travessas, fundo, prateleiras, portas e gavetas, com minifix, cavilha, linha 32 e o calço da dobradiça casando entre as peças, e a lista de ferragens pronta.</p></div>
-    <div><h3>Prévia 3D das peças</h3><p>Veja o móvel montado, explodido ou peça por peça antes de cortar, com luz, sombra e material, e o que a router faz cortado de verdade: furos, rasgos, cavas, chanfros, a onda do painel e a frente curva dobrada. Raio-X mostra a estrutura por dentro, cada peça numa cor, e as cotas aparecem no móvel. Nos cortes especiais, o 3D mostra a estrutura que segura: as espinhas do painel em lâminas e as cambotas da frente curva.</p></div>
-    <div><h3>Conferir e simular</h3><p>A fresa corta a chapa em 3D na tela, de 1x a 100x, com o material saindo e o programa andando junto. No fim, o veredito: pode cortar, confira ou não corte, com o ponto exato do problema. Tem também o passo a passo sobre a mesa, a tradução do G-code em português e as verificações: rápido dentro da chapa, fundo demais na mesa, fora da área da máquina.</p></div>
-    <div><h3>Programa da router sem CAM</h3><p>Furos, rasgos e contornos com deslocamento pelo raio da fresa, passes em profundidade com rampa, verso antes da face e zonas de vácuo. Peças pequenas cortadas primeiro e pele fina para elas não soltarem. Modo corte no ar para o primeiro teste.</p></div>
-    <div><h3>Produção</h3><p>Modo operador: as chapas na ordem de corte, o tempo de máquina, a miniatura de cada programa, pendrive, pasta de rede ou FTP e a marcação de chapa feita. O Início mostra onde você parou e quantas chapas faltam.</p></div>
-    <div><h3>Sobras</h3><p>A router corta cada retalho alinhado e sai a etiqueta. A sobra entra no estoque quando a chapa é marcada como feita, fica reservada quando um projeto vai usar e sai quando a chapa que a usou é cortada.</p></div>
-    <div><h3>Perfis de máquina</h3><p>Cada router com sua mesa, vácuo, ferramentas e pós-processador. Troque de máquina pelo menu lateral, crie um perfil novo por cópia ou importe o arquivo .pp do Aspire. Modelos prontos para Inmes, Mach3, GRBL e Fanuc.</p></div>
-    <div><h3>Ajuda dentro do programa</h3><p>Manual com busca, suporte pelo WhatsApp com o envio do projeto para o consultor ver do mesmo jeito que você, e atualização automática: cada versão nova é baixada e instalada pelo próprio programa.</p></div>
+    <div class="feat"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h5l2 2h11v10H3z"/></svg></i><h3>Meus projetos</h3><p>Tudo o que a marcenaria faz num lugar só, com o nome do cliente e a situação: rascunho, gerado, cortando, pronto. Pasta única, Lixeira de 30 dias e cópia semanal.</p></div>
+    <div class="feat"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 12h9V3M12 12v9"/></svg></i><h3>Chapa bem aproveitada</h3><p>Doze estratégias por material, fica a que gasta menos chapa. Respeita veio, folga e defeitos, usa as sobras do estoque e encaixa peça em L, curva ou letra pela forma.</p></div>
+    <div class="feat"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></i><h3>Qualquer lista de peças</h3><p>O CSV do software de projeto, uma planilha do Excel ou a lista de outro programa: você diz qual coluna é qual uma vez, e o RouterFlow lembra.</p></div>
+    <div class="feat"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19l14-14M5 5l14 14"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg></i><h3>Editor de chapas</h3><p>Arraste, gire, espelhe, trave a peça, encoste e alinhe várias de uma vez, marque defeitos e refaça o encaixe só de uma chapa. Regrava DXF, programas, etiquetas e mapa juntos.</p></div>
+    <div class="feat"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg></i><h3>Gerador de peças</h3><p>68 modelos pelas medidas, com a foto de cada um: portas com cava, provençal e vidro, gaveta pelo vão, tampo com cuba, painéis ripados e 3D, mesas, bancos, estantes e a peça personalizada desenhada à mão ou lida de uma foto.</p></div>
+    <div class="feat"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg></i><h3>Montador de ambiente</h3><p>A cozinha, o banheiro ou o quarto inteiro: paredes reta, em L ou em U e um catálogo de balcões, aéreos, torres e armários arrastados no 3D. Toda peça pode ser editada, e o caderno de montagem sai junto.</p></div>
+    <div class="feat"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-8-8"/><path d="M12 8v4l3 2"/></svg></i><h3>Projetos prontos</h3><p>Mesa, banco, estante, caixa de oficina, porta-chaves e mais, com a foto em 3D: escolha a espessura da sua chapa e a peça entra no projeto com programa e caderno. Dentro da licença.</p></div>
+    <div class="feat"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M6 20V9l6-5 6 5v11"/></svg></i><h3>Programa da router sem CAM</h3><p>Furos, rasgos, recortes, rebaixos, chanfros, canais, relevo 3D e V-carve, com contorno pelo raio da fresa, rampa, peças pequenas primeiro e pele fina. Curvas em arco G2/G3 no formato do seu comando.</p></div>
+    <div class="feat"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></i><h3>Conferir e simular</h3><p>A fresa corta a chapa em 3D na tela, de 1x a 100x, com o programa andando junto. No fim, o veredito: pode cortar, confira ou não corte, com o ponto exato do problema.</p></div>
+    <div class="feat"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></i><h3>Produção</h3><p>As chapas na ordem de corte, a miniatura e o tempo de cada programa, pendrive conferido byte a byte, pasta de rede ou FTP, e a marcação de chapa feita.</p></div>
+    <div class="feat"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 20V10"/></svg></i><h3>Sobras</h3><p>A router corta cada retalho alinhado e sai a etiqueta. A sobra entra no estoque quando a chapa é marcada como feita e é usada antes de abrir chapa nova.</p></div>
+    <div class="feat"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></i><h3>A sua router, do seu jeito</h3><p>Perfis de máquina com mesa, vácuo, ferramentas e pós-processador. Escolha o comando (DDCS Expert, Syntec, Weihong, Mach3, GRBL, Fanuc, MASSO, Centroid) ou importe o .pp do Aspire, e rode a prova no ar em dois minutos.</p></div>
   </div>
   <div class="two">
-    <figure class="shot"><img class="zoom" src="img/app-router.png" alt="Tela Conferir e simular do RouterFlow: percurso da fresa desenhado sobre a mesa, zonas de vácuo e lista de furos, rasgos e contornos" width="2560" height="2040" loading="lazy"><figcaption>Conferir e simular: cada operação sobre a mesa, com as zonas de vácuo a abrir e a lista de furos, rasgos e contornos.</figcaption></figure>
-    <figure class="shot"><img class="zoom" src="img/app-simulador.png" alt="Simulador 3D do RouterFlow com o veredito antes de cortar" width="2560" height="2040" loading="lazy"><figcaption>Simulador: a fresa cortando em 3D e o veredito antes de ir para a máquina.</figcaption></figure>
-    <figure class="shot"><img class="zoom" src="img/app-montador.png" alt="Montador de ambiente do RouterFlow: cozinha em L em 3D com geladeira, torre quente, balcão da pia, balcão de canto, lava-louças e aéreos, com as portas abertas" width="2560" height="1640" loading="lazy"><figcaption>Montador de ambiente: a cozinha em L montada no 3D, com a geladeira, a torre quente e as portas abertas.</figcaption></figure>
-    <figure class="shot"><img class="zoom" src="img/app-caderno.png" alt="Caderno de montagem do RouterFlow: um balcão com a vista explodida, as peças numeradas com o código da etiqueta e como fica montado" width="1520" height="2000" loading="lazy"><figcaption>Caderno de montagem: a vista explodida, as peças com o código da etiqueta e como fica montado.</figcaption></figure>
-    <figure class="shot"><img class="zoom" src="img/app-meus-projetos.png" alt="Meus projetos do RouterFlow: projetos do Montador, do Gerador, do Promob e de planilha, com a situação de cada um" width="2560" height="1640" loading="lazy"><figcaption>Meus projetos: tudo o que você fez, de onde veio e em que pé está.</figcaption></figure>
-    <figure class="shot"><img class="zoom" src="img/app-pecas.png" alt="Gerador de peças do RouterFlow: balcão completo pelas medidas, como fica montado, as peças e as ferragens" width="2560" height="1640" loading="lazy"><figcaption>Gerador de peças: um balcão inteiro pelas medidas, como fica montado e as ferragens.</figcaption></figure>
+    <figure class="shot"><img class="zoom" src="img/app-montador.png" alt="Montador de ambiente do RouterFlow: cozinha em L em 3D com geladeira, torre quente, balcão da pia, balcão de canto, lava-louças e aéreos, com as portas abertas" width="2560" height="1640" loading="lazy"><figcaption>Montador de ambiente: a cozinha em L no 3D, com a geladeira, a torre quente e as portas abertas.</figcaption></figure>
+    <figure class="shot"><img class="zoom" src="img/app-pecas.png" alt="Gerador de peças do RouterFlow: catálogo pela foto, a prévia 3D e as medidas da peça" width="2560" height="1640" loading="lazy"><figcaption>Gerador de peças: o catálogo pela foto, a prévia em 3D e as medidas.</figcaption></figure>
+    <figure class="shot"><img class="zoom" src="img/app-router.png" alt="Tela Conferir e simular do RouterFlow: percurso da fresa desenhado sobre a mesa, zonas de vácuo e lista de furos, rasgos e contornos" width="2732" height="1640" loading="lazy"><figcaption>Conferir e simular: cada operação sobre a mesa, com as zonas de vácuo e a lista de furos, rasgos e contornos.</figcaption></figure>
     <figure class="shot"><img class="zoom" src="img/app-producao.png" alt="Tela Produção do RouterFlow: chapas na ordem de corte com a miniatura e o tempo de cada programa, Salvar no pendrive ou pasta e marcação de feita" width="2560" height="1640" loading="lazy"><figcaption>Produção: as chapas na ordem de corte, o programa de cada uma, pendrive e a marcação de feita.</figcaption></figure>
-    <figure class="shot"><img class="zoom" src="img/app-sobras.png" alt="Tela Sobras do RouterFlow: estoque de retalhos por material com medidas, situação e origem" width="2560" height="1640" loading="lazy"><figcaption>Sobras: o estoque de retalhos, o que está disponível e o que já foi usado em projetos.</figcaption></figure>
-    <figure class="shot"><img class="zoom" src="img/app-config.png" alt="Configurações do RouterFlow: máquina em uso, linha do tempo por onde começar e tópicos em acordeão" width="2560" height="1640" loading="lazy"><figcaption>Configurações: a máquina em uso, por onde começar e um tópico por vez.</figcaption></figure>
+    <figure class="shot"><img class="zoom" src="img/app-meus-projetos.png" alt="Meus projetos do RouterFlow: projetos do Montador, do Gerador, do Promob e de planilha, com a situação de cada um" width="2560" height="1640" loading="lazy"><figcaption>Meus projetos: tudo o que você fez, de onde veio e em que pé está.</figcaption></figure>
+    <figure class="shot"><img class="zoom" src="img/app-sobras.png" alt="Tela Sobras do RouterFlow: estoque de retalhos por material com medidas, situação e origem" width="2560" height="1640" loading="lazy"><figcaption>Sobras: o estoque de retalhos, o que está disponível e o que já foi usado.</figcaption></figure>
   </div>
 </section>
 
 <section id="unico" class="block alt" aria-labelledby="h-unico">
-  <h2 id="h-unico">Tudo num lugar só, por um valor por ano</h2>
-  <p class="sub">O que hoje se junta de vários programas, plugins, assinaturas e arquivos comprados um a um, o RouterFlow faz num programa só, numa licença só.</p>
+  <span class="eyebrow">Tudo num lugar só</span>
+  <h2 id="h-unico">O que hoje se compra separado, aqui vem numa licença só</h2>
+  <p class="sub">Software de projeto com 3D, gerador de peças, loja de arquivos prontos, CAM, otimizador de corte e o controle da produção. Veja quanto custa juntar tudo isso e quanto custa o RouterFlow.</p>
   <div class="unico">
-    <div class="un-head"><span>O que a oficina junta hoje</span><span>No RouterFlow</span></div>
-    <div class="un-row"><div class="un-hoje">Programa de projeto com módulos e 3D</div><div class="un-rf">Montador de ambiente: parede reta, em L ou em U, com balcões, aéreos e armários em 3D, o tampo corrido e o caderno de montagem.</div></div>
-    <div class="un-row"><div class="un-hoje">Gerador de DXF por assinatura</div><div class="un-rf">Gerador de peças: 68 modelos pelas medidas, com a foto de cada um, que saem com o programa da router, não só o DXF.</div></div>
-    <div class="un-row"><div class="un-hoje">Loja de arquivos prontos, comprados um a um</div><div class="un-rf">Projetos prontos na vitrine: mesa, banco, estante, caixa de oficina, porta-chaves... pela espessura da sua chapa, com caderno de montagem, dentro da licença.</div></div>
-    <div class="un-row"><div class="un-hoje">CAM para montar as chapas e gerar o programa</div><div class="un-rf">Chapas montadas por material e o .nc da sua router, com simulador 3D e o veredito antes de cortar.</div></div>
-    <div class="un-row"><div class="un-hoje">Etiquetas, mapa e controle da produção à mão</div><div class="un-rf">Etiquetas, mapa das chapas, ficha de produção, a Produção chapa por chapa e o estoque de sobras.</div></div>
-    <div class="un-row"><div class="un-hoje">Pastas e arquivos espalhados</div><div class="un-rf">Tudo o que você gera numa pasta só: projetos, listas, o arquivo de origem, a Lixeira e a cópia semanal.</div></div>
+    <div class="sep">
+      <h3>Comprando cada parte separada</h3>
+      <p class="fine">Valores de referência dos produtos de cada categoria no Brasil, em 2026, por ano de uso. Sem o nome das empresas.</p>
+      <table>
+        <tr><td>Software de projeto de móveis com módulos e 3D<small>Assinatura mensal, por computador</small></td><td>R$ 3.600 por ano</td></tr>
+        <tr><td>Gerador de peças e DXF pelas medidas<small>Plugin do CAM: adesão e renovação anual</small></td><td>R$ 1.400 + R$ 400 por ano</td></tr>
+        <tr><td>Arquivos prontos de móveis, comprados um a um<small>Mesa, banco, estante, caixa, porta-chaves: 13 projetos</small></td><td>cerca de R$ 700</td></tr>
+        <tr><td>CAM para montar as chapas e gerar o programa<small>Licença do programa mais o pós-processador</small></td><td>cerca de R$ 11.000</td></tr>
+        <tr><td>Otimizador de plano de corte<small>Para o encaixe e as sobras</small></td><td>mais de R$ 1.000</td></tr>
+        <tr><td>Etiquetas, mapa e controle da produção<small>Planilha ou sistema à parte</small></td><td>R$ 1.800 por ano</td></tr>
+        <tr class="total"><td>Juntando tudo, no primeiro ano</td><td>mais de R$ 19.000</td></tr>
+        <tr><td>Nos anos seguintes, só as renovações<small>Sem contar atualização de versão e novos arquivos</small></td><td>mais de R$ 5.800 por ano</td></tr>
+      </table>
+    </div>
+    <div class="rf">
+      <h3>No RouterFlow</h3>
+      <p class="value">R$ 2.899<span>/ano</span></p>
+      <ul>
+        <li>Montador de ambiente em 3D com caderno de montagem</li>
+        <li>Gerador com 68 modelos e a peça personalizada</li>
+        <li>Projetos prontos na vitrine, pela sua chapa</li>
+        <li>Chapas, programa da router e simulador 3D</li>
+        <li>Etiquetas, mapa, ficha, Produção e sobras</li>
+        <li>2 computadores, atualizações e suporte</li>
+      </ul>
+      <a class="btn go" href="#preco">Ver o preço completo</a>
+      <p class="fine">Sem mensalidade, sem plugin, sem módulo à parte, sem arquivo comprado um a um.</p>
+    </div>
   </div>
-  <p class="un-foot">Uma licença por ano, 2 computadores, as atualizações e o suporte. Sem mensalidade, sem plugin, sem módulo à parte, sem arquivo comprado um a um. <a href="#preco">Ver o preço</a></p>
 </section>
 
 <section id="leva" class="block" aria-labelledby="h-leva">
-  <h2 id="h-leva">Tudo o que você leva</h2>
-  <p class="sub">Um programa só, completo, para toda licença. Não tem versão básica, módulo extra nem função que se paga à parte.</p>
+  <span class="eyebrow">O que você leva</span>
+  <h2 id="h-leva">Um programa só, completo, para toda licença</h2>
+  <p class="sub">Não tem versão básica, módulo extra nem função que se paga à parte.</p>
   <div class="leva">
     <div class="leva-g"><h3>Projeto e chapas</h3><ul>
       <li>Leitura do CSV do plano de corte do Promob, com contorno, fitas, furos, rasgos, cliente e ambiente</li>
@@ -334,31 +358,30 @@
       <li>Vários projetos juntos nas mesmas chapas</li>
       <li>Encaixe automático com doze estratégias por material, veio, folga, margem e áreas com defeito</li>
       <li>Peça em L, com arco ou letra encaixada pela forma, não pelo retângulo</li>
-      <li>Editor de chapas: arrastar, girar, trocar de chapa, defeitos e regravar tudo junto</li>
+      <li>Editor de chapas: arrastar, girar, espelhar, travar, encostar, alinhar, trocar de chapa e refazer o encaixe</li>
       <li>DXF por material com layers fixas, para quem continua no Aspire</li>
     </ul></div>
-    <div class="leva-g"><h3>Gerador de peças</h3><ul>
+    <div class="leva-g"><h3>Gerador de peças e Montador</h3><ul>
       <li>68 modelos pelas medidas, o catálogo pela foto, a peça personalizada desenhada à mão ou lida de uma foto</li>
       <li>Projetos prontos na vitrine: mesa, banco, estante, caixa de oficina, porta-chaves, com a foto em 3D e a sua chapa</li>
-      <li>Portas com dobradiça, cava, frisos, provençal, vidro e fecho toque</li>
-      <li>Gaveta completa pelo vão, lateral com linha 32, prateleiras e nichos</li>
-      <li>Tampo com cuba, cooktop, tomada e passa-fio</li>
-      <li>Painel ripado, ondulado 3D, em lâminas com espinhas e frente curva com cortes de flexão</li>
+      <li>Portas com dobradiça, cava, frisos, provençal, vidro e fecho toque; gaveta completa com a frente</li>
+      <li>Tampo com cuba, cooktop, tomada e passa-fio; mesa com engrosso; pé em chapa; cabeceira em várias formas</li>
+      <li>Painel ripado, ondulado 3D, em lâminas e frente curva com cortes de flexão</li>
       <li>Texto em V e letras com as fontes do Windows, móveis encaixados com dog-bone</li>
-      <li>Balcão, aéreo e gaveteiro completos, com minifix, cavilha, calço da dobradiça e a lista de ferragens</li>
-      <li>Prévia em 3D: montado, explodido e peça por peça</li>
+      <li>Montador de ambiente: paredes reta, em L ou em U, 36 tipos de módulo, ambientes prontos, Meus módulos</li>
+      <li>Prévia em 3D: montado, explodido e peça por peça; caderno de montagem</li>
     </ul></div>
     <div class="leva-g"><h3>Programa da router</h3><ul>
       <li>Um .nc por chapa, sem CAM, no pós-processador da sua máquina</li>
       <li>Curvas em arco G2/G3 no formato do seu comando: DDCS Expert (INMES, Mach CNC), Syntec, Weihong, Mach3, GRBL, Fanuc, MASSO, Centroid</li>
-      <li>Modelos prontos para Inmes, Mach3, GRBL e Fanuc, e importação do .pp do Aspire</li>
+      <li>Modelos prontos de pós-processador e importação do .pp do Aspire; prova no ar em dois minutos</li>
       <li>Furos, rasgos, recortes, rebaixos, chanfro 45, canais, relevo 3D e V-carve</li>
       <li>Contorno pelo raio da fresa, rampa de entrada, peças pequenas primeiro e pele fina</li>
       <li>Verso espelhado, zonas de vácuo, corte da sobra e linha comum</li>
       <li>Corte no ar para o primeiro teste e vários perfis de máquina</li>
     </ul></div>
     <div class="leva-g"><h3>Conferir e simular</h3><ul>
-      <li>Simulador 3D: a fresa corta a chapa na tela, de 1x a 100x</li>
+      <li>Simulador 3D: a fresa corta a chapa na tela, de 1x a 100x, com a troca de ferramenta no magazine</li>
       <li>Veredito antes de cortar: pode cortar, confira ou não corte, com o ponto do problema</li>
       <li>Passo a passo sobre a mesa e tempo estimado de máquina</li>
       <li>Cada linha do G-code traduzida em português</li>
@@ -366,15 +389,15 @@
     </ul></div>
     <div class="leva-g"><h3>Produção e sobras</h3><ul>
       <li>As chapas na ordem de corte, com a miniatura e o tempo de cada programa</li>
-      <li>Pendrive, pasta de rede ou FTP da máquina</li>
+      <li>Pendrive conferido byte a byte, pasta de rede ou FTP da máquina</li>
       <li>Marcação de chapa feita e o Início mostrando onde você parou</li>
       <li>Estoque de sobras que acompanha a produção e é usado antes de abrir chapa nova</li>
     </ul></div>
     <div class="leva-g"><h3>Impressos</h3><ul>
-      <li>Etiquetas 100 x 60 mm ou 8 por A4, com cliente, módulo, medidas, fitas e desenho</li>
+      <li>Etiquetas no tamanho do seu rolo ou 8 por A4, com cliente, módulo, medidas, fitas e desenho</li>
       <li>Mapa das chapas, uma folha por chapa, com as peças numeradas e a sobra</li>
       <li>Ficha de produção com materiais, aproveitamento, fita e ferragens</li>
-      <li>Folha de furação de topo e listas em planilha</li>
+      <li>Caderno de montagem, folha de furação de topo e listas em planilha, tudo em PDF</li>
     </ul></div>
     <div class="leva-g leva-inc"><h3>Incluído na licença</h3><ul>
       <li>2 computadores da mesma empresa: o do projeto e o da máquina</li>
@@ -384,16 +407,19 @@
       <li>Manual completo com busca, dentro do programa e no site</li>
       <li>Trabalha sem internet na hora de cortar</li>
       <li>Tudo o que você gera numa pasta só, com Lixeira de 30 dias e cópia semanal</li>
+      <li>Projeto de exemplo pronto na primeira abertura e os primeiros passos guiados</li>
     </ul></div>
   </div>
 </section>
 
 <section id="preco" class="block alt" aria-labelledby="h-preco">
-  <h2 id="h-preco">Preço da licença</h2>
-  <p class="sub">Um preço só, igual para todo mundo. Sem adesão, sem mensalidade e sem módulo extra.</p>
+  <span class="eyebrow">Preço</span>
+  <h2 id="h-preco">Um preço só, igual para todo mundo</h2>
+  <p class="sub">Sem adesão, sem mensalidade e sem módulo extra. O mesmo programa completo para a oficina pequena e para a fábrica.</p>
   <div class="price">
     <div class="plan">
-      <h3>Licença anual, 2 computadores</h3>
+      <span class="tag">Licença anual</span>
+      <h3>2 computadores, tudo incluído</h3>
       <p class="value">R$ 2.899<span>/ano</span></p>
       <ul>
         <li>PIX à vista com 10% de desconto: <b>R$ 2.609,10</b></li>
@@ -405,48 +431,41 @@
       <a class="btn go" href="#contato">Quero contratar</a>
       <p class="fine">Dá R$ 241,58 por mês, menos de R$ 8 por dia. Uma cobrança só por ano.</p>
     </div>
-    <div class="compare">
-      <h3>Por que o valor é justo</h3>
-      <p><b>Ele faz o trabalho de quatro ferramentas.</b> Para sair do projeto e chegar à router, a oficina costuma juntar um plugin para exportar o DXF, um CAM para fazer o programa, um otimizador de corte e um gerador de peças. O RouterFlow faz as quatro coisas num programa só.</p>
-      <table class="calc">
-        <tr><td>Plugin de exportação em DXF do software de projeto</td><td>R$ 5.800 + R$ 180/mês</td></tr>
-        <tr><td>CAM para o programa da router (Aspire)</td><td>US$ 1.995</td></tr>
-        <tr><td>Otimizador de plano de corte</td><td>mais de R$ 1.000</td></tr>
-        <tr><td>Gerador de peças pelas medidas</td><td>R$ 1.397 + R$ 397/ano</td></tr>
-        <tr class="total"><td>Juntando tudo, no primeiro ano</td><td>mais de R$ 20.000</td></tr>
-        <tr><td>RouterFlow, tudo incluído</td><td>R$ 2.899 por ano</td></tr>
-      </table>
-      <p><b>Ele se paga em menos de três meses.</b> Numa oficina que corta 50 chapas por mês a R$ 280:</p>
-      <table class="calc">
-        <tr><td>Aproveitamento da chapa (3% a mais)</td><td>R$ 5.040</td></tr>
-        <tr><td>Tempo de programação (8 h por mês)</td><td>R$ 3.840</td></tr>
-        <tr><td>Retrabalho evitado (meia chapa por mês)</td><td>R$ 1.920</td></tr>
-        <tr class="total"><td>Retorno por ano</td><td>R$ 10.800</td></tr>
-        <tr><td>Licença por ano</td><td>R$ 2.899</td></tr>
-      </table>
-      <p><b>Ele custa pouco por chapa.</b> São R$ 4,83 por chapa cortada nessa oficina. Pouco mais de dez chapas de MDF pagam o ano inteiro, e só o aproveitamento a mais devolve dezoito.</p>
-      <p><b>As regras são iguais para todos.</b> O mesmo preço para a oficina pequena e para a fábrica, com o programa completo. O computador da máquina não paga à parte.</p>
+    <div class="why3">
+      <div><h3>Faz o trabalho de seis ferramentas</h3><p>Projeto em 3D, gerador de peças, arquivos prontos, CAM, otimizador de corte e controle da produção. Comprando separado, passa de R$ 19.000 no primeiro ano. <a href="#unico">Veja a conta</a>.</p></div>
+      <div><h3>Se paga em menos de três meses</h3><p>Numa oficina que corta 50 chapas por mês a R$ 280:</p>
+        <table class="calc">
+          <tr><td>Aproveitamento da chapa (3% a mais)</td><td>R$ 5.040</td></tr>
+          <tr><td>Tempo de programação (8 h por mês)</td><td>R$ 3.840</td></tr>
+          <tr><td>Retrabalho evitado (meia chapa por mês)</td><td>R$ 1.920</td></tr>
+          <tr class="total"><td>Retorno por ano</td><td>R$ 10.800</td></tr>
+        </table></div>
+      <div><h3>Custa pouco por chapa</h3><p>São R$ 4,83 por chapa cortada nessa oficina. Pouco mais de dez chapas de MDF pagam o ano inteiro, e só o aproveitamento a mais devolve dezoito.</p></div>
     </div>
   </div>
 </section>
 
 <section id="faq" class="block" aria-labelledby="h-faq">
-  <h2 id="h-faq">Dúvidas frequentes</h2>
+  <span class="eyebrow">Dúvidas</span>
+  <h2 id="h-faq">Perguntas que chegam no WhatsApp</h2>
+  <p class="sub">Se a sua não estiver aqui, chame o suporte.</p>
   <div class="faq">
     <details open><summary>O RouterFlow funciona com o CSV do Promob?</summary><p>Sim. Ele lê o CSV do plano de corte exportado pelo Promob, com o contorno de cada peça, as fitas de borda, os furos, os rasgos, o cliente e o ambiente. Não precisa de plugin pago nem de internet para exportar. Também aceita uma lista simples de peças de qualquer outro software, do Excel ou do Corte Certo.</p></details>
     <details><summary>Preciso do Aspire ou de outro CAM?</summary><p>Não. O RouterFlow gera o programa .nc de cada chapa direto para a router, com furos, rasgos e contornos. Quem prefere continuar no Aspire ou em outro CAM usa o DXF por material, que sai com as layers no padrão de sempre.</p></details>
-    <details><summary>Funciona na minha router?</summary><p>O programa sai pelo pós-processador da sua máquina. Há modelos prontos para Inmes, Mach3, GRBL e Fanuc, e você pode importar o arquivo .pp do Aspire que já usa. O modo corte no ar serve para o primeiro teste com a fresa elevada, sem chapa.</p></details>
+    <details><summary>Funciona na minha router?</summary><p>O programa sai pelo pós-processador da sua máquina, com as curvas em arco no formato do seu comando: DDCS Expert (INMES, Mach CNC), Syntec, Weihong, Mach3, GRBL, LinuxCNC, Fanuc, MASSO e Centroid. Dá para importar o arquivo .pp do Aspire que você já usa, e a prova no ar mostra em dois minutos, sem chapa, como a máquina se comporta nas curvas.</p></details>
+    <details><summary>Não tenho software de projeto. Serve para mim?</summary><p>Serve. O Gerador de peças cria as peças pelas medidas (68 modelos) e o Montador monta a cozinha, o banheiro ou o quarto inteiro no 3D. Os projetos prontos da vitrine já vêm com tudo. De lá, as peças vão para as chapas e para a router como qualquer outra.</p></details>
     <details><summary>Precisa de internet para usar?</summary><p>Não para trabalhar. A licença é confirmada pela internet de vez em quando e as atualizações são baixadas pelo próprio programa, mas gerar chapas, DXF e programas funciona sem conexão.</p></details>
     <details><summary>Quanto custa?</summary><p>R$ 2.899 por ano, com 2 computadores da mesma empresa, uma cobrança só por ano. No PIX à vista tem 10% de desconto, R$ 2.609,10. No cartão de crédito, em até 12x com o acréscimo da operadora do cartão. Cada computador a mais na mesma empresa custa R$ 1.449,50 por ano. Atualizações e suporte pelo WhatsApp incluídos.</p></details>
     <details><summary>Quantos computadores posso usar?</summary><p>A licença vale para 2 computadores da mesma empresa, normalmente o do projeto e o que fica do lado da máquina. Cada computador a mais na mesma empresa custa R$ 1.449,50 por ano (R$ 1.304,55 no PIX). Cada computador recebe a própria chave, com o CNPJ da empresa.</p></details>
     <details><summary>Tem mensalidade ou adesão?</summary><p>Não. É uma cobrança só por ano, com todas as atualizações e o suporte incluídos. Não tem taxa de adesão, módulo extra nem função que se paga à parte.</p></details>
     <details><summary>Como ativo a licença?</summary><p>Instale, abra Ajuda, Licença, e copie o código da máquina. Envie pelo WhatsApp com a razão social, o CNPJ, o e-mail e o telefone da empresa. Você recebe a chave, cola e clica em Ativar. Sem cadastro.</p></details>
-    <details><summary>Como peço ajuda?</summary><p>Dentro do programa, em Ajuda: o manual com busca e a aba Suporte, com o WhatsApp do Consultor RouterFlow e o botão que manda o projeto aberto para ele olhar do mesmo jeito que você vê. Cada aviso do projeto também diz o que fazer e leva ao lugar certo.</p></details>
+    <details><summary>Como peço ajuda?</summary><p>Dentro do programa, em Ajuda: o manual com busca e a aba Suporte, com o WhatsApp do Consultor RouterFlow e o botão que manda o projeto aberto para ele olhar do mesmo jeito que você vê. Atendimento de segunda a sexta, das 8h às 18h, com resposta em até 1 dia útil.</p></details>
     <details><summary>Quais os requisitos?</summary><p>Windows 10 ou 11, 64 bits. O instalador cuida do componente WebView2 do Windows, se faltar. Funciona no computador do projeto e no computador da máquina.</p></details>
   </div>
 </section>
 
-<section id="novidades" class="block" aria-labelledby="h-novidades">
+<section id="novidades" class="block alt" aria-labelledby="h-novidades">
+  <span class="eyebrow">Novidades</span>
   <h2 id="h-novidades">Sempre melhorando</h2>
   <p class="sub">O que chegou em cada atualização, da mais nova para a mais antiga. Quem já tem o RouterFlow recebe tudo isso sozinho.</p>
   <div class="news-list">
@@ -459,9 +478,10 @@
   </div>
 </section>
 
-<section id="baixar" class="block alt" aria-labelledby="h-baixar">
-  <h2 id="h-baixar">Baixar a última versão</h2>
-  <p class="sub">O instalador é o mesmo para instalar do zero e para atualizar. Depois de instalado, o programa se atualiza sozinho.</p>
+<section id="baixar" class="block" aria-labelledby="h-baixar">
+  <span class="eyebrow">Baixar</span>
+  <h2 id="h-baixar">A última versão, pronta para instalar</h2>
+  <p class="sub">O instalador é o mesmo para instalar do zero e para atualizar. Depois, o programa se atualiza sozinho.</p>
   <div class="download">
     <div class="dl-box">
       <p class="dl-ver" id="dl-ver">Procurando a versão mais recente...</p>
@@ -480,14 +500,16 @@
   </div>
 </section>
 
-<section id="contato" class="block" aria-labelledby="h-contato">
-  <h2 id="h-contato">Fale com o suporte</h2>
-  <p class="sub">Consultor RouterFlow: demonstração, licença, renovação e ajuda para configurar a sua máquina.</p>
-  <div class="contact">
-    <a class="btn go" href="https://wa.me/5534991627276?text=Ol%C3%A1%2C%20quero%20conhecer%20o%20RouterFlow" target="_blank" rel="noopener">WhatsApp (34) 99162-7276</a>
-    <a class="btn outline" href="mailto:routerflowapp@gmail.com?subject=RouterFlow">routerflowapp@gmail.com</a>
+<section id="contato" class="block alt" aria-labelledby="h-contato">
+  <div class="cta-band">
+    <h2 id="h-contato">Quer ver com um projeto seu?</h2>
+    <p>Mande o CSV de um projeto pelo WhatsApp e receba as chapas, os programas e as etiquetas prontos. O Consultor RouterFlow também ajuda a configurar a sua máquina.</p>
+    <div class="contact">
+      <a class="btn go" href="https://wa.me/5534991627276?text=Ol%C3%A1%2C%20quero%20conhecer%20o%20RouterFlow" target="_blank" rel="noopener">WhatsApp (34) 99162-7276</a>
+      <a class="btn ghost" href="mailto:routerflowapp@gmail.com?subject=RouterFlow">routerflowapp@gmail.com</a>
+    </div>
+    <p class="fine" style="color:rgba(255,255,255,.72)">Atendimento de segunda a sexta, das 8h às 18h, com resposta em até 1 dia útil; máquina parada, chame no WhatsApp. A chave costuma sair em poucos minutos depois da confirmação do pagamento.</p>
   </div>
-  <p class="fine">Atendimento de segunda a sexta, das 8h às 18h, com resposta em até 1 dia útil; máquina parada, chame no WhatsApp. A chave costuma sair em poucos minutos depois da confirmação do pagamento.</p>
   <p class="sub social-t">Siga o RouterFlow nas redes sociais:</p>
   <div class="contact social">
     <a class="btn outline" href="https://www.instagram.com/routerflow/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram @routerflow</a>
