@@ -1,5 +1,14 @@
 [
  {
+  "versao": "3.40.0",
+  "data": "2026-10-26",
+  "titulo": "Laterais de gaveta sem o verso e rasgo de borda",
+  "itens": [
+   "Sem o programa do verso, A marcação agora deixa as marcações da corrediça em cima e o rasgo do fundo embaixo; os furos que atravessam a peça saem sempre por cima.",
+   "Rasgo que o projeto manda na borda da peça não vai mais para a router (antes cortava um entalhe na borda do fundo); fica só o aviso para fazer à parte."
+  ]
+ },
+ {
   "versao": "3.39.0",
   "data": "2026-10-24",
   "titulo": "Vitrine com 68 produtos prontos",
