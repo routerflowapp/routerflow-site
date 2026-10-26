@@ -1,5 +1,14 @@
 [
  {
+  "versao": "3.41.0",
+  "data": "2026-10-26",
+  "titulo": "Prévia nova em Meus projetos",
+  "itens": [
+   "O que veio do Gerador ou do Montador aparece em 3D ao lado do nome; o que veio do Promob, CSV ou planilha aparece como a chapa de verdade, na cor do material, com furos e fita de borda.",
+   "Clique na prévia para girar o móvel em 3D ou ver todas as chapas, com o material, as peças e o aproveitamento de cada uma."
+  ]
+ },
+ {
   "versao": "3.40.0",
   "data": "2026-10-26",
   "titulo": "Laterais de gaveta sem o verso e rasgo de borda",
