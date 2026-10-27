@@ -1,5 +1,15 @@
 [
  {
+  "versao": "3.43.0",
+  "data": "2026-10-27",
+  "titulo": "Projetos prontos mais rápidos",
+  "itens": [
+   "A vitrine dos Projetos prontos abre em menos de um segundo, e as fotos em 3D ficam guardadas: da segunda vez em diante aparecem na hora.",
+   "O cartão aberto mostra o 3D logo, e ao sair e voltar a vitrine e a prévia 3D do Gerador continuam funcionando.",
+   "Montar ambiente em verde e Projetos prontos em laranja, mais baixos e fáceis de clicar; abas da prévia de Meus projetos no tamanho certo."
+  ]
+ },
+ {
   "versao": "3.42.0",
   "data": "2026-10-26",
   "titulo": "Caderno de montagem do Promob com desenho",
