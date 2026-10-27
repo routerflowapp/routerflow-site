@@ -1,5 +1,14 @@
 [
  {
+  "versao": "3.42.0",
+  "data": "2026-10-26",
+  "titulo": "Caderno de montagem do Promob com desenho",
+  "itens": [
+   "Projeto do Promob ou de CSV agora tem cada módulo montado no caderno: vista explodida, peças numeradas com a etiqueta e o passo a passo, como no Gerador.",
+   "Módulos iguais saem numa página só, com as etiquetas de todos, e a gaveta sai como caixa própria com a frente."
+  ]
+ },
+ {
   "versao": "3.41.0",
   "data": "2026-10-26",
   "titulo": "Prévia nova em Meus projetos",
