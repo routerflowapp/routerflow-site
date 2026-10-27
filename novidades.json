@@ -1,5 +1,14 @@
 [
  {
+  "versao": "3.45.0",
+  "data": "2026-10-27",
+  "titulo": "Atualização automática mais firme",
+  "itens": [
+   "A atualização volta a baixar sozinha mesmo no Windows que ainda não conhece o certificado novo do GitHub; se ainda assim não conseguir, baixa pelo próprio Windows.",
+   "Correções e melhorias internas."
+  ]
+ },
+ {
   "versao": "3.44.0",
   "data": "2026-10-27",
   "titulo": "Vitrine com 86 projetos prontos",
