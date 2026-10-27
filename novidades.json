@@ -1,5 +1,15 @@
 [
  {
+  "versao": "3.46.0",
+  "data": "2026-10-27",
+  "titulo": "Montador mais limpo",
+  "itens": [
+   "O 3D do Montador fica grande à esquerda e o painel à direita; ir e voltar da Parede de frente não bagunça mais a tela, e o ambiente novo começa no 3D.",
+   "O piso é o da sala: sem o chão redondo flutuando e sem a sombra escura na parede.",
+   "Quadro do Novo ambiente compacto, com as medidas alinhadas e o Começar do zero em destaque."
+  ]
+ },
+ {
   "versao": "3.45.0",
   "data": "2026-10-27",
   "titulo": "Atualização automática mais firme",
