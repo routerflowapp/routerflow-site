@@ -1,5 +1,15 @@
 [
  {
+  "versao": "3.49.0",
+  "data": "2026-10-29",
+  "titulo": "Peça personalizada: desenhe e combine formas",
+  "itens": [
+   "Desenhe a peça com retas, arcos por 3 pontos e curvas livres, com a grade no fundo.",
+   "Formas prontas (estrela, coração, gota, nuvem, meia-lua, cápsula e mais) e Combinar: somar, recortar ou ficar com o cruzamento.",
+   "Contorno paralelo: o friso acompanha a borda da peça na distância que você quiser."
+  ]
+ },
+ {
   "versao": "3.48.0",
   "data": "2026-10-29",
   "titulo": "Berço de balanço e canto curvo de um lado só",
