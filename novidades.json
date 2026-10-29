@@ -1,5 +1,25 @@
 [
  {
+  "versao": "3.48.0",
+  "data": "2026-10-29",
+  "titulo": "Berço de balanço e canto curvo de um lado só",
+  "itens": [
+   "Vitrine com o berço de balanço e o mini berço, de moisés: cabeceiras em arco com alça, grades no vão da norma e estrado ventilado.",
+   "Canto curvo: os cortes além da curva podem ir só para a esquerda ou só para a direita.",
+   "No 3D em tela cheia, o botão Fechar a tela cheia fica à vista no canto."
+  ]
+ },
+ {
+  "versao": "3.47.0",
+  "data": "2026-10-27",
+  "titulo": "Montador com cotas e alças no 3D",
+  "itens": [
+   "O módulo escolhido mostra no 3D quanto falta até o vizinho e a ponta da parede, e as bolinhas azuis dos lados mudam a largura arrastando.",
+   "Catálogo do Montador com a foto em 3D de cada móvel; ao escolher um módulo, as medidas dele sobem para o alto.",
+   "3D mais bonito: luz macia, veio na madeira e piso de madeira na sala."
+  ]
+ },
+ {
   "versao": "3.46.0",
   "data": "2026-10-27",
   "titulo": "Montador mais limpo",
