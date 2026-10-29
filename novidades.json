@@ -1,5 +1,15 @@
 [
  {
+  "versao": "3.50.0",
+  "data": "2026-10-29",
+  "titulo": "Produção no celular e orçamento",
+  "itens": [
+   "Produção no celular ou tablet da oficina pelo Wi-Fi: o operador vê a chapa e marca feita no pé da máquina.",
+   "Orçamento para o cliente em PDF, com o tempo de máquina dos programas e os preços guardados.",
+   "Peça personalizada: a curva livre continua editável arrastando os nós, e a fita fica ao combinar formas."
+  ]
+ },
+ {
   "versao": "3.49.0",
   "data": "2026-10-29",
   "titulo": "Peça personalizada: desenhe e combine formas",
