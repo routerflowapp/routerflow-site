@@ -1,5 +1,14 @@
 [
  {
+  "versao": "3.53.0",
+  "data": "2026-11-02",
+  "titulo": "Só uma janela por vez",
+  "itens": [
+   "Abrir o RouterFlow com ele já aberto traz a janela que existe para a frente, em vez de abrir outra.",
+   "Clique duplo num CSV ou num .nc com o programa aberto manda o arquivo para a janela aberta."
+  ]
+ },
+ {
   "versao": "3.52.0",
   "data": "2026-11-02",
   "titulo": "Produção no tablet e no computador",
