@@ -1,5 +1,14 @@
 [
  {
+  "versao": "3.54.0",
+  "data": "2026-11-04",
+  "titulo": "Digitar a lista de peças",
+  "itens": [
+   "Na etapa 1 do Projeto, Digitar a lista: a folha de papel da oficina numa tabela, com material, veio e fita por lado.",
+   "Colar do Excel ou do WhatsApp, folha em branco para anotar na oficina, e a lista salva entra no projeto."
+  ]
+ },
+ {
   "versao": "3.53.0",
   "data": "2026-11-02",
   "titulo": "Só uma janela por vez",
