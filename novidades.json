@@ -1,5 +1,13 @@
 [
  {
+  "versao": "3.54.1",
+  "data": "2026-11-13",
+  "titulo": "Cambota do canto curvo na medida certa",
+  "itens": [
+   "A cambota (o suporte da curva) sai declarada com a medida real, descontado o revestimento: etiqueta, encaixe e 3D batem com a peça cortada."
+  ]
+ },
+ {
   "versao": "3.54.0",
   "data": "2026-11-04",
   "titulo": "Digitar a lista de peças",
