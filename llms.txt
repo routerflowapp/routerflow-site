@@ -20,7 +20,7 @@ Idioma: português do Brasil. Público: marcenarias e fábricas de móveis plane
 - Sobras: a router corta a sobra alinhada, sai etiqueta e ela entra no estoque; o próximo projeto usa a sobra antes de abrir chapa inteira.
 - Impressos: etiquetas (cliente, ambiente, módulo, peça, material, IDs, medidas, desenho com fitas de borda e face de alinhamento, 100 x 60 mm para impressora de etiquetas ou 8 por A4), mapa das chapas (uma folha por chapa com as peças numeradas e a sobra), ficha de produção (materiais, chapas, aproveitamento, metros de fita, ferragens, arquivos, avisos) e listas em CSV (peças, fitagem, ferragens).
 - Vários projetos juntos nas mesmas chapas. Nome do cliente e ambiente lidos do CSV viram o nome do projeto, da pasta e dos arquivos.
-- Ajuda dentro do programa: manual com busca e suporte pelo WhatsApp com o envio do projeto. Atualização automática pelo próprio programa. Licença confirmada pela internet de vez em quando; não precisa de internet para cortar.
+- Ajuda dentro do programa: manual com busca e suporte pelo WhatsApp com o envio do projeto. Quando é preciso ver a tela, o suporte acessa o computador do cliente pelo AnyDesk, com o cliente acompanhando; o site tem o botão para baixar a versão atual. Atualização automática pelo próprio programa. Licença confirmada pela internet de vez em quando; não precisa de internet para cortar.
 
 ## Requisitos e preço
 

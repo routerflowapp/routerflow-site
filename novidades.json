@@ -1,5 +1,14 @@
 [
  {
+  "versao": "3.54.2",
+  "data": "2026-11-19",
+  "titulo": "Troca de ferramenta na mão mais segura",
+  "itens": [
+   "Na troca na mão o programa para e mostra qual ferramenta montar, sem mandar o número sozinho para a máquina: em alguns comandos isso chamava o trocador.",
+   "Aviso quando a máquina tem troca automática e o RouterFlow está configurado como troca na mão: é isso que faz o programa parar e pedir Iniciar de novo."
+  ]
+ },
+ {
   "versao": "3.54.1",
   "data": "2026-11-13",
   "titulo": "Cambota do canto curvo na medida certa",

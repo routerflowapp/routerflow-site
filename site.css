@@ -218,6 +218,15 @@ figcaption { text-align: center; color: var(--on-surface-variant); font-size: 14
 .contact { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 12px auto 18px; }
 .social-t { margin-top: 28px; }
 .contact.social { margin-bottom: 0; }
+.remoto { max-width: 980px; margin: 28px auto 8px; padding: 24px 26px; border-radius: 18px; background: #fff; border: 1px solid var(--outline, #d5dbe4); box-shadow: 0 6px 18px rgba(15,35,60,.07); display: grid; grid-template-columns: 1fr auto; gap: 22px 32px; align-items: center; text-align: left; }
+.remoto h3 { font-family: var(--display); font-size: 20px; line-height: 1.25; margin: 0 0 8px; color: var(--primary); }
+.remoto p { margin: 0 0 10px; line-height: 1.55; }
+.remoto ol { margin: 0 0 10px; padding-left: 20px; line-height: 1.6; }
+.remoto .fine { margin: 0; }
+.remoto-bt { display: flex; flex-direction: column; gap: 10px; align-items: stretch; min-width: 250px; }
+.remoto-bt .btn { white-space: nowrap; }
+.remoto-of { font-size: 13.5px; text-align: center; color: var(--on-surface-variant); }
+@media (max-width: 760px) { .remoto { grid-template-columns: 1fr; padding: 20px 18px; } .remoto-bt { min-width: 0; } .remoto-bt .btn { white-space: normal; } }
 #contato .fine { text-align: center; max-width: 640px; margin: 0 auto; }
 .cta-band { background: linear-gradient(135deg, var(--primary-deep), var(--primary)); color: #fff; border-radius: var(--r-xl); padding: 40px 32px; text-align: center; }
 .cta-band h2 { color: #fff; margin-bottom: 10px; }
