@@ -43,6 +43,8 @@ main.sec{padding-bottom:96px}
 .lj .msg.err{color:#b42318}
 .lj .aceite{flex-direction:row;align-items:flex-start;gap:10px;font-size:14.5px;font-weight:500;color:#344054;line-height:1.5;cursor:pointer}
 .lj .aceite input{width:20px;height:20px;margin:1px 0 0;flex:none;accent-color:#2e7d32}
+.lj .cid{display:grid;grid-template-columns:1fr 90px;gap:10px}
+.lj select{height:46px;border:1.5px solid #d0d5dd;border-radius:11px;padding:0 10px;font:inherit;font-size:15px;background:#fff}
 .lj .dica{font-size:13.5px;color:#4a5260;background:#f5f6f8;border-radius:12px;padding:12px 14px;line-height:1.55}
 .lj .ok{display:flex;gap:14px;align-items:flex-start}
 .lj .ok i{flex:none;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:26px;color:#fff;background:#2e7d32}
@@ -68,8 +70,9 @@ main.sec{padding-bottom:96px}
       <label>Nome da marcenaria<input id="empresa" autocomplete="organization"></label>
       <label>E-mail (recebe a licença e o recibo)<input id="email" type="email" autocomplete="email"></label>
       <label>WhatsApp com DDD<input id="zap" autocomplete="tel"></label>
-      <label>CPF ou CNPJ (opcional)<input id="doc"></label>
-      <label>Cidade, UF (opcional)<input id="cidade"></label>
+      <label>CPF ou CNPJ<input id="doc" autocomplete="off"></label>
+      <div class="cid"><label>Cidade<input id="cidade" autocomplete="address-level2"></label><label>UF<select id="uf"><option value="">UF</option><option>AC</option><option>AL</option><option>AP</option><option>AM</option><option>BA</option><option>CE</option><option>DF</option><option>ES</option><option>GO</option><option>MA</option><option>MT</option><option>MS</option><option>MG</option><option>PA</option><option>PB</option><option>PR</option><option>PE</option><option>PI</option><option>RJ</option><option>RN</option><option>RS</option><option>RO</option><option>RR</option><option>SC</option><option>SP</option><option>SE</option><option>TO</option></select></label></div>
+      <label>Cupom de desconto (opcional)<input id="cupom" autocomplete="off" style="text-transform:uppercase"></label>
     </div>
   </div>
   <label class="aceite"><input type="checkbox" id="aceite"> <span>Li e aceito os <a href="termos.html" target="_blank" rel="noopener">Termos de uso</a> e a <a href="privacidade.html" target="_blank" rel="noopener">Política de privacidade</a>.</span></label>
@@ -83,6 +86,27 @@ main.sec{padding-bottom:96px}
 </main>
 <script>
 (function () {
+  // validação e máscaras dos cadastros (as mesmas do site, do painel e da loja)
+  var RF_UFS = ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"];
+  var rfDig = (s) => String(s || "").replace(/\D/g, "");
+  var rfFmt = (s, p) => { let o = "", i = 0; for (var ch of p) { if (i >= s.length) break; if (ch === "0") o += s[i++]; else o += ch; } return o; };
+  var rfMascTel = (v) => { var d = rfDig(v).replace(/^55(?=\d{10,11}$)/, "").slice(0, 11); return d.length > 10 ? rfFmt(d, "(00) 00000-0000") : rfFmt(d, "(00) 0000-0000"); };
+  var rfMascDoc = (v) => { var s = String(v || "").toUpperCase().replace(/[^0-9A-Z]/g, ""); return s.length <= 11 && /^\d*$/.test(s) ? rfFmt(s, "000.000.000-00") : rfFmt(s.slice(0, 14), "00.000.000/0000-00"); };
+  var rfCpfOk = (v) => { var c = rfDig(v); if (c.length !== 11 || /^(\d)\1+$/.test(c)) return false; for (let t = 9; t < 11; t++) { let s = 0; for (let i = 0; i < t; i++) s += +c[i] * (t + 1 - i); if ((s * 10) % 11 % 10 !== +c[t]) return false; } return true; };
+  var rfCnpjOk = (v) => { var s = String(v || "").toUpperCase().replace(/[^0-9A-Z]/g, ""); if (!/^[0-9A-Z]{12}\d{2}$/.test(s) || /^(.)\1+$/.test(s)) return false; var dv = (n) => { var w = n === 12 ? [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2] : [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]; let sm = 0; for (let i = 0; i < n; i++) sm += (s.charCodeAt(i) - 48) * w[i]; var r = sm % 11; return r < 2 ? 0 : 11 - r; }; return dv(12) === +s[12] && dv(13) === +s[13]; };
+  var rfDocOk = (v) => { var s = String(v || "").toUpperCase().replace(/[^0-9A-Z]/g, ""); return s.length === 11 ? rfCpfOk(s) : rfCnpjOk(s); };
+  var rfTelOk = (v) => { var d = rfDig(v).replace(/^55(?=\d{10,11}$)/, ""); return (d.length === 10 || (d.length === 11 && d[2] === "9")) && +d.slice(0, 2) >= 11; };
+  var rfEmailOk = (v) => /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(String(v || "").trim());
+  // confere um cadastro; devolve o texto do primeiro erro (ou "")
+  var rfConfere = (d, docObrig) => {
+    if (String(d.nome || "").trim().length < 3) return "Escreva o seu nome completo.";
+    if (!rfEmailOk(d.email)) return "Confira o e-mail: a chave e os avisos chegam nele.";
+    if (!rfTelOk(d.whatsapp)) return "Confira o WhatsApp: DDD e número, como (34) 99999-9999.";
+    if ((docObrig || d.documento) && !rfDocOk(d.documento)) return "Confira o CPF ou o CNPJ: os números não conferem.";
+    if (String(d.cidade || "").trim().length < 2) return "Escreva a cidade.";
+    if (!RF_UFS.includes(String(d.uf || "").toUpperCase())) return "Escolha a UF (o estado).";
+    return "";
+  };
   var LOJA = "https://ruyeqbjsptfnjhlnqpnp.supabase.co/functions/v1/loja", $ = function (id) { return document.getElementById(id); };
   var brl = function (v) { return "R$ " + (+v || 0).toFixed(2).replace(".", ",").replace(/\B(?=(\d{3})+(?!\d))/g, "."); };
   var brData = function (s) { return s && /^\d{4}-\d\d-\d\d/.test(s) ? s.slice(8, 10) + "/" + s.slice(5, 7) + "/" + s.slice(0, 4) : ""; };
@@ -92,26 +116,28 @@ main.sec{padding-bottom:96px}
     return fetch(LOJA, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(corpo) })
       .then(function (r) { return r.json(); }).catch(function () { return { ok: false, erro: "Sem conexão com a loja. Tente de novo." }; });
   };
-  try { var m0 = new URLSearchParams(location.search).get("m"); if (m0) $("m").value = m0.toUpperCase(); } catch (e) {}
+  try { var qs = new URLSearchParams(location.search), m0 = qs.get("m"), c0 = qs.get("cupom"); if (m0) $("m").value = m0.toUpperCase(); if (c0) $("cupom").value = c0.toUpperCase(); } catch (e) {}
   var precos = function () {
     var m = $("m").value.trim().toUpperCase(); if (!MAQ.test(m)) return;
-    post({ acao: "precos", maquina: m, email: $("email").value.trim() }).then(function (p) {
+    post({ acao: "precos", maquina: m, email: $("email").value.trim(), cupom: $("cupom").value.trim() }).then(function (p) {
       if (!p || !p.ok) return;
-      $("vpix").textContent = brl(p.pix); $("vcartao").textContent = brl(p.cartao);
+      $("vpix").innerHTML = p.cupom ? '<s style="color:#98a2b3;font-size:17px">' + brl(p.de_pix) + "</s> " + brl(p.pix) : brl(p.pix);
+      $("vcartao").innerHTML = p.cupom ? '<s style="color:#98a2b3;font-size:17px">' + brl(p.de_cartao) + "</s> " + brl(p.cartao) : brl(p.cartao);
+      if (p.cupom_erro) return msg(p.cupom_erro, true);
       msg(p.plano === "computador" ? "Este e-mail já tem um plano em outro computador: este sai como computador a mais."
         : (p.validade_atual ? "A licença deste computador vai até " + brData(p.validade_atual) + ". Renovando, vai até " + brData(p.nova_validade) + "."
           : "Licença de 12 meses, até " + brData(p.nova_validade) + "."));
     });
   };
-  $("m").addEventListener("change", precos); $("email").addEventListener("change", precos); precos();
+  $("zap").addEventListener("input", function () { this.value = rfMascTel(this.value); });
+  $("doc").addEventListener("input", function () { this.value = rfMascDoc(this.value); });
+  $("m").addEventListener("change", precos); $("email").addEventListener("change", precos); $("cupom").addEventListener("change", precos); precos();
   Array.prototype.forEach.call(document.querySelectorAll("[data-f]"), function (b) {
     b.addEventListener("click", function () {
       var d = { acao: "comprar", origem: "site", forma: b.getAttribute("data-f"), maquina: $("m").value.trim().toUpperCase(), nome: $("nome").value.trim(),
-        empresa: $("empresa").value.trim(), email: $("email").value.trim(), whatsapp: $("zap").value.trim(), documento: $("doc").value.trim(), cidade: $("cidade").value.trim() };
+        empresa: $("empresa").value.trim(), email: $("email").value.trim(), whatsapp: $("zap").value.trim(), documento: $("doc").value.trim(), cidade: $("cidade").value.trim(), uf: $("uf").value, cupom: $("cupom").value.trim() };
       if (!MAQ.test(d.maquina)) return msg("Confira o código do computador (RF-XXXX-XXXX-XXXX).", true);
-      if (d.nome.length < 2) return msg("Escreva o seu nome.", true);
-      if (!EMAIL.test(d.email)) return msg("Confira o e-mail: a licença e o recibo chegam nele.", true);
-      if (d.whatsapp.replace(/\D/g, "").length < 10) return msg("Escreva o WhatsApp com o DDD.", true);
+      var er = rfConfere(d, true); if (er) return msg(er, true);
       if (!$("aceite").checked) return msg("Para continuar, marque que leu e aceita os Termos de uso e a Política de privacidade.", true);
       d.aceite = true;
       var bs = document.querySelectorAll("[data-f]"); Array.prototype.forEach.call(bs, function (x) { x.disabled = true; });
