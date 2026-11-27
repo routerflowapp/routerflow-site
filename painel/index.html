@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Painel RouterFlow</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f3a5f'/%3E%3Cpath d='M21 49 V15 H35 A9 9 0 0 1 35 33 H29 L42 48' fill='none' stroke='%23eef3fa' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='43' cy='49' r='6.3' fill='%2322c55e'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap">
+<style>
+:root{--az:#132846;--az2:#1f3a5f;--vd:#2e7d32;--vd2:#4ade80;--tx:#15202f;--su:#4a5260;--li:#e2e6ec;--fu:#f2f4f7;--br:#fff;--am:#b45309;--vm:#b42318;--bl:#1d4ed8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fu);color:var(--tx);font:14px/1.5 Inter,'Segoe UI',Arial,sans-serif}
+h1,h2,h3{font-family:Manrope,Inter,sans-serif;margin:0}
+button,input,select{font:inherit}
+a{color:var(--bl)}
+.marca{display:flex;align-items:center;gap:10px;font:800 19px Manrope,Inter,sans-serif;color:#fff;text-decoration:none}
+.marca i{font-style:normal;color:var(--vd2)}
+/* entrada */
+#entrada{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 16px;background:var(--az)}
+.cx-in{width:100%;max-width:400px;background:#fff;border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:14px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+.cx-in h1{font-size:22px;color:var(--az)}
+.cx-in p{margin:0;color:var(--su)}
+.cx-in label{display:flex;flex-direction:column;gap:5px;font-weight:600;font-size:13px;color:var(--su)}
+.cx-in input{height:44px;border:1.5px solid #d0d5dd;border-radius:10px;padding:0 12px;font-size:15px}
+.cx-in input:focus{outline:none;border-color:var(--vd)}
+.bt{height:44px;border:0;border-radius:10px;background:var(--vd);color:#fff;font-weight:700;cursor:pointer;padding:0 18px}
+.bt.sec{background:#fff;color:var(--az2);border:1.5px solid #c9d2de}
+.bt:disabled{opacity:.6}
+.erro{color:var(--vm);font-size:13.5px;min-height:18px}
+.qr{display:flex;justify-content:center;background:#fff;border:1px solid var(--li);border-radius:12px;padding:10px}
+.qr img{width:190px;height:190px}
+.seg{font:12px/1.4 Consolas,monospace;word-break:break-all;color:var(--su);background:var(--fu);padding:8px 10px;border-radius:8px}
+/* painel */
+#painel{display:none}
+.topo{background:var(--az);color:#fff;padding:12px max(16px,env(safe-area-inset-left));display:flex;align-items:center;gap:16px;flex-wrap:wrap;position:sticky;top:0;z-index:5}
+.topo .sp{flex:1}
+.topo .quem{font-size:13px;color:#c9d6ea}
+.topo button{background:transparent;border:1px solid #3b5578;color:#fff;border-radius:8px;height:34px;padding:0 12px;cursor:pointer}
+.abas{display:flex;gap:4px;overflow-x:auto;padding:10px max(16px,env(safe-area-inset-left)) 0;background:#fff;border-bottom:1px solid var(--li);position:sticky;top:58px;z-index:4}
+.abas button{background:none;border:0;border-bottom:3px solid transparent;padding:10px 12px;font-weight:600;color:var(--su);cursor:pointer;white-space:nowrap}
+.abas button.on{color:var(--az);border-bottom-color:var(--vd)}
+main{max-width:1280px;margin:0 auto;padding:20px max(16px,env(safe-area-inset-left)) 60px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:18px}
+.card{background:#fff;border:1px solid var(--li);border-radius:14px;padding:14px 16px}
+.card .n{font:800 26px/1.2 Manrope,Inter,sans-serif;color:var(--az)}
+.card .n.v{color:var(--vd)}
+.card .r{font-size:12.5px;color:var(--su);font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+.card .s{font-size:12.5px;color:var(--su)}
+.bloco{background:#fff;border:1px solid var(--li);border-radius:14px;padding:16px;margin-bottom:16px}
+.bloco h2{font-size:16px;margin-bottom:10px;color:var(--az)}
+.barra{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.barra input,.barra select{height:38px;border:1.5px solid #d0d5dd;border-radius:9px;padding:0 10px;background:#fff}
+.barra input{flex:1;min-width:180px}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;font-size:12px;color:var(--su);text-transform:uppercase;letter-spacing:.3px;padding:8px 10px;border-bottom:1px solid var(--li);white-space:nowrap}
+td{padding:9px 10px;border-bottom:1px solid #f0f2f5;vertical-align:top}
+tr:hover td{background:#fafbfc}
+.chip{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.c-ok{background:#e3f2e4;color:var(--vd)}.c-av{background:#fff3e0;color:var(--am)}.c-er{background:#fee4e2;color:var(--vm)}.c-in{background:#eef2f7;color:var(--su)}.c-bl{background:#e8efff;color:var(--bl)}
+.mono{font-family:Consolas,monospace;font-size:12.5px}
+.mut{color:var(--su)}
+.graf{display:flex;align-items:flex-end;gap:6px;height:150px;padding-top:10px}
+.graf div{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end}
+.graf b{width:100%;background:var(--vd);border-radius:6px 6px 0 0;min-height:2px}
+.graf span{font-size:11px;color:var(--su)}
+.graf em{font-style:normal;font-size:11px;font-weight:700;color:var(--az)}
+.pb{height:8px;background:#eef2f7;border-radius:4px;overflow:hidden;min-width:80px}
+.pb i{display:block;height:100%;background:var(--vd)}
+.vazio{padding:20px;text-align:center;color:var(--su)}
+.dois{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:860px){.dois{grid-template-columns:1fr}.abas{top:0;position:relative}.topo{position:relative}}
+</style>
+</head>
+<body>
+
+<section id="entrada">
+  <div class="cx-in">
+    <a class="marca" style="color:var(--az)"><svg width="34" height="34" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#1f3a5f"/><path d="M21 49 V15 H35 A9 9 0 0 1 35 33 H29 L42 48" fill="none" stroke="#eef3fa" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="43" cy="49" r="6.3" fill="#22c55e"/></svg><span>Router<i style="color:var(--vd)">Flow</i></span></a>
+    <div id="pass1">
+      <h1>Painel do administrador</h1>
+      <p style="margin:6px 0 14px">Entre com o seu e-mail e senha. Em seguida o código do app autenticador.</p>
+      <form id="f-login" style="display:flex;flex-direction:column;gap:12px">
+        <label>E-mail<input id="l-email" type="email" autocomplete="username" required></label>
+        <label>Senha<input id="l-senha" type="password" autocomplete="current-password" required></label>
+        <button class="bt" id="b-entrar">Entrar</button>
+      </form>
+    </div>
+    <div id="pass2" hidden>
+      <h1 id="mfa-t">Verificação em duas etapas</h1>
+      <p id="mfa-p" style="margin:6px 0 12px">Digite o código de 6 números do seu app autenticador.</p>
+      <div id="mfa-qr" hidden><div class="qr"><img id="qr-img" alt="QR Code para o app autenticador"></div><p class="mut" style="font-size:12.5px;margin:8px 0 4px">Ou digite esta chave no app:</p><div class="seg" id="qr-seg"></div></div>
+      <form id="f-mfa" style="display:flex;flex-direction:column;gap:12px;margin-top:12px">
+        <label>Código<input id="m-cod" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" required></label>
+        <button class="bt">Confirmar</button>
+        <button class="bt sec" type="button" id="b-sair1">Sair</button>
+      </form>
+    </div>
+    <div class="erro" id="erro"></div>
+  </div>
+</section>
+
+<section id="painel">
+  <div class="topo">
+    <a class="marca"><svg width="30" height="30" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#1f3a5f" stroke="#3b5578"/><path d="M21 49 V15 H35 A9 9 0 0 1 35 33 H29 L42 48" fill="none" stroke="#eef3fa" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="43" cy="49" r="6.3" fill="#22c55e"/></svg><span>Router<i>Flow</i> <span style="font-weight:600;font-size:14px;color:#c9d6ea">Painel</span></span></a>
+    <span class="sp"></span>
+    <span class="quem" id="quem"></span>
+    <button id="b-atual">Atualizar</button>
+    <button id="b-sair">Sair</button>
+  </div>
+  <nav class="abas" id="abas"></nav>
+  <main id="conteudo"><div class="vazio">Carregando...</div></main>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+(function () {
+  "use strict";
+  const URL_ = "https://ruyeqbjsptfnjhlnqpnp.supabase.co", KEY = "sb_publishable_DCQ51tyXzwKk0vom8Hf9gQ_x78MUlfB";
+  const sb = window.supabase.createClient(URL_, KEY, { auth: { persistSession: true, storageKey: "rf-painel" } });
+  const $ = (s, el) => (el || document).querySelector(s), $$ = (s, el) => [...(el || document).querySelectorAll(s)];
+  const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const brl = (v) => "R$ " + (+v || 0).toFixed(2).replace(".", ",").replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  const hoje = () => new Date().toISOString().slice(0, 10);
+  const brD = (s) => { s = String(s || ""); return /^\d{4}-\d\d-\d\d/.test(s) ? `${s.slice(8, 10)}/${s.slice(5, 7)}/${s.slice(0, 4)}` : s; };
+  const brDH = (s) => { if (!s) return ""; const d = new Date(s); return d.toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo", day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" }); };
+  const dias = (iso) => Math.round((Date.parse(String(iso).slice(0, 10) + "T12:00:00Z") - Date.parse(hoje() + "T12:00:00Z")) / 864e5);
+  const zap = (z) => { const d = String(z || "").replace(/\D/g, ""); return d.length >= 10 ? `<a href="https://wa.me/${d.startsWith("55") ? d : "55" + d}" target="_blank" rel="noopener">${esc(z)}</a>` : esc(z); };
+  const chip = (t, c) => `<span class="chip ${c}">${esc(t)}</span>`;
+  const erro = (t) => { $("#erro").textContent = t || ""; };
+  const D = {};
+  let aba = (() => { try { return localStorage.getItem("rf-painel-aba") || "resumo"; } catch (e) { return "resumo"; } })();
+
+  // ------------------------------------------------------------ entrar: senha e depois o código (aal2)
+  async function passo() {
+    const { data: { session } } = await sb.auth.getSession();
+    if (!session) { $("#entrada").style.display = "flex"; $("#painel").style.display = "none"; $("#pass1").hidden = false; $("#pass2").hidden = true; return; }
+    const { data: aal } = await sb.auth.mfa.getAuthenticatorAssuranceLevel();
+    if (aal && aal.currentLevel === "aal2") return abrir(session);
+    $("#pass1").hidden = true; $("#pass2").hidden = false;
+    const { data: f } = await sb.auth.mfa.listFactors();
+    const totp = (f && f.totp || []).find((x) => x.status === "verified");
+    if (totp) { window._fator = totp.id; $("#mfa-qr").hidden = true; $("#mfa-t").textContent = "Verificação em duas etapas"; $("#mfa-p").textContent = "Digite o código de 6 números do seu app autenticador."; }
+    else {
+      for (const x of (f && f.all || []).filter((x) => x.status !== "verified")) await sb.auth.mfa.unenroll({ factorId: x.id });
+      const { data: e, error } = await sb.auth.mfa.enroll({ factorType: "totp", friendlyName: "Painel RouterFlow" });
+      if (error) return erro("Não deu para ligar a verificação em duas etapas: " + error.message);
+      window._fator = e.id; $("#qr-img").src = e.totp.qr_code; $("#qr-seg").textContent = e.totp.secret; $("#mfa-qr").hidden = false;
+      $("#mfa-t").textContent = "Ligue a verificação em duas etapas";
+      $("#mfa-p").textContent = "Primeira entrada: abra o Google Authenticator ou o Microsoft Authenticator no celular, leia o QR Code e digite o código que aparecer.";
+    }
+    setTimeout(() => $("#m-cod").focus(), 50);
+  }
+  $("#f-login").addEventListener("submit", async (e) => {
+    e.preventDefault(); erro(""); $("#b-entrar").disabled = true;
+    const { error } = await sb.auth.signInWithPassword({ email: $("#l-email").value.trim(), password: $("#l-senha").value });
+    $("#b-entrar").disabled = false; $("#l-senha").value = "";
+    if (error) return erro("E-mail ou senha não conferem.");
+    passo();
+  });
+  $("#f-mfa").addEventListener("submit", async (e) => {
+    e.preventDefault(); erro("");
+    const { error } = await sb.auth.mfa.challengeAndVerify({ factorId: window._fator, code: $("#m-cod").value.trim() });
+    $("#m-cod").value = "";
+    if (error) return erro("Código não confere. Confira o horário do celular e tente o próximo código.");
+    passo();
+  });
+  const sair = async () => { await sb.auth.signOut(); location.reload(); };
+  $("#b-sair").addEventListener("click", sair); $("#b-sair1").addEventListener("click", sair);
+  $("#b-atual").addEventListener("click", () => carregar());
+
+  // ------------------------------------------------------------ dados
+  async function tab(nome, sel, ord) {
+    let q = sb.from(nome).select(sel || "*").limit(5000);
+    if (ord) q = q.order(ord, { ascending: false });
+    const { data, error } = await q;
+    if (error) throw new Error(nome + ": " + error.message);
+    return data || [];
+  }
+  async function carregar() {
+    $("#conteudo").innerHTML = '<div class="vazio">Carregando...</div>';
+    try {
+      const desde = new Date(Date.now() - 90 * 864e5).toISOString().slice(0, 10);
+      const [clientes, testes, pedidos, licLoja, licencas, maquinas, uso, aulas, erros, emails, aceites, pagamentos] = await Promise.all([
+        tab("clientes", "*", "criado"), tab("testes", "*", "criado"), tab("pedidos", "*", "criado"), tab("licencas_loja", "serial,maquina,cliente_id,tipo,emitida,validade,pedido_id,criado", "criado"),
+        tab("licencas", "*", "validade"), tab("maquinas", "*", "ultima"),
+        (async () => { const { data, error } = await sb.from("uso_dia").select("*").gte("dia", desde).limit(20000); if (error) throw error; return data || []; })(),
+        tab("aulas", "*", "vista"), tab("erros", "*", "recebido"), tab("emails", "*", "criado"), tab("aceites", "*", "criado"), tab("pagamentos", "*", "data")]);
+      Object.assign(D, { clientes, testes, pedidos, licLoja, licencas, maquinas, uso, aulas, erros, emails, aceites, pagamentos });
+      D.cli = Object.fromEntries(clientes.map((c) => [c.id, c]));
+      render();
+    } catch (e) {
+      $("#conteudo").innerHTML = `<div class="bloco"><b>Não deu para ler os dados.</b><p class="mut">${esc(e.message || e)}</p><p class="mut">Se aparecer "permission denied", confira se o seu e-mail está em rf.admins e se entrou com o código do autenticador.</p></div>`;
+    }
+  }
+
+  // ------------------------------------------------------------ as abas
+  const ABAS = [["resumo", "Resumo"], ["vendas", "Vendas"], ["testes", "Testes"], ["clientes", "Clientes"], ["licencas", "Licenças"], ["uso", "Uso do app"], ["aprender", "Aprender"], ["erros", "Erros"], ["emails", "E-mails"], ["aceites", "Aceites"]];
+  function abasHtml() {
+    $("#abas").innerHTML = ABAS.map(([k, t]) => `<button data-aba="${k}" class="${k === aba ? "on" : ""}">${t}</button>`).join("");
+    $$("#abas button").forEach((b) => b.addEventListener("click", () => { aba = b.dataset.aba; try { localStorage.setItem("rf-painel-aba", aba); } catch (e) {} render(); }));
+  }
+  function render() { abasHtml(); $("#conteudo").innerHTML = (VIEWS[aba] || VIEWS.resumo)(); ligaFiltros(); }
+  function ligaFiltros() {
+    $$("[data-filtro]").forEach((inp) => inp.addEventListener("input", () => {
+      const t = inp.value.toLowerCase(), alvo = $("#" + inp.dataset.filtro);
+      $$("tbody tr", alvo).forEach((tr) => { tr.style.display = tr.textContent.toLowerCase().includes(t) ? "" : "none"; });
+    }));
+  }
+  const tabela = (id, cab, linhas) => linhas.length
+    ? `<div class="tw"><table id="${id}"><thead><tr>${cab.map((c) => `<th>${c}</th>`).join("")}</tr></thead><tbody>${linhas.join("")}</tbody></table></div>`
+    : '<div class="vazio">Nada por aqui ainda.</div>';
+  const filtro = (id, ph) => `<div class="barra"><input data-filtro="${id}" placeholder="${ph || "Buscar"}"></div>`;
+
+  // a licença que vale para cada máquina (loja e as emitidas à mão)
+  function licencasTodas() {
+    const out = [];
+    for (const l of D.licLoja) { const c = D.cli[l.cliente_id] || {}; out.push({ serial: l.serial, maquina: l.maquina, tipo: l.tipo, validade: l.validade, emitida: l.emitida, empresa: c.empresa || c.nome || "", email: c.email || "", zap: c.whatsapp || "", origem: "Loja" }); }
+    for (const l of D.licencas) out.push({ serial: l.serial, maquina: l.maquina, tipo: l.gratuita ? "cortesia" : "anual", validade: l.validade, emitida: l.emitida, empresa: l.empresa || "", email: l.email || "", zap: l.telefone || "", origem: "Manual", status: l.status });
+    return out;
+  }
+  function vigentes() {
+    const m = new Map();
+    for (const l of licencasTodas()) { if (l.status === "SUBSTITUIDA" || l.status === "REVOGADA") continue; const c = m.get(l.maquina); if (!c || String(l.validade) > String(c.validade)) m.set(l.maquina, l); }
+    return [...m.values()];
+  }
+  const pagos = () => D.pedidos.filter((p) => p.status === "pago");
+  const mes = (s) => String(s || "").slice(0, 7);
+
+  const VIEWS = {
+    resumo() {
+      const h = hoje(), mAt = h.slice(0, 7), ano = h.slice(0, 4);
+      const vendasLoja = pagos().map((p) => ({ data: (p.pago_em || p.criado), valor: +(p.pago_valor ?? p.valor) }));
+      const vendasMan = D.pagamentos.map((p) => ({ data: p.data, valor: +p.valor || 0 }));
+      const todas = vendasLoja.concat(vendasMan);
+      const soma = (f) => todas.filter(f).reduce((a, v) => a + v.valor, 0);
+      const vig = vigentes(), ativas = vig.filter((l) => l.tipo !== "teste" && dias(l.validade) >= 0), venc30 = ativas.filter((l) => dias(l.validade) <= 30);
+      const testesMes = D.testes.filter((t) => mes(t.criado) === mAt).length, testesAtivos = D.testes.filter((t) => dias(t.validade) >= 0).length;
+      const maqCompra = new Set(D.licLoja.filter((l) => l.tipo === "anual").map((l) => l.maquina));
+      const conv = D.testes.length ? Math.round(100 * D.testes.filter((t) => maqCompra.has(t.maquina)).length / D.testes.length) : 0;
+      const ativos7 = D.maquinas.filter((m) => Date.now() - Date.parse(m.ultima) < 7 * 864e5).length;
+      const err7 = D.erros.filter((e) => Date.now() - Date.parse(e.recebido) < 7 * 864e5).length;
+      const meses = []; for (let i = 11; i >= 0; i--) { const d = new Date(); d.setDate(1); d.setMonth(d.getMonth() - i); meses.push(d.toISOString().slice(0, 7)); }
+      const porMes = meses.map((m) => soma((v) => mes(v.data) === m)), max = Math.max(1, ...porMes);
+      const pend = D.pedidos.filter((p) => p.status === "pendente");
+      return `<div class="cards">
+        <div class="card"><div class="r">Vendido no mês</div><div class="n v">${brl(soma((v) => mes(v.data) === mAt))}</div><div class="s">No ano: ${brl(soma((v) => String(v.data).slice(0, 4) === ano))}</div></div>
+        <div class="card"><div class="r">Licenças ativas</div><div class="n">${ativas.length}</div><div class="s">${venc30.length} vencem em 30 dias</div></div>
+        <div class="card"><div class="r">Testes no mês</div><div class="n">${testesMes}</div><div class="s">${testesAtivos} em andamento</div></div>
+        <div class="card"><div class="r">Teste que vira compra</div><div class="n">${conv}%</div><div class="s">${D.testes.length} testes no total</div></div>
+        <div class="card"><div class="r">Pedidos esperando</div><div class="n">${pend.length}</div><div class="s">${brl(pend.reduce((a, p) => a + +p.valor, 0))} em aberto</div></div>
+        <div class="card"><div class="r">Computadores ativos</div><div class="n">${ativos7}</div><div class="s">abriram nos últimos 7 dias</div></div>
+        <div class="card"><div class="r">Erros em 7 dias</div><div class="n">${err7}</div><div class="s">${D.erros.length} no total</div></div>
+        <div class="card"><div class="r">Clientes</div><div class="n">${D.clientes.length}</div><div class="s">${D.aceites.length} aceites registrados</div></div>
+      </div>
+      <div class="bloco"><h2>Vendas por mês</h2><div class="graf">${meses.map((m, i) => `<div><em>${porMes[i] ? Math.round(porMes[i] / 1000 * 10) / 10 + "k" : ""}</em><b style="height:${Math.round(100 * porMes[i] / max)}%"></b><span>${m.slice(5)}/${m.slice(2, 4)}</span></div>`).join("")}</div></div>
+      <div class="dois">
+        <div class="bloco"><h2>Vencem em breve</h2>${tabela("t-venc", ["Empresa", "Computador", "Vence", "Contato"], venc30.sort((a, b) => String(a.validade).localeCompare(b.validade)).map((l) => `<tr><td>${esc(l.empresa)}</td><td class="mono">${esc(l.maquina)}</td><td>${brD(l.validade)} ${chip(dias(l.validade) + " dias", dias(l.validade) <= 7 ? "c-er" : "c-av")}</td><td>${zap(l.zap)}</td></tr>`))}</div>
+        <div class="bloco"><h2>Testes em andamento</h2>${tabela("t-tes", ["Cliente", "Acaba", "WhatsApp"], D.testes.filter((t) => dias(t.validade) >= 0).map((t) => { const c = D.cli[t.cliente_id] || {}; return `<tr><td><b>${esc(c.empresa || c.nome)}</b><br><span class="mut">${esc(c.nome)}</span></td><td>${brD(t.validade)} ${chip(dias(t.validade) + " dias", "c-bl")}</td><td>${zap(c.whatsapp)}</td></tr>`; }))}</div>
+      </div>`;
+    },
+    vendas() {
+      const st = { pago: "c-ok", pendente: "c-av", recusado: "c-er", erro: "c-er", reembolsado: "c-in", contestado: "c-er" };
+      return `<div class="bloco"><h2>Pedidos da loja</h2>${filtro("t-ped", "Buscar cliente, computador, status")}${tabela("t-ped", ["Data", "Cliente", "Plano", "Forma", "Valor", "Status", "Computador", "Licença"],
+        D.pedidos.map((p) => { const c = D.cli[p.cliente_id] || {}; return `<tr><td>${brDH(p.criado)}</td><td><b>${esc(c.empresa || c.nome)}</b><br><span class="mut">${esc(c.email)}</span><br>${zap(c.whatsapp)}</td><td>${p.plano === "computador" ? "Computador a mais" : "Anual"}</td><td>${p.forma === "pix" ? "PIX" : "Cartão" + (p.parcelas > 1 ? " " + p.parcelas + "x" : "")}</td><td><b>${brl(p.pago_valor ?? p.valor)}</b></td><td>${chip(p.status, st[p.status] || "c-in")}${p.pago_em ? `<br><span class="mut">${brDH(p.pago_em)}</span>` : ""}</td><td class="mono">${esc(p.maquina)}</td><td class="mono">${esc(p.serial || "")}</td></tr>`; }))}</div>
+      <div class="bloco"><h2>Pagamentos registrados à mão</h2>${tabela("t-pman", ["Data", "Empresa", "Valor", "Forma", "Tipo", "Vendedor"], D.pagamentos.map((p) => `<tr><td>${esc(brD(p.data))}</td><td>${esc(p.empresa)}</td><td>${brl(p.valor)}</td><td>${esc(p.forma)}</td><td>${esc(p.tipo)}</td><td>${esc(p.vendedor)}</td></tr>`))}</div>`;
+    },
+    testes() {
+      const comprou = new Set(D.licLoja.filter((l) => l.tipo === "anual").map((l) => l.maquina));
+      return `<div class="bloco"><h2>Testes de 10 dias</h2>${filtro("t-t", "Buscar")}${tabela("t-t", ["Começou", "Cliente", "Cidade", "Acaba", "Situação", "Computador", "WhatsApp"],
+        D.testes.map((t) => { const c = D.cli[t.cliente_id] || {}, d = dias(t.validade); const s = comprou.has(t.maquina) ? chip("Comprou", "c-ok") : d >= 0 ? chip(`${d} dias`, "c-bl") : chip("Acabou", "c-in");
+          return `<tr><td>${brDH(t.criado)}</td><td><b>${esc(c.empresa || c.nome)}</b><br><span class="mut">${esc(c.nome)} · ${esc(c.email)}</span></td><td>${esc(c.cidade)}</td><td>${brD(t.validade)}</td><td>${s}</td><td class="mono">${esc(t.maquina)}</td><td>${zap(c.whatsapp)}</td></tr>`; }))}</div>`;
+    },
+    clientes() {
+      return `<div class="bloco"><h2>Clientes</h2>${filtro("t-c", "Buscar nome, empresa, e-mail, cidade")}${tabela("t-c", ["Desde", "Cliente", "Contato", "Cidade", "Documento", "Testes", "Compras", "Total pago"],
+        D.clientes.map((c) => { const ps = pagos().filter((p) => p.cliente_id === c.id); return `<tr><td>${brD(String(c.criado).slice(0, 10))}</td><td><b>${esc(c.empresa || c.nome)}</b><br><span class="mut">${esc(c.nome)}</span></td><td>${esc(c.email)}<br>${zap(c.whatsapp)}</td><td>${esc(c.cidade)}</td><td class="mono">${esc(c.documento)}</td><td>${D.testes.filter((t) => t.cliente_id === c.id).length}</td><td>${ps.length}</td><td><b>${brl(ps.reduce((a, p) => a + +(p.pago_valor ?? p.valor), 0))}</b></td></tr>`; }))}</div>`;
+    },
+    licencas() {
+      const ult = Object.fromEntries(D.maquinas.map((m) => [m.codigo, m]));
+      return `<div class="bloco"><h2>Licença vigente de cada computador</h2>${filtro("t-l", "Buscar")}${tabela("t-l", ["Empresa", "Computador", "Tipo", "Vence", "Situação", "Origem", "Última vez aberto", "Versão", "Contato"],
+        vigentes().sort((a, b) => String(a.validade).localeCompare(b.validade)).map((l) => { const d = dias(l.validade), m = ult[l.maquina] || {}; const s = d < 0 ? chip("Vencida", "c-er") : d <= 30 ? chip(`${d} dias`, "c-av") : chip("Ativa", "c-ok");
+          return `<tr><td><b>${esc(l.empresa)}</b><br><span class="mut">${esc(l.email)}</span></td><td class="mono">${esc(l.maquina)}<br><span class="mut">${esc(l.serial)}</span></td><td>${esc(l.tipo)}</td><td>${brD(l.validade)}</td><td>${s}</td><td>${esc(l.origem)}</td><td>${m.ultima ? brDH(m.ultima) : '<span class="mut">nunca</span>'}</td><td>${esc(m.versao || "")}</td><td>${zap(l.zap)}</td></tr>`; }))}</div>`;
+    },
+    uso() {
+      const porMaq = {}; for (const u of D.uso) { const c = u.contadores || {}, x = porMaq[u.maquina] || (porMaq[u.maquina] = { min: 0, proj: 0, ch: 0, prog: 0, dias: 0 }); x.min += +c.minutos || 0; x.proj += +c.projetos || 0; x.ch += +c.chapas || 0; x.prog += +c.programas || 0; x.dias++; }
+      return `<div class="bloco"><h2>Uso do app nos últimos 90 dias</h2>${filtro("t-u", "Buscar")}${tabela("t-u", ["Empresa", "Computador", "Versão", "Última vez", "Dias de uso", "Horas", "Projetos", "Chapas", "Programas", "Comando", "Prova no ar"],
+        D.maquinas.map((m) => { const x = porMaq[m.codigo] || { min: 0, proj: 0, ch: 0, prog: 0, dias: 0 }; const ina = Date.now() - Date.parse(m.ultima) > 14 * 864e5;
+          return `<tr><td><b>${esc(m.empresa)}</b>${ina ? "<br>" + chip("parado há mais de 14 dias", "c-av") : ""}</td><td class="mono">${esc(m.codigo)}</td><td>${esc(m.versao)}</td><td>${brDH(m.ultima)}</td><td>${x.dias}</td><td>${Math.round(x.min / 6) / 10}</td><td>${x.proj}</td><td>${x.ch}</td><td>${x.prog}</td><td>${esc(m.cmd || "")}${m.arcos === "1" ? " " + chip("arcos", "c-bl") : ""}</td><td>${esc(m.prova || "")}</td></tr>`; }))}</div>`;
+    },
+    aprender() {
+      const aulas = (window.RF_AULAS_TOTAL || 20), porMaq = {}, porAula = {};
+      for (const a of D.aulas) { (porMaq[a.maquina] = porMaq[a.maquina] || []).push(a); porAula[a.aula] = (porAula[a.aula] || 0) + 1; }
+      const emp = Object.fromEntries(D.maquinas.map((m) => [m.codigo, m.empresa]));
+      return `<div class="dois"><div class="bloco"><h2>Quem está aprendendo</h2>${tabela("t-ap", ["Empresa", "Computador", "Aulas vistas", "Progresso", "Última"],
+        Object.entries(porMaq).sort((a, b) => b[1].length - a[1].length).map(([m, l]) => `<tr><td>${esc(emp[m] || "")}</td><td class="mono">${esc(m)}</td><td>${l.length} de ${aulas}</td><td><div class="pb"><i style="width:${Math.min(100, Math.round(100 * l.length / aulas))}%"></i></div></td><td>${brD(l.map((x) => x.vista).sort().pop())}</td></tr>`))}</div>
+        <div class="bloco"><h2>Aulas mais vistas</h2>${tabela("t-au", ["Aula", "Computadores"], Object.entries(porAula).sort((a, b) => b[1] - a[1]).map(([a, n]) => `<tr><td>Tutorial ${esc(a.replace(/^t0?/, ""))}</td><td>${n}</td></tr>`))}</div></div>`;
+    },
+    erros() {
+      const g = {}; for (const e of D.erros) { const k = (e.onde || "") + "|" + (e.mensagem || ""); const x = g[k] || (g[k] = { onde: e.onde, msg: e.mensagem, n: 0, maqs: new Set(), ult: e.recebido, versao: e.versao }); x.n += +e.vezes || 1; x.maqs.add(e.maquina); if (e.recebido > x.ult) x.ult = e.recebido; }
+      return `<div class="bloco"><h2>Erros do programa, agrupados</h2>${filtro("t-e", "Buscar")}${tabela("t-e", ["Vezes", "Computadores", "Onde", "Mensagem", "Versão", "Último"],
+        Object.values(g).sort((a, b) => b.n - a.n).map((x) => `<tr><td><b>${x.n}</b></td><td>${x.maqs.size}</td><td class="mono">${esc(x.onde)}</td><td>${esc(String(x.msg || "").slice(0, 220))}</td><td>${esc(x.versao)}</td><td>${brDH(x.ult)}</td></tr>`))}</div>`;
+    },
+    emails() {
+      const st = { enviado: "c-ok", erro: "c-er", sem_resend: "c-in" };
+      return `<div class="bloco"><h2>E-mails enviados pela loja</h2>${filtro("t-m", "Buscar")}${tabela("t-m", ["Quando", "Para", "Aviso", "Assunto", "Status"],
+        D.emails.slice(0, 500).map((m) => `<tr><td>${brDH(m.criado)}</td><td>${esc(m.para)}</td><td class="mono">${esc(m.modelo)}</td><td>${esc(m.assunto)}</td><td>${chip(m.status, st[m.status] || "c-in")}${m.erro ? `<br><span class="mut">${esc(m.erro.slice(0, 120))}</span>` : ""}</td></tr>`))}</div>`;
+    },
+    aceites() {
+      return `<div class="bloco"><h2>Aceites dos Termos de uso e da Política de privacidade</h2><p class="mut" style="margin:0 0 10px">Cada teste e cada compra grava quem aceitou, o dispositivo, de onde, quando e a versão exata dos textos (o hash muda se o texto mudar).</p>${filtro("t-a", "Buscar e-mail, computador, IP")}${tabela("t-a", ["Quando", "Quem", "Ação", "Canal", "Computador", "IP", "Programa ou navegador", "Termos", "Política"],
+        D.aceites.map((a) => `<tr><td>${brDH(a.criado)}</td><td><b>${esc(a.nome)}</b><br><span class="mut">${esc(a.email)}</span>${a.documento ? `<br><span class="mono">${esc(a.documento)}</span>` : ""}</td><td>${esc(a.acao)}</td><td>${esc(a.canal)}${a.app_versao ? " " + esc(a.app_versao) : ""}</td><td class="mono">${esc(a.maquina)}<br><span class="mut">${esc(a.hw || "")}</span></td><td class="mono">${esc(a.ip)}</td><td><span class="mut">${esc(String(a.user_agent || "").slice(0, 70))}</span></td><td>${brD(a.termos_versao)}<br><span class="mono mut">${esc(String(a.termos_hash || "").slice(0, 12))}</span></td><td>${brD(a.priv_versao)}<br><span class="mono mut">${esc(String(a.priv_hash || "").slice(0, 12))}</span></td></tr>`))}</div>`;
+    },
+  };
+
+  function abrir(session) {
+    $("#entrada").style.display = "none"; $("#painel").style.display = "block";
+    $("#quem").textContent = session.user.email;
+    carregar();
+  }
+  sb.auth.onAuthStateChange((ev) => { if (ev === "SIGNED_OUT") location.reload(); });
+  passo();
+})();
+</script>
+</body>
+</html>
