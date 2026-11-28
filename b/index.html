@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow"><title>Briefing · RouterFlow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="../img/favicon.png"><style>
+:root{--az:#1f3a5f;--az2:#132846;--vd:#2e7d32;--vd2:#4ade80;--lj:#c2410c;--fg:#18212d;--su:#5b6675;--li:#e3e8ef;--bg:#f4f6f9;--ca:#fff;
+  --surface:#fff;--surface-container:#eef2f7;--surface-container-low:#e9eef5;--outline-variant:#d0d7e2;--on-surface:#18212d;--on-surface-variant:#5b6675;--primary:#1f3a5f;--on-primary:#fff;--primary-container:#dbe7f5;--on-primary-container:#132846}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 Inter,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Manrope,Inter,sans-serif;margin:0;line-height:1.2}
+.top{background:var(--az);color:#fff;padding:14px max(16px,env(safe-area-inset-left)) 18px;padding-top:max(14px,env(safe-area-inset-top))}
+.top .in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.top .emp{font:700 17px Manrope,sans-serif}.top .ct{font-size:13px;opacity:.85}
+.top .ini{width:42px;height:42px;border-radius:12px;background:#fff;color:var(--az);display:grid;place-items:center;font:800 16px Manrope,sans-serif;flex:none}
+main{max-width:1100px;margin:0 auto;padding:18px max(16px,env(safe-area-inset-right)) 40px max(16px,env(safe-area-inset-left));display:flex;flex-direction:column;gap:16px}
+.card{background:var(--ca);border:1px solid var(--li);border-radius:16px;padding:18px}
+.card h2{font-size:18px;color:var(--az);margin-bottom:10px}
+.mut{color:var(--su);font-size:13.5px}
+.bt{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 20px;border-radius:12px;border:0;font:700 15px Inter,sans-serif;cursor:pointer;background:var(--az);color:#fff;text-decoration:none}
+.bt.vd{background:var(--vd)}.bt.lj{background:var(--lj)}.bt.sec{background:#fff;color:var(--az);border:1.5px solid var(--li)}
+.bt:disabled{opacity:.5;cursor:default}
+input,select,textarea{font:inherit;font-size:15px;border:1.5px solid #d0d5dd;border-radius:11px;padding:10px 12px;background:#fff;color:var(--fg);width:100%;min-width:0}
+label{display:flex;flex-direction:column;gap:5px;font-size:13.5px;font-weight:600;color:var(--su)}
+.pe{max-width:1100px;margin:0 auto;padding:0 16px 30px;display:flex;align-items:center;justify-content:center;gap:8px;color:var(--su);font-size:12.5px}
+.pe svg{width:20px;height:20px}.pe a{color:var(--az);font-weight:700;text-decoration:none}
+.msg{padding:12px 14px;border-radius:12px;background:#ecfdf3;color:#14532d;font-weight:600}.msg.er{background:#fef2f2;color:#991b1b}
+.carregando{padding:60px 20px;text-align:center;color:var(--su)}
+
+.op{display:flex;flex-wrap:wrap;gap:8px}.op label{flex-direction:row;align-items:center;gap:8px;padding:10px 14px;border:1.5px solid var(--li);border-radius:12px;background:#fff;color:var(--fg);font-weight:600;cursor:pointer}
+.op input{width:auto;margin:0}.op label:has(input:checked){border-color:var(--az);background:#eef4fb}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media (max-width:560px){.g2{grid-template-columns:1fr}}
+.q{display:flex;flex-direction:column;gap:8px}.q>b{font:700 16px Manrope,sans-serif;color:var(--az)}
+</style></head>
+<body>
+<div class="top"><div class="in"><span class="ini" id="ini">R</span><div><div class="emp" id="emp">Carregando...</div><div class="ct" id="ct">Briefing do seu projeto</div></div></div></div>
+<main id="m"><div class="carregando">Abrindo...</div></main>
+
+<div class="pe"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1f3a5f"/><path d="M20 48V16h13.5c7 0 11.5 4 11.5 10 0 4.4-2.4 7.6-6.3 9L46 48h-8.2l-6.5-12H27.6v12z M27.6 30h5.6c2.8 0 4.5-1.5 4.5-3.9 0-2.4-1.7-3.9-4.5-3.9h-5.6z" fill="#fff"/><circle cx="46" cy="46" r="5" fill="#4ade80"/></svg><span>Feito com <a href="https://www.routerflow.com.br" target="_blank" rel="noopener">RouterFlow</a></span></div>
+
+<script>
+"use strict";
+const FN = "https://ruyeqbjsptfnjhlnqpnp.supabase.co/functions/v1/nuvem", C = (location.hash || "").slice(1).replace(/[^0-9a-f]/g, "");
+const $ = (s) => document.querySelector(s), esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const mascTel = (v) => { const d = String(v).replace(/\D/g, "").slice(0, 11); if (d.length <= 2) return d; if (d.length <= 6) return `(${d.slice(0, 2)}) ${d.slice(2)}`; if (d.length <= 10) return `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`; return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`; };
+async function post(acao, extra) { try { const r = await fetch(FN, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(Object.assign({ acao, codigo: C }, extra || {})) }); return await r.json(); } catch (e) { return { ok: false, erro: "Sem internet agora." }; } }
+const QS = [
+  ["ambientes", "Quais ambientes?", "m", ["Cozinha", "Quarto", "Closet", "Banheiro", "Sala", "Escritório", "Área de serviço", "Varanda gourmet", "Outro"]],
+  ["estilo", "Qual estilo combina com você?", "m", ["Moderno", "Clássico", "Rústico", "Industrial", "Minimalista", "Ainda não sei"]],
+  ["cores", "Cores que você gosta", "m", ["Branco", "Madeira clara", "Madeira escura", "Cinza", "Preto", "Verde", "Azul", "Bege"]],
+  ["investir", "Quanto pensa em investir?", "u", ["Até R$ 10 mil", "R$ 10 a 20 mil", "R$ 20 a 40 mil", "R$ 40 a 80 mil", "Mais de R$ 80 mil", "Prefiro conversar"]],
+  ["prazo", "Para quando precisa?", "u", ["O quanto antes", "Em 1 a 2 meses", "Em 3 a 6 meses", "Ainda sem data"]],
+  ["imovel", "O imóvel", "u", ["Já estou morando", "Em reforma", "Na planta ou em obra", "Vou mudar"]],
+  ["medidas", "Já tem as medidas ou a planta?", "u", ["Tenho a planta", "Tenho as medidas", "Ainda não, preciso de medição"]],
+];
+function tela(emp) {
+  return `<section class="card"><h1 style="font-size:22px;color:var(--az)">Vamos começar o seu projeto</h1><p class="mut">Responda em 2 minutos. A ${esc(emp)} recebe as respostas e fala com você pelo WhatsApp.</p></section>
+  <form id="f" class="card" style="display:flex;flex-direction:column;gap:16px" novalidate>
+    <div class="g2"><label>Seu nome<input name="nome" autocomplete="name" required></label><label>WhatsApp<input name="whatsapp" id="zap" inputmode="tel" autocomplete="tel" placeholder="(00) 00000-0000" required></label>
+    <label>E-mail (opcional)<input name="email" type="email" autocomplete="email"></label><label>Cidade<input name="cidade" autocomplete="address-level2"></label></div>
+    ${QS.map(([k, t, tp, ops]) => `<div class="q"><b>${t}</b><div class="op">${ops.map((o) => `<label><input type="${tp === "m" ? "checkbox" : "radio"}" name="${k}" value="${esc(o)}">${esc(o)}</label>`).join("")}</div></div>`).join("")}
+    <label>Conte um pouco mais (opcional)<textarea name="obs" rows="4" placeholder="Ex.: cozinha em L com ilha, quero muita gaveta, tenho dois filhos pequenos..."></textarea></label>
+    <button class="bt vd" id="env" style="height:54px">Mandar para a marcenaria</button><div id="msg"></div></form>`;
+}
+(async function () {
+  if (!C) { $("#emp").textContent = "RouterFlow"; $("#m").innerHTML = '<div class="card"><h2>Link incompleto</h2><p class="mut">Abra o link inteiro que a marcenaria mandou.</p></div>'; return; }
+  const r = await post("briefing_form");
+  if (!r.ok) { $("#emp").textContent = "RouterFlow"; $("#m").innerHTML = `<div class="card"><h2>Não deu para abrir</h2><p class="mut">${esc(r.erro || "")}</p></div>`; return; }
+  const emp = r.empresa || "Marcenaria";
+  $("#emp").textContent = emp; $("#ini").textContent = emp.split(/\s+/).slice(0, 2).map((x) => x[0]).join("").toUpperCase(); document.title = "Briefing · " + emp;
+  $("#m").innerHTML = tela(emp);
+  $("#zap").addEventListener("input", (e) => { e.target.value = mascTel(e.target.value); });
+  $("#f").addEventListener("submit", async (e) => {
+    e.preventDefault(); const f = e.target, fd = new FormData(f), resp = {};
+    QS.forEach(([k, , tp]) => { const v = fd.getAll(k); if (v.length) resp[k] = tp === "m" ? v : v[0]; });
+    if (fd.get("obs")) resp.obs = String(fd.get("obs")).slice(0, 1500);
+    const b = $("#env"); b.disabled = true; b.textContent = "Mandando...";
+    const r2 = await post("briefing_enviar", { nome: fd.get("nome"), whatsapp: fd.get("whatsapp"), email: fd.get("email"), cidade: fd.get("cidade"), respostas: resp });
+    b.disabled = false; b.textContent = "Mandar para a marcenaria";
+    if (!r2.ok) { $("#msg").innerHTML = `<div class="msg er">${esc(r2.erro || "Não deu para mandar.")}</div>`; return; }
+    $("#m").innerHTML = `<section class="card"><h1 style="font-size:22px;color:var(--vd)">Recebido!</h1><p>A ${esc(emp)} já tem as suas respostas e vai falar com você pelo WhatsApp.</p></section>`;
+  });
+})();
+</script>
+</body></html>

@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow"><title>Projeto · RouterFlow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="../img/favicon.png"><style>
+:root{--az:#1f3a5f;--az2:#132846;--vd:#2e7d32;--vd2:#4ade80;--lj:#c2410c;--fg:#18212d;--su:#5b6675;--li:#e3e8ef;--bg:#f4f6f9;--ca:#fff;
+  --surface:#fff;--surface-container:#eef2f7;--surface-container-low:#e9eef5;--outline-variant:#d0d7e2;--on-surface:#18212d;--on-surface-variant:#5b6675;--primary:#1f3a5f;--on-primary:#fff;--primary-container:#dbe7f5;--on-primary-container:#132846}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 Inter,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Manrope,Inter,sans-serif;margin:0;line-height:1.2}
+.top{background:var(--az);color:#fff;padding:14px max(16px,env(safe-area-inset-left)) 18px;padding-top:max(14px,env(safe-area-inset-top))}
+.top .in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.top .emp{font:700 17px Manrope,sans-serif}.top .ct{font-size:13px;opacity:.85}
+.top .ini{width:42px;height:42px;border-radius:12px;background:#fff;color:var(--az);display:grid;place-items:center;font:800 16px Manrope,sans-serif;flex:none}
+main{max-width:1100px;margin:0 auto;padding:18px max(16px,env(safe-area-inset-right)) 40px max(16px,env(safe-area-inset-left));display:flex;flex-direction:column;gap:16px}
+.card{background:var(--ca);border:1px solid var(--li);border-radius:16px;padding:18px}
+.card h2{font-size:18px;color:var(--az);margin-bottom:10px}
+.mut{color:var(--su);font-size:13.5px}
+.bt{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 20px;border-radius:12px;border:0;font:700 15px Inter,sans-serif;cursor:pointer;background:var(--az);color:#fff;text-decoration:none}
+.bt.vd{background:var(--vd)}.bt.lj{background:var(--lj)}.bt.sec{background:#fff;color:var(--az);border:1.5px solid var(--li)}
+.bt:disabled{opacity:.5;cursor:default}
+input,select,textarea{font:inherit;font-size:15px;border:1.5px solid #d0d5dd;border-radius:11px;padding:10px 12px;background:#fff;color:var(--fg);width:100%;min-width:0}
+label{display:flex;flex-direction:column;gap:5px;font-size:13.5px;font-weight:600;color:var(--su)}
+.pe{max-width:1100px;margin:0 auto;padding:0 16px 30px;display:flex;align-items:center;justify-content:center;gap:8px;color:var(--su);font-size:12.5px}
+.pe svg{width:20px;height:20px}.pe a{color:var(--az);font-weight:700;text-decoration:none}
+.msg{padding:12px 14px;border-radius:12px;background:#ecfdf3;color:#14532d;font-weight:600}.msg.er{background:#fef2f2;color:#991b1b}
+.carregando{padding:60px 20px;text-align:center;color:var(--su)}
+
+.g3box{position:relative;height:min(70vh,560px);border-radius:14px;overflow:hidden;background:#e9eef5}
+.etapas{display:flex;flex-direction:column;gap:0}
+.et{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--li)}
+.et:last-child{border-bottom:0}.et .b{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:14px;background:#eef2f7;color:var(--su)}
+.et.ok .b{background:var(--vd);color:#fff}.et.agora .b{background:var(--lj);color:#fff}.et.agora b{color:var(--lj)}
+.et .q{font-size:13px;color:var(--su)}
+.din{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.din div{flex:1 1 140px;background:#f6f8fb;border-radius:12px;padding:10px 12px}.din b{display:block;font-size:18px;color:var(--az)}
+.ck{display:grid;grid-template-columns:1fr 1fr;gap:10px}.ck .bt{height:64px;font-size:17px}
+.ckh{margin-top:10px;display:flex;flex-direction:column;gap:6px;font-size:13.5px}
+.pecas input{margin-bottom:10px}
+.pc{display:grid;grid-template-columns:64px 1fr;gap:10px;padding:9px 0;border-bottom:1px solid var(--li);font-size:14px}
+.pc .n{font:800 15px Manrope,sans-serif;color:var(--az);background:#eef2f7;border-radius:10px;display:grid;place-items:center;height:40px}
+.pc small{color:var(--su)}.mod{font:700 14px Manrope,sans-serif;color:var(--az);margin:14px 0 2px}
+.passos{display:flex;flex-direction:column;gap:12px}
+.ps{border:1px solid var(--li);border-radius:12px;padding:12px;display:grid;grid-template-columns:1fr;gap:8px}
+.ps .t{font-weight:600}.ps .t big{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--az);color:#fff;font-size:14px;margin-right:8px}
+.ps svg{width:100%;height:auto;max-height:320px}
+.nav{display:flex;gap:8px;align-items:center;justify-content:space-between;margin-bottom:10px}
+.par{display:grid;grid-template-columns:44px 1fr 120px auto;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--li)}
+.par .l{font:800 18px Manrope,sans-serif;color:#fff;background:var(--az);border-radius:10px;height:40px;display:grid;place-items:center}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:560px){.par{grid-template-columns:40px 1fr 100px}.par .bt{grid-column:1/-1}}
+.g3-legenda { margin-top: 8px; padding: 6px 8px; border-radius: 8px; background: var(--surface-container-low); display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0 10px; font-size: 12px; line-height: 1.55; color: var(--on-surface); }
+.g3-legenda span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.g3-legenda b { display: inline-block; min-width: 18px; margin-right: 4px; color: #be185d; text-align: right; }
+.g3-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+.g3-box { position: relative; height: clamp(300px, calc(100vh - 290px), 720px); border-radius: 12px; overflow: hidden; background: var(--surface-container-low); }
+.g3-cv { display: block; width: 100%; height: 100%; cursor: grab; }
+.g3-cv:active { cursor: grabbing; }
+.g3-dica { position: absolute; left: 10px; bottom: 8px; font-size: 12px; color: var(--on-surface-variant); pointer-events: none; background: color-mix(in srgb, var(--surface) 75%, transparent); padding: 2px 8px; border-radius: 8px; }
+.g3-leg i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 5px; vertical-align: -2px; border: 1px solid rgba(0,0,0,.25); }
+.g3-tools { position: absolute; top: 8px; left: 8px; right: 8px; display: flex; flex-wrap: wrap; gap: 5px; align-items: center; z-index: 2; pointer-events: none; }
+.g3-tools > * { pointer-events: auto; }
+.g3-tools .g3-sel { width: auto; min-width: 0; flex: none; }
+.g3-tg, .g3-sel { font: inherit; font-size: 11.5px; font-weight: 600; padding: 4px 9px; border-radius: 10px; border: 1px solid var(--outline-variant); background: color-mix(in srgb, var(--surface) 88%, transparent); color: var(--on-surface); cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+.g3-tg:hover, .g3-sel:hover { background: var(--surface-container); }
+.g3-tg.on { background: var(--primary); color: var(--on-primary, #fff); border-color: var(--primary); }
+.g3-nome { position: absolute; z-index: 3; pointer-events: none; font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 8px; background: rgba(31,58,95,.92); color: #fff; white-space: nowrap; }
+.g3-box.g3-cheia { position: fixed; inset: 0; z-index: 60; height: auto !important; border-radius: 0; }
+.g3-fechar { display: none; position: absolute; top: 14px; right: 14px; z-index: 6; align-items: center; gap: 8px; padding: 10px 18px 10px 14px;
+.g3-fechar:hover { background: #2b4d7a; }
+.g3-cheia .g3-fechar, :fullscreen > .g3-fechar { display: inline-flex; }
+.g3-box:fullscreen { height: 100% !important; border-radius: 0; }
+.g3-menu { position: absolute; z-index: 30; min-width: 230px; background: var(--surface); border: 1px solid var(--outline-variant); border-radius: 10px; box-shadow: 0 10px 28px rgba(0, 0, 0, .22); padding: 4px; display: flex; flex-direction: column; }
+.g3-menu button { display: flex; align-items: center; justify-content: space-between; gap: 16px; border: 0; background: transparent; color: var(--on-surface); font: inherit; font-size: 13px; text-align: left; padding: 7px 10px; border-radius: 7px; cursor: pointer; }
+.g3-menu button:hover:not(:disabled) { background: var(--primary-container); color: var(--on-primary-container); }
+.g3-menu button:disabled { opacity: .45; cursor: default; }
+.g3-menu kbd { font: 11px var(--mono, monospace); color: var(--on-surface-variant); background: var(--surface-container); border-radius: 4px; padding: 1px 5px; }
+.g3-menu hr { border: 0; border-top: 1px solid var(--outline-variant); margin: 3px 4px; }
+.g3-cv:focus { outline: none; }
+.g3-menu.menu-bt { position: fixed; z-index: 200; max-height: 70vh; overflow: auto; }
+.g3-menu button.marca span::before { content: ""; display: inline-block; width: 16px; }
+.g3-menu button.marca.on span::before { content: "✓"; color: var(--primary); font-weight: 700; }
+.g3-box.amb-alvo { outline: 3px dashed var(--primary); outline-offset: -3px; }
+.g3-vazio { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); max-width: 320px; display: flex; flex-direction: column; align-items: center; gap: 6px;
+.g3-vazio .ger-ico, .g3-vazio svg { width: 34px; height: 34px; color: #2e7d32; }
+.g3-vazio b { font-size: 15px; }
+.g3-vazio span { font-size: 13px; color: var(--on-surface-variant); }
+.g3-vazio.g2 { position: static; transform: none; margin: 30px auto; }</style></head>
+<body>
+<div class="top"><div class="in"><span class="ini" id="ini">R</span><div><div class="emp" id="emp">Carregando...</div><div class="ct" id="ct"></div></div></div></div>
+<main id="m"><div class="carregando">Abrindo o projeto...</div></main>
+
+<div class="pe"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1f3a5f"/><path d="M20 48V16h13.5c7 0 11.5 4 11.5 10 0 4.4-2.4 7.6-6.3 9L46 48h-8.2l-6.5-12H27.6v12z M27.6 30h5.6c2.8 0 4.5-1.5 4.5-3.9 0-2.4-1.7-3.9-4.5-3.9h-5.6z" fill="#fff"/><circle cx="46" cy="46" r="5" fill="#4ade80"/></svg><span>Feito com <a href="https://www.routerflow.com.br" target="_blank" rel="noopener">RouterFlow</a></span></div>
+
+<script src="three.min.js"></script><script src="ger3d.js"></script>
+<script>
+"use strict";
+const FN = "https://ruyeqbjsptfnjhlnqpnp.supabase.co/functions/v1/nuvem", T = (location.hash || "").slice(1).replace(/[^\w-]/g, "");
+const $ = (s) => document.querySelector(s), esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const brl = (v) => "R$ " + (+v || 0).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const dm = (iso) => iso ? iso.slice(8, 10) + "/" + iso.slice(5, 7) + "/" + iso.slice(0, 4) : "";
+const ls = (k, v) => { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } };
+async function post(acao, extra) {
+  try { const r = await fetch(FN, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(Object.assign({ acao, token: T }, extra || {})) }); return await r.json(); }
+  catch (e) { return { ok: false, erro: "Sem internet agora.", rede: true }; }
+}
+// o SVG do caderno vem do RouterFlow da marcenaria; tira o que não é desenho
+const limpaSvg = (s) => String(s || "").replace(/<script[\s\S]*?<\/script>/gi, "").replace(/\son\w+="[^"]*"/gi, "").replace(/\son\w+='[^']*'/gi, "").replace(/javascript:/gi, "");
+let D = null;
+
+function topo(d) {
+  const e = d.empresa || {}, nome = e.nome || "Marcenaria";
+  $("#emp").textContent = nome; $("#ct").textContent = [e.contato, e.cidade].filter(Boolean).join(" · ");
+  $("#ini").textContent = nome.split(/\s+/).filter(Boolean).slice(0, 2).map((x) => x[0]).join("").toUpperCase() || "R";
+  document.title = (d.ambiente || d.projeto || "Projeto") + " · " + nome;
+}
+function caixa3d(d) {
+  if (!d.cena3d) return "";
+  return `<section class="card"><h2>O projeto em 3D</h2><p class="mut" style="margin:-4px 0 10px">Arraste para girar, use dois dedos para aproximar. Toque numa peça para ver o nome.</p><div class="g3box" id="g3"></div></section>`;
+}
+function liga3d(d) {
+  const b = $("#g3"); if (!b || !d.cena3d || !window.ger3d) return;
+  if (!ger3d.mount(b)) { b.innerHTML = '<p class="mut" style="padding:20px">Este celular não mostra o 3D.</p>'; return; }
+  ger3d.show(d.cena3d, "montado");
+}
+
+function telaCliente(d) {
+  const a = d.andamento || {}, ets = a.etapas || [];
+  const ent = d.entrega ? `<div><span class="mut">Entrega marcada</span><b>${dm(d.entrega.data)}${d.entrega.hora ? ", " + esc(d.entrega.hora) : ""}</b></div>` : "";
+  const din = (a.pago !== null && a.pago !== undefined) ? `<div><span class="mut">Já pago</span><b>${brl(a.pago)}</b></div><div><span class="mut">Falta</span><b>${brl(a.falta)}</b></div>` : "";
+  return `<section class="card"><h1 style="font-size:22px;color:var(--az)">${esc(a.titulo || d.ambiente || d.projeto)}</h1><p class="mut">${esc(d.projeto || "")}</p>
+    <div class="etapas" style="margin-top:10px">${ets.map((x, i) => `<div class="et ${x.estado}"><span class="b">${x.estado === "ok" ? "✓" : i + 1}</span><div><b>${esc(x.nome)}</b>${x.estado === "agora" ? '<div class="q">É aqui agora</div>' : ""}</div><span class="q">${esc(x.quando || "")}</span></div>`).join("")}</div>
+    ${ent || din ? `<div class="din">${ent}${din}</div>` : ""}</section>${caixa3d(d)}
+    <section class="card"><p class="mut" style="margin:0">Dúvidas? Fale com a ${esc((d.empresa || {}).nome || "marcenaria")}${(d.empresa || {}).contato ? " pelo " + esc(d.empresa.contato) : ""}. Atualizado em ${esc((d.gerado || "").replace("T", " às "))}.</p></section>`;
+}
+
+function telaMontador(d) {
+  const quem = ls("rf.mont.quem") || "";
+  const porMod = {};
+  (d.pecas || []).forEach((p) => { const k = p.modulo || "Peças"; (porMod[k] = porMod[k] || []).push(p); });
+  const cad = (d.caderno || []).filter((f) => (f.passos || []).length);
+  return `<section class="card"><h1 style="font-size:22px;color:var(--az)">Montagem: ${esc(d.ambiente || d.projeto)}</h1><p class="mut">${esc(d.cliente || "")}${d.entrega ? " · entrega " + dm(d.entrega.data) + (d.entrega.hora ? ", " + esc(d.entrega.hora) : "") : ""}</p>
+    <label style="margin:12px 0">Seu nome<input id="quem" value="${esc(quem)}" placeholder="Quem está montando"></label>
+    <div class="ck"><button class="bt vd" id="b-cheguei">Cheguei</button><button class="bt lj" id="b-sai">Saí</button></div>
+    <label style="margin-top:10px">Foto (opcional)<input type="file" id="foto" accept="image/*" capture="environment"></label>
+    <div class="ckh" id="ckh"></div></section>
+    ${caixa3d(d)}
+    ${cad.length ? `<section class="card"><div class="nav"><h2 style="margin:0">Caderno de montagem</h2><select id="folha" style="width:auto">${cad.map((f, i) => `<option value="${i}">${esc(f.titulo)}</option>`).join("")}</select></div><div id="cad"></div></section>` : ""}
+    ${(d.pecas || []).length ? `<section class="card pecas"><h2>As peças (${d.pecas.length})</h2><input id="busca" placeholder="Número da etiqueta, nome ou módulo"><div id="lista">${Object.entries(porMod).map(([m, l]) => `<div class="mod">${esc(m)}</div>` + l.map((p) => `<div class="pc" data-b="${esc((p.uid + " " + p.n + " " + p.nome + " " + m).toLowerCase())}"><span class="n">${esc(p.n ?? "")}</span><div><b>${esc(p.nome)}</b><br><small>${esc(p.medida)} · ${esc(p.material)} · chapa ${esc(p.chapa ?? "")} · <span style="font-family:monospace">${esc(p.uid || "")}</span></small></div></div>`).join("")).join("")}</div></section>` : ""}`;
+}
+function ligaMontador(d) {
+  const cad = (d.caderno || []).filter((f) => (f.passos || []).length);
+  const pinta = (i) => { const f = cad[i]; if (!f) return; $("#cad").innerHTML = `<p class="mut">${esc(f.sub || "")}</p><div class="passos">${f.passos.map((p, k) => `<div class="ps"><div class="t"><big>${k + 1}</big>${esc(p.texto)}</div>${limpaSvg(p.svg)}</div>`).join("")}</div>${(f.ferragens || []).length ? `<p class="mut" style="margin-top:10px">Ferragens: ${f.ferragens.map(esc).join(" · ")}</p>` : ""}`; };
+  if ($("#folha")) { $("#folha").addEventListener("change", (e) => pinta(+e.target.value)); pinta(0); }
+  const b = $("#busca");
+  if (b) b.addEventListener("input", () => { const q = b.value.trim().toLowerCase(); document.querySelectorAll(".pc").forEach((x) => { x.hidden = q && !x.dataset.b.includes(q); }); });
+  const hist = () => { let v = []; try { v = JSON.parse(ls("rf.mont.h." + T) || "[]"); } catch (e) { v = []; } $("#ckh").innerHTML = v.slice(-6).reverse().map((x) => `<span>${x.tipo === "sai" ? "Saí" : "Cheguei"} às ${esc(x.hora)}${x.gps ? "" : " (sem GPS)"}</span>`).join(""); return v; };
+  hist();
+  const marca = async (tipo, bt) => {
+    const quem = $("#quem").value.trim(); if (quem) ls("rf.mont.quem", quem);
+    bt.disabled = true; const txt = bt.textContent; bt.textContent = "Pegando o lugar...";
+    const pos = await new Promise((r) => { if (!navigator.geolocation) return r(null); navigator.geolocation.getCurrentPosition((p) => r(p.coords), () => r(null), { enableHighAccuracy: true, timeout: 15000, maximumAge: 60000 }); });
+    bt.textContent = "Enviando...";
+    const f = $("#foto").files[0], foto = f ? await reduz(f) : "";
+    const r = await post("checkin", { tipo, quem, lat: pos ? pos.latitude : null, lng: pos ? pos.longitude : null, precisao: pos ? pos.accuracy : null, foto });
+    bt.disabled = false; bt.textContent = txt;
+    if (r.ok) { const v = hist(); v.push({ tipo, hora: new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }), gps: !!pos }); ls("rf.mont.h." + T, JSON.stringify(v.slice(-30))); hist(); $("#foto").value = ""; aviso(tipo === "sai" ? "Saída marcada. Bom trabalho!" : "Chegada marcada. A marcenaria já sabe."); }
+    else aviso(r.erro || "Não deu para marcar agora.", true);
+  };
+  $("#b-cheguei").addEventListener("click", (e) => marca("cheguei", e.currentTarget));
+  $("#b-sai").addEventListener("click", (e) => marca("sai", e.currentTarget));
+}
+
+const TIPOS_PT = { tomada: "Tomada", luz: "Ponto de luz", interruptor: "Interruptor", agua: "Água", esgoto: "Esgoto", gas: "Gás" };
+function telaObra(d) {
+  const pars = d.paredes || [];
+  return `<section class="card"><h1 style="font-size:22px;color:var(--az)">Medir a obra</h1><p class="mut">${esc([d.cliente, d.ambiente].filter(Boolean).join(" · "))}. Meça cada parede de ponta a ponta, em milímetros, e marque os pontos de água, luz e gás. Funciona em qualquer internet: o que não sair agora vai quando a rede voltar.</p>
+    <div style="margin-top:8px">${pars.map((p) => `<div class="par"><span class="l">${esc(p.letra)}</span><div><b>Parede ${esc(p.letra)}</b><br><small class="mut">${esc(p.nome || "")}</small></div><input inputmode="numeric" data-par="${esc(p.letra)}" placeholder="mm" value="${p.mm ? Math.round(p.mm) : ""}"><button class="bt sec" data-env="${esc(p.letra)}">Mandar</button></div>`).join("")}</div></section>
+    <section class="card"><h2>Marcar um ponto</h2><div class="g2"><label>O que é<select id="pt-t">${Object.entries(TIPOS_PT).map(([k, v]) => `<option value="${k}">${v}</option>`).join("")}</select></label><label>Parede<select id="pt-p">${pars.map((p) => `<option>${esc(p.letra)}</option>`).join("")}</select></label>
+      <label>Do canto esquerdo (mm)<input id="pt-x" inputmode="numeric"></label><label>Do chão (mm)<input id="pt-y" inputmode="numeric"></label></div>
+      <button class="bt" id="pt-env" style="margin-top:12px;width:100%">Marcar o ponto</button></section>
+    <section class="card"><h2>Foto da parede</h2><div class="g2"><label>Parede<select id="ft-p">${pars.map((p) => `<option>${esc(p.letra)}</option>`).join("")}</select></label><label>Foto<input type="file" id="ft" accept="image/*" capture="environment"></label></div>
+      <button class="bt" id="ft-env" style="margin-top:12px;width:100%">Mandar a foto</button><p class="mut" id="fila"></p></section>`;
+}
+function fila() { try { return JSON.parse(ls("rf.obra.f." + T) || "[]"); } catch (e) { return []; } }
+async function mandaFila() {
+  const v = fila(); const resto = [];
+  for (const x of v) { const r = await post("obra_post", x); if (!r.ok && r.rede) resto.push(x); }
+  ls("rf.obra.f." + T, JSON.stringify(resto)); const f = $("#fila"); if (f) f.textContent = resto.length ? resto.length + " envio(s) esperando a internet voltar." : "";
+}
+async function obraManda(x) {
+  const r = await post("obra_post", x);
+  if (r.ok) return aviso("Chegou na marcenaria.");
+  if (r.rede) { const v = fila(); if (!x.foto) { v.push(x); ls("rf.obra.f." + T, JSON.stringify(v)); } aviso(x.foto ? "Sem internet: mande a foto de novo quando a rede voltar." : "Sem internet agora: guardei e mando quando a rede voltar.", !!x.foto); mandaFila(); return; }
+  aviso(r.erro || "Não deu para mandar.", true);
+}
+function ligaObra() {
+  document.querySelectorAll("[data-env]").forEach((b) => b.addEventListener("click", () => { const l = b.dataset.env, v = +document.querySelector(`[data-par="${l}"]`).value.replace(/\D/g, ""); if (!(v >= 300 && v <= 20000)) return aviso("A medida vai em milímetros, de 300 a 20.000.", true); obraManda({ tipo: "medida", dados: { tipo: "medida", parede: l, mm: v } }); }));
+  $("#pt-env").addEventListener("click", () => { const x = +$("#pt-x").value.replace(/\D/g, ""), y = +$("#pt-y").value.replace(/\D/g, ""); if (!x && x !== 0 || !y && y !== 0) return aviso("Escreva a distância do canto e do chão.", true); obraManda({ tipo: "ponto", dados: { tipo: "ponto", ponto: { tipo: $("#pt-t").value, parede: $("#pt-p").value, x, y } } }); });
+  $("#ft-env").addEventListener("click", async () => { const f = $("#ft").files[0]; if (!f) return aviso("Escolha ou tire a foto.", true); const foto = await reduz(f); obraManda({ tipo: "foto", dados: { parede: $("#ft-p").value }, foto }); $("#ft").value = ""; });
+  window.addEventListener("online", mandaFila); mandaFila();
+}
+
+function reduz(f) {
+  return new Promise((res) => { const im = new Image(), u = URL.createObjectURL(f); im.onload = () => { const k = Math.min(1, 1600 / Math.max(im.width, im.height)), c = document.createElement("canvas"); c.width = Math.round(im.width * k); c.height = Math.round(im.height * k); c.getContext("2d").drawImage(im, 0, 0, c.width, c.height); URL.revokeObjectURL(u); res(c.toDataURL("image/jpeg", 0.82)); }; im.onerror = () => res(""); im.src = u; });
+}
+function aviso(t, er) { let a = $("#aviso"); if (!a) { a = document.createElement("div"); a.id = "aviso"; a.style.cssText = "position:fixed;left:16px;right:16px;bottom:max(16px,env(safe-area-inset-bottom));z-index:90;max-width:520px;margin:0 auto"; document.body.appendChild(a); } a.innerHTML = `<div class="msg ${er ? "er" : ""}">${esc(t)}</div>`; clearTimeout(a._t); a._t = setTimeout(() => { a.innerHTML = ""; }, 5000); }
+
+(async function () {
+  if (!T) { $("#m").innerHTML = '<div class="card"><h2>Link incompleto</h2><p class="mut">Abra o link inteiro que a marcenaria mandou.</p></div>'; $("#emp").textContent = "RouterFlow"; return; }
+  const r = await post("link_ler");
+  if (!r.ok) { $("#emp").textContent = "RouterFlow"; $("#m").innerHTML = `<div class="card"><h2>Não deu para abrir</h2><p class="mut">${esc(r.erro || "Tente de novo em alguns minutos.")}</p></div>`; return; }
+  D = r.dados || {}; D.empresa = D.empresa || { nome: r.empresa };
+  topo(D);
+  const tipo = r.tipo;
+  $("#m").innerHTML = tipo === "montador" ? telaMontador(D) : tipo === "obra" ? telaObra(D) : telaCliente(D);
+  if (tipo === "montador") ligaMontador(D); else if (tipo === "obra") ligaObra();
+  liga3d(D);
+})();
+</script>
+</body></html>
