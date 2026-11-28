@@ -131,6 +131,26 @@ tr.clic{cursor:pointer}
 .toasts{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:70;display:flex;flex-direction:column;gap:8px;max-width:min(420px,calc(100% - 32px))}
 .toast{background:var(--az);color:#fff;padding:12px 14px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.25);font-size:13.5px}
 .toast.err{background:var(--vm)}.toast.ok{background:var(--vd)}
+.cfgv{position:fixed;inset:0;z-index:60;background:rgba(10,20,35,.5);display:flex;align-items:stretch;justify-content:center;padding:max(16px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}
+.cfgv .cx{background:#fff;border-radius:16px;width:min(1100px,100%);display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.3)}
+.cfgv .ch{padding:14px 18px;border-bottom:1px solid var(--li);display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.cfgv .ch h2{font-size:17px;color:var(--az);margin:0}.cfgv .ch .mut{font-size:12.5px}
+.cfgv .ch .esp{flex:1}
+.cfgv .cb{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 18px;border-bottom:1px solid var(--li);background:#f7f9fc}
+.cfgv .cb input,.cfgv .cb select{height:36px;border:1.5px solid #d0d5dd;border-radius:9px;padding:0 10px;font:inherit;font-size:13.5px;background:#fff;min-width:0}
+.cfgv .cb input{flex:1 1 220px}
+.cfgv .cm{overflow:auto;flex:1;padding:14px 18px;font-size:13px}
+.cfgv .res{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.cfgv .res .bloco{padding:12px 14px}.cfgv .res h3{font-size:13.5px;color:var(--az);margin:0 0 6px}
+.cfgv .res dl{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;margin:0}.cfgv .res dt{color:var(--su)}.cfgv .res dd{margin:0;word-break:break-word}
+.arv{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;line-height:1.6}
+.arv details{margin-left:14px}.arv>details{margin-left:0}
+.arv summary{cursor:pointer;color:var(--az);font-weight:600}.arv summary .mut{font-weight:400}
+.arv .kv{margin-left:14px;word-break:break-word}.arv .k{color:#6d28d9}.arv .s{color:#b45309}.arv .n{color:#1d4ed8}.arv .b{color:#2e7d32;font-weight:600}.arv .z{color:#94a3b8}
+.arv mark,.dif mark{background:#fde68a;border-radius:3px}
+.dif .lin{display:grid;grid-template-columns:minmax(160px,1.2fr) 1fr 1fr;gap:10px;padding:6px 0;border-bottom:1px solid var(--li);font-family:ui-monospace,Consolas,monospace;font-size:12.5px;word-break:break-word}
+.dif .de{color:#b42318;text-decoration:line-through}.dif .pa{color:#2e7d32}
+@media (max-width:700px){.dif .lin{grid-template-columns:1fr}.cfgv{padding:0}.cfgv .cx{border-radius:0}}
 .fazendo{position:fixed;inset:0;z-index:80;background:rgba(10,20,35,.45);display:flex;align-items:center;justify-content:center;padding:16px}
 .fazendo .fx{background:#fff;border-radius:16px;padding:22px 24px;display:flex;align-items:center;gap:14px;box-shadow:0 20px 50px rgba(0,0,0,.25);max-width:420px}
 .fazendo .fx b{display:block;color:var(--az);font-size:15px}.fazendo .fx span{color:var(--su);font-size:13px}
@@ -268,6 +288,22 @@ tr.clic{cursor:pointer}
   };
   const D = {};
   let view = pref("view") || "geral", periodo = +(pref("periodo") || 30), busca = "", sessao = null;
+  // 5.0: onde usam mais. contadores do dia: tela_<id> (vezes que abriu; router, producao e sobras sem o prefixo),
+  // seg_<id> (segundos ativos na tela) e clk:<tela>:<botão> (cliques). TELAS dá o nome de cada id (gera.py, casca5.js).
+  const TELAS = {"zerar": "Zerar a máquina", "virar": "Virar a chapa", "vacuo": "Zonas de vácuo", "novidades": "Novidades", "imprimir": "Imprimir", "impressora": "Testar a impressora", "impressos": "Impressos", "ajustes": "Ajustes", "config": "Todos os ajustes", "home": "Início", "projetos": "Projetos", "novo": "Novo projeto", "pecas": "Criar", "prontos": "Prontos", "vender": "Vender", "router": "Programas", "producao": "Produção", "sobras": "Sobras", "concluido": "Concluído", "oficina": "Oficina", "painel": "Como está a produção", "seccionadora": "Seccionadora", "coladeira": "Coladeira", "furacao": "Furos de topo", "veio": "Veio contínuo", "semana": "A semana", "deposito": "Depósito", "ferragens": "Ferragens", "manutencao": "A máquina", "facear": "Facear a mesa", "negocio": "Negócio", "clientes": "Clientes", "cliente": "Ficha do cliente", "orcamentos": "Orçamentos", "orcamento": "Orçamento", "custo": "Quanto custa", "tabela": "Tabela de preços", "recebimentos": "Recebimentos", "metas": "Metas do mês", "ano": "O ano", "agenda": "A semana", "entrega": "Dia da entrega", "caminhao": "Carregar", "garantia": "Garantia", "assistencia": "Assistência", "compras": "O que comprar", "equipe": "Equipe", "project": "Lista de peças e Chapas", "license": "Licença", "about": "Sobre", "manual": "Manual", "suporte": "Suporte", "aprender": "Aprender", "comofazer": "Como fazer", "atalhos": "Avisos e atalhos", "estacao": "Estação da router", "historia": "História do projeto", "versoes": "Versões", "copiar": "Copiar o projeto", "acompanhar": "Andamento", "importar": "Importar", "ia": "Criar com a IA", "serie": "Cortar em série", "personalizar": "Personalizar", "letreiro": "Letreiro", "pedidos": "Pedidos", "embalar": "Embalar", "datas": "Datas que vendem", "produto": "Produto", "separar": "Separar as peças", "tempo": "Onde vai o tempo", "vida": "Vida da peça", "mes": "O mês na oficina", "festa": "Kit de festa", "curvo": "Pronto curvo", "meupronto": "Meu pronto", "caderno": "Caderno", "montagem": "Montagem", "usarsobra": "Usar sobra", "parear": "Ligar a oficina", "formatosala": "Formato da sala", "seguranca": "Segurança"};
+  const nomeTela = (k) => TELAS[k] || k;
+  function ondeUsam(us) {
+    const t = {}, b = {}, T = (k) => t[k] || (t[k] = { k, abre: 0, seg: 0, maq: new Set() });
+    for (const u of us) { const c = u.contadores || {};
+      for (const [k, v] of Object.entries(c)) {
+        if (k.startsWith("seg_")) { const x = T(k.slice(4)); x.seg += +v || 0; x.maq.add(u.maquina); }
+        else if (k.startsWith("tela_")) { const x = T(k.slice(5)); x.abre += +v || 0; x.maq.add(u.maquina); }
+        else if (k === "router" || k === "producao" || k === "sobras") { const x = T(k); x.abre += +v || 0; x.maq.add(u.maquina); }
+        else if (k.startsWith("clk:")) { const r = k.slice(4), i = r.indexOf(":"), x = b[r] || (b[r] = { tela: i > 0 ? r.slice(0, i) : "", bt: i > 0 ? r.slice(i + 1) : r, n: 0, maq: new Set() }); x.n += +v || 0; x.maq.add(u.maquina); }
+      } }
+    return { telas: Object.values(t).sort((a, z) => z.seg - a.seg || z.abre - a.abre), botoes: Object.values(b).sort((a, z) => z.n - a.n) };
+  }
+  const durTxt = (seg) => seg >= 3600 ? (Math.round(seg / 360) / 10).toLocaleString("pt-BR") + " h" : seg >= 60 ? Math.round(seg / 60) + " min" : (seg || 0) + " s";
   const CORES = ["#1f3a5f", "#2e7d32", "#4ade80", "#b45309", "#1d4ed8", "#6d28d9", "#0891b2", "#b42318", "#94a3b8", "#ca8a04"];
   if (window.Chart) { Chart.defaults.font.family = "Inter,'Segoe UI',Arial,sans-serif"; Chart.defaults.color = "#556070"; Chart.defaults.plugins.legend.labels.boxWidth = 12; }
 
@@ -348,6 +384,8 @@ tr.clic{cursor:pointer}
         const r = await Promise.all(nomes.map((n) => tab(n, ords[n]).catch((e) => { if (/does not exist|schema cache/.test(e.message)) return []; throw e; })));
         nomes.forEach((n, i) => { D[n] = r[i]; });
         D.uso_dia = await tab("uso_dia", null, (q) => q.gte("dia", desde));
+        { const { data, error } = await sb.from("configs").select("maquina,empresa,versao,hash,tamanho,resumo,atualizado").order("atualizado", { ascending: false }).limit(5000);
+          D.configs = error ? [] : data || []; }
       }
       D.licLoja = D.licencas_loja;
       D.cli = Object.fromEntries(D.clientes.map((c) => [c.id, c]));
@@ -387,6 +425,17 @@ tr.clic{cursor:pointer}
   const noPeriodo = (iso) => !periodo || (iso && Date.now() - Date.parse(iso) <= periodo * 864e5);
   const noAnterior = (iso) => periodo && iso && Date.now() - Date.parse(iso) > periodo * 864e5 && Date.now() - Date.parse(iso) <= 2 * periodo * 864e5;
   const pagos = () => D.pedidos.filter((p) => p.status === "pago");
+  const chaveMan = (l) => String(l.email || l.cnpj || l.empresa || l.maquina || "").trim().toLowerCase();
+  function clientesManuais() {
+    const daLoja = new Set(D.clientes.map((c) => String(c.email || "").toLowerCase()).filter(Boolean)), g = {};
+    for (const l of D.licencas) { const k = chaveMan(l); if (!k || daLoja.has(String(l.email || "").toLowerCase())) continue;
+      const x = g[k] || (g[k] = { key: k, empresa: l.empresa || "", email: l.email || "", tel: l.telefone || "", cnpj: l.cnpj || "", maqs: new Set(), seriais: new Set(), desde: l.emitida || "", ativa: false, gratuita: false });
+      x.maqs.add(l.maquina); x.seriais.add(String(l.serial || "").toUpperCase()); if (l.emitida && (!x.desde || l.emitida < x.desde)) x.desde = l.emitida;
+      if (!x.empresa && l.empresa) x.empresa = l.empresa; if (!x.tel && l.telefone) x.tel = l.telefone;
+      if (String(l.validade || "") >= hoje() && l.status !== "REVOGADA") x.ativa = true; if (l.gratuita) x.gratuita = true; }
+    for (const x of Object.values(g)) { const emp = x.empresa.toLowerCase(); x.pags = D.pagamentos.filter((p) => x.seriais.has(String(p.serial || "").toUpperCase()) || (emp && String(p.empresa || "").toLowerCase() === emp)); x.total = x.pags.reduce((a, p) => a + (+p.valor || 0), 0); }
+    return g;
+  }
   const vendas = () => pagos().map((p) => ({ data: p.pago_em || p.criado, valor: +(p.pago_valor ?? p.valor), forma: p.forma, cli: p.cliente_id, origem: "loja" }))
     .concat(D.pagamentos.map((p) => ({ data: p.data, valor: +p.valor || 0, forma: p.forma || "manual", origem: "manual" })));
   function licencasTodas() {
@@ -417,9 +466,10 @@ tr.clic{cursor:pointer}
     clientes: '<circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-7 7-7s7 3 7 7M16 4a4 4 0 010 8M22 21c0-3-2-6-5-7"/>', licencas: '<circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/>',
     computadores: '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>', aprender: '<path d="M2 7l10-4 10 4-10 4z"/><path d="M6 9v6c3 2 9 2 12 0V9"/>',
     erros: '<path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/>', cupons: '<path d="M3 9a2 2 0 002-2h14a2 2 0 002 2v6a2 2 0 00-2 2H5a2 2 0 00-2-2z"/><path d="M9 9h.01M15 15h.01M15 9l-6 6"/>',
+    configs: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/>',
     emails: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>', aceites: '<path d="M9 12l2 2 4-4"/><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>', registro: '<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>',
   };
-  const VIEWS_NOME = [["geral", "Visão geral"], ["vendas", "Vendas"], ["testes", "Testes"], ["clientes", "Clientes"], ["licencas", "Licenças"], ["computadores", "Computadores e uso"], ["aprender", "Aprender"], ["erros", "Erros"], "-", ["cupons", "Cupons"], ["emails", "E-mails"], ["aceites", "Aceites"], ["registro", "Registro"]];
+  const VIEWS_NOME = [["geral", "Visão geral"], ["vendas", "Vendas"], ["testes", "Testes"], ["clientes", "Clientes"], ["licencas", "Licenças"], ["computadores", "Computadores e uso"], ["configs", "Configurações"], ["aprender", "Aprender"], ["erros", "Erros"], "-", ["cupons", "Cupons"], ["emails", "E-mails"], ["aceites", "Aceites"], ["registro", "Registro"]];
   function casca() {
     const pend = D.pedidos.filter((p) => p.status === "pendente").length, err7 = D.erros.filter((e) => Date.now() - Date.parse(e.recebido) < 7 * 864e5).length;
     const n = { vendas: pend, erros: err7 };
@@ -526,10 +576,15 @@ tr.clic{cursor:pointer}
         return `<tr class="clic" data-ficha="m:${esc(t.maquina)}">${td("Começou", brDH(t.criado))}${td("Cliente", `<b>${esc(c.empresa || c.nome)}</b><br><span class="mut">${esc(c.nome)} · ${esc(c.email)}</span>`)}${td("Cidade", esc(c.cidade))}${td("Acaba", brD(t.validade))}${td("Situação", s)}${td("Computador", `<span class="mono">${esc(t.maquina)}</span>`)}${td("Ações", `<div class="acs">${zapUrl(c.whatsapp) ? `<a class="bt pq sec" target="_blank" rel="noopener" href="${zapUrl(c.whatsapp)}">WhatsApp</a>` : ""}<button class="bt pq sec" data-act="mais_teste" data-maq="${esc(t.maquina)}">+ dias de teste</button><button class="bt pq sec" data-act="link" data-maq="${esc(t.maquina)}">Link de compra</button></div>`)}</tr>`; }))}</div>`;
     },
     clientes() {
-      const cs = D.clientes.filter((c) => bate(c.nome, c.empresa, c.email, c.cidade, c.documento, c.whatsapp));
-      VIEWS.clientes.depois = ligaAcoes;
-      return `<div class="bloco"><p class="sub">Clique num cliente para ver a ficha completa: testes, pedidos, licenças, aceites, e-mails e uso.</p>${tabela(["Desde", "Cliente", "Contato", "Cidade", "Testes", "Compras", "Total pago", ""], cs.map((c) => { const ps = pagos().filter((p) => p.cliente_id === c.id);
-        return `<tr class="clic" data-ficha="c:${c.id}">${td("Desde", brD(String(c.criado).slice(0, 10)))}${td("Cliente", `<b>${esc(c.empresa || c.nome)}</b><br><span class="mut">${esc(c.nome)}</span>`)}${td("Contato", `${esc(c.email)}<br>${zap(c.whatsapp)}`)}${td("Cidade", esc(c.cidade))}${td("Testes", D.testes.filter((t) => t.cliente_id === c.id).length)}${td("Compras", ps.length)}${td("Total pago", `<b>${brl(ps.reduce((a, p) => a + +(p.pago_valor ?? p.valor), 0))}</b>`)}${td("", '<span class="mut">ver ficha</span>')}</tr>`; }), "Nenhum cliente encontrado.")}</div>`;
+      const fo = F.cli || "todos", man = Object.values(clientesManuais()).filter((x) => bate(x.empresa, x.email, x.tel, x.cnpj, ...x.maqs));
+      const cs = fo === "manual" ? [] : D.clientes.filter((c) => bate(c.nome, c.empresa, c.email, c.cidade, c.documento, c.whatsapp));
+      const ms = fo === "loja" ? [] : man;
+      VIEWS.clientes.depois = () => { ligaPills(); ligaAcoes(); };
+      const linhasMan = ms.sort((a, b) => String(b.desde).localeCompare(String(a.desde))).map((x) => `<tr class="clic" data-ficha="l:${esc(x.key)}">${td("Desde", brD(String(x.desde).slice(0, 10)))}${td("Cliente", `<b>${esc(x.empresa || x.email || "sem nome")}</b><br>${chip(x.gratuita ? "licença cortesia" : "licença do painel local", x.ativa ? "c-bl" : "c-in")}${x.ativa ? "" : " " + chip("vencida", "c-av")}`)}${td("Contato", `${esc(x.email)}<br>${zap(x.tel)}`)}${td("Cidade", x.cnpj ? `<span class="mono mut">${esc(x.cnpj)}</span>` : "")}${td("Testes", "")}${td("Compras", x.pags.length || "")}${td("Total pago", `<b>${brl(x.total)}</b><br><span class="mut">${x.maqs.size} computador(es)</span>`)}${td("", '<span class="mut">ver ficha</span>')}</tr>`);
+      return `<div class="bloco"><p class="sub">Todos os clientes: os que vieram pela loja (teste grátis ou compra) e os que têm licença emitida pelo painel local (antes da loja, vendas por fora e cortesias). Clique para ver a ficha completa.</p>
+      <div class="filtros">${pills("cli", [["todos", `Todos (${D.clientes.length + man.length})`], ["loja", `Da loja (${D.clientes.length})`], ["manual", `Licença do painel local (${man.length})`]], fo)}</div>
+      ${tabela(["Desde", "Cliente", "Contato", "Cidade", "Testes", "Compras", "Total pago", ""], linhasMan.concat(cs.map((c) => { const ps = pagos().filter((p) => p.cliente_id === c.id);
+        return `<tr class="clic" data-ficha="c:${c.id}">${td("Desde", brD(String(c.criado).slice(0, 10)))}${td("Cliente", `<b>${esc(c.empresa || c.nome)}</b><br><span class="mut">${esc(c.nome)}</span>`)}${td("Contato", `${esc(c.email)}<br>${zap(c.whatsapp)}`)}${td("Cidade", esc(c.cidade))}${td("Testes", D.testes.filter((t) => t.cliente_id === c.id).length)}${td("Compras", ps.length)}${td("Total pago", `<b>${brl(ps.reduce((a, p) => a + +(p.pago_valor ?? p.valor), 0))}</b>`)}${td("", '<span class="mut">ver ficha</span>')}</tr>`; })), "Nenhum cliente encontrado.")}</div>`;
     },
     licencas() {
       const f = F.lst || "todas", ult = Object.fromEntries(D.maquinas.map((m) => [m.codigo, m]));
@@ -544,19 +599,45 @@ tr.clic{cursor:pointer}
       const porMaq = {}; for (const u of D.uso_dia) { if (u.dia < desde) continue; const c = u.contadores || {}, x = porMaq[u.maquina] || (porMaq[u.maquina] = { min: 0, proj: 0, ch: 0, prog: 0, pec: 0, imp: 0, dias: 0 }); x.min += +c.minutos || 0; x.proj += +c.projetos || 0; x.ch += +c.chapas || 0; x.prog += +c.programas || 0; x.pec += +c.pecas || 0; x.imp += (+c.etiquetas || 0) + (+c.mapas || 0) + (+c.fichas || 0); x.dias++; }
       const tot = Object.values(porMaq).reduce((a, x) => ({ min: a.min + x.min, proj: a.proj + x.proj, ch: a.ch + x.ch, prog: a.prog + x.prog, pec: a.pec + x.pec }), { min: 0, proj: 0, ch: 0, prog: 0, pec: 0 });
       const ms = D.maquinas.filter((m) => bate(m.codigo, m.empresa, m.versao, m.cmd));
+      const usP = D.uso_dia.filter((u) => u.dia >= desde), ou = ondeUsam(usP), segTot = ou.telas.reduce((a, x) => a + x.seg, 0), clkTot = ou.botoes.reduce((a, x) => a + x.n, 0);
+      const maqTempo = new Set(usP.filter((u) => Object.keys(u.contadores || {}).some((k) => k.startsWith("seg_"))).map((u) => u.maquina)).size;
+      const btsF = ou.botoes.filter((x) => bate(x.tela, nomeTela(x.tela), x.bt)).slice(0, 40);
+      const ondeHtml = `<div class="grade" style="margin-bottom:16px">
+        <div class="bloco c6"><h2>Onde passam mais tempo</h2><p class="sub">Tempo ativo em cada tela no período (para de contar depois de 5 minutos sem mexer). ${maqTempo} computador(es) com a versão que mede o tempo.</p>${segTot ? `<div class="graf"><canvas id="g-telas"></canvas></div>` : '<p class="mut">Ainda sem tempo por tela: chega quando os computadores estiverem na versão 5.0.</p>'}</div>
+        <div class="bloco c6"><h2>Telas mais usadas</h2><p class="sub">Vezes que abriram, tempo total e quantos computadores usam</p>${tabela(["Tela", "Abriram", "Tempo", "Computadores", "Média por computador"], ou.telas.slice(0, 25).map((x) => `<tr>${td("Tela", `<b>${esc(nomeTela(x.k))}</b> <span class="mono mut">${esc(x.k)}</span>`)}${td("Abriram", x.abre)}${td("Tempo", durTxt(x.seg))}${td("Computadores", x.maq.size)}${td("Média por computador", x.maq.size ? durTxt(Math.round(x.seg / x.maq.size)) : "")}</tr>`), "Nenhuma tela registrada no período.")}</div>
+        <div class="bloco c12"><h2>Botões mais clicados</h2><p class="sub">${clkTot.toLocaleString("pt-BR")} cliques no período. O botão aparece pelo nome que ele tem no app (id, data-* ou classe); a busca do alto filtra por tela ou botão.</p>${tabela(["Tela", "Botão", "Cliques", "Computadores", "Parte dos cliques"], btsF.map((x) => `<tr>${td("Tela", esc(nomeTela(x.tela)))}${td("Botão", `<span class="mono">${esc(x.bt)}</span>`)}${td("Cliques", x.n.toLocaleString("pt-BR"))}${td("Computadores", x.maq.size)}${td("Parte dos cliques", `<div class="pb"><i style="width:${Math.max(2, Math.round(100 * x.n / (btsF[0] ? btsF[0].n : 1)))}%"></i></div> <span class="mut">${clkTot ? Math.round(1000 * x.n / clkTot) / 10 : 0}%</span>`)}</tr>`), "Nenhum clique registrado no período: chega com a versão 5.0.")}</div></div>`;
       VIEWS.computadores.depois = () => { ligaAcoes();
         const dd = serieDias(Math.min(periodo || 90, 90));
         grafico("g-uso", { type: "bar", data: { labels: dd.map((d) => brD(d).slice(0, 5)), datasets: [{ label: "Horas de uso", data: dd.map((d) => Math.round(D.uso_dia.filter((u) => u.dia === d).reduce((a, u) => a + (+(u.contadores || {}).minutos || 0), 0) / 6) / 10), backgroundColor: "#1f3a5f", borderRadius: 3, yAxisID: "y" }, { type: "line", label: "Chapas", data: dd.map((d) => D.uso_dia.filter((u) => u.dia === d).reduce((a, u) => a + (+(u.contadores || {}).chapas || 0), 0)), borderColor: "#2e7d32", tension: .3, pointRadius: 0, yAxisID: "y2" }] }, options: { scales: { x: { grid: { display: false }, ticks: { maxTicksLimit: 10 } }, y: { beginAtZero: true, title: { display: true, text: "horas" } }, y2: { beginAtZero: true, position: "right", grid: { display: false }, title: { display: true, text: "chapas" } } } } });
         const ver = {}; D.maquinas.forEach((m) => { ver[m.versao || "?"] = (ver[m.versao || "?"] || 0) + 1; });
         grafico("g-ver", { type: "doughnut", data: { labels: Object.keys(ver), datasets: [{ data: Object.values(ver), backgroundColor: CORES }] }, options: { cutout: "60%" } });
+        const tt = ou.telas.filter((x) => x.seg).slice(0, 12);
+        grafico("g-telas", { type: "bar", data: { labels: tt.map((x) => nomeTela(x.k)), datasets: [{ label: "Horas", data: tt.map((x) => Math.round(x.seg / 360) / 10), backgroundColor: "#2e7d32", borderRadius: 4 }] }, options: { indexAxis: "y", plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => ` ${durTxt(tt[c.dataIndex].seg)} em ${tt[c.dataIndex].maq.size} computador(es)` } } }, scales: { x: { beginAtZero: true, title: { display: true, text: "horas" } }, y: { grid: { display: false } } } } });
         const cmd = {}; D.maquinas.forEach((m) => { const k = m.cmd || "não informado"; cmd[k] = (cmd[k] || 0) + 1; });
         grafico("g-cmd", { type: "doughnut", data: { labels: Object.keys(cmd), datasets: [{ data: Object.values(cmd), backgroundColor: CORES }] }, options: { cutout: "60%" } });
       };
-      return `<div class="kpis"><div class="kpi"><span class="r">Horas de uso</span><span class="n">${Math.round(tot.min / 60)}</span><span class="s">no período</span></div><div class="kpi"><span class="r">Projetos</span><span class="n">${tot.proj}</span></div><div class="kpi"><span class="r">Chapas</span><span class="n">${tot.ch}</span></div><div class="kpi"><span class="r">Peças</span><span class="n">${tot.pec}</span></div><div class="kpi"><span class="r">Programas da router</span><span class="n">${tot.prog}</span></div><div class="kpi"><span class="r">Bloqueados</span><span class="n ${Object.keys(D.bloq).length ? "e" : ""}">${Object.keys(D.bloq).length}</span></div></div>
+      return `<div class="kpis"><div class="kpi"><span class="r">Horas de uso</span><span class="n">${Math.round(tot.min / 60)}</span><span class="s">no período</span></div><div class="kpi"><span class="r">Projetos</span><span class="n">${tot.proj}</span></div><div class="kpi"><span class="r">Chapas</span><span class="n">${tot.ch}</span></div><div class="kpi"><span class="r">Peças</span><span class="n">${tot.pec}</span></div><div class="kpi"><span class="r">Programas da router</span><span class="n">${tot.prog}</span></div><div class="kpi"><span class="r">Tela mais usada</span><span class="n" style="font-size:20px">${esc(ou.telas[0] ? nomeTela(ou.telas[0].k) : "nenhuma")}</span><span class="s">${ou.telas[0] ? durTxt(ou.telas[0].seg) : ""}</span></div><div class="kpi"><span class="r">Cliques</span><span class="n">${clkTot.toLocaleString("pt-BR")}</span></div><div class="kpi"><span class="r">Bloqueados</span><span class="n ${Object.keys(D.bloq).length ? "e" : ""}">${Object.keys(D.bloq).length}</span></div></div>
       <div class="grade" style="margin-bottom:16px"><div class="bloco c8"><h2>Uso por dia</h2><p class="sub">Horas com o RouterFlow aberto e chapas geradas</p><div class="graf"><canvas id="g-uso"></canvas></div></div>
         <div class="bloco c4"><h2>Versões instaladas</h2><div class="graf pq"><canvas id="g-ver"></canvas></div><h2 style="margin-top:12px">Comando das routers</h2><div class="graf pq"><canvas id="g-cmd"></canvas></div></div></div>
+      ${ondeHtml}
       <div class="bloco"><h2>Cada computador</h2><p class="sub">Números do período escolhido. Clique para ver a ficha.</p>${tabela(["Empresa", "Computador", "Versão", "Última vez", "Dias", "Horas", "Projetos", "Chapas", "Programas", "Router", "Ações"], ms.map((m) => { const x = porMaq[m.codigo] || { min: 0, proj: 0, ch: 0, prog: 0, dias: 0 }; const ina = Date.now() - Date.parse(m.ultima) > 14 * 864e5, bl = D.bloq[m.codigo];
         return `<tr class="clic" data-ficha="m:${esc(m.codigo)}">${td("Empresa", `<b>${esc(m.empresa)}</b>${bl ? "<br>" + chip("bloqueado", "c-er") : ina ? "<br>" + chip("parado há mais de 14 dias", "c-av") : ""}`)}${td("Computador", `<span class="mono">${esc(m.codigo)}</span>`)}${td("Versão", esc(m.versao))}${td("Última vez", brDH(m.ultima))}${td("Dias", x.dias)}${td("Horas", Math.round(x.min / 6) / 10)}${td("Projetos", x.proj)}${td("Chapas", x.ch)}${td("Programas", x.prog)}${td("Router", `${esc(m.cmd || "")}${m.arcos === "1" ? " " + chip("arcos", "c-bl") : ""}${m.prova ? " " + chip("prova " + m.prova, "c-in") : ""}`)}${td("Ações", `<div class="acs">${bl ? `<button class="bt pq sec" data-act="desbloquear" data-maq="${esc(m.codigo)}">Desbloquear</button>` : `<button class="bt pq ver" data-act="bloquear" data-maq="${esc(m.codigo)}">Bloquear</button>`}</div>`)}</tr>`; }))}</div>`;
+    },
+    configs() {
+      // cada licença (cliente) com a configuração do app que o computador mandou; sem configuração ainda aparece também
+      const cfg = Object.fromEntries((D.configs || []).map((c) => [c.maquina, c])), lics = vigentes(), lm = Object.fromEntries(lics.map((l) => [l.maquina, l]));
+      const maqs = [...new Set([...lics.map((l) => l.maquina), ...(D.configs || []).map((c) => c.maquina)])];
+      const f = F.cfg || "todas";
+      const rows = maqs.map((m) => ({ m, c: cfg[m], l: lm[m], mq: D.maquinas.find((x) => x.codigo === m) || {} }))
+        .filter((x) => (f === "todas" || (f === "com" ? x.c : !x.c)) && bate(x.m, x.l && x.l.empresa, x.c && x.c.empresa, x.c && (x.c.resumo || {}).maquina_atual, x.l && x.l.email))
+        .sort((a, b) => String((b.c || {}).atualizado || "").localeCompare(String((a.c || {}).atualizado || "")));
+      VIEWS.configs.depois = () => { ligaPills(); ligaAcoes(); $$("[data-cfg]").forEach((b) => b.addEventListener("click", (e) => { e.stopPropagation(); verConfig(b.dataset.cfg); })); };
+      const com = maqs.filter((m) => cfg[m]).length;
+      return `<div class="kpis"><div class="kpi"><span class="r">Licenças e computadores</span><span class="n">${maqs.length}</span></div><div class="kpi"><span class="r">Com a configuração</span><span class="n">${com}</span></div><div class="kpi"><span class="r">Ainda sem</span><span class="n ${maqs.length - com ? "a" : ""}">${maqs.length - com}</span><span class="s">chega com a versão 5.0</span></div></div>
+      <div class="bloco"><p class="sub">A configuração completa de cada computador (o mesmo arquivo da exportação nos Ajustes), sem senhas e sem o que tem nome de cliente final. O app manda quando muda e uma vez por semana; as 10 últimas ficam guardadas para ver o que mudou.</p>
+      <div class="filtros">${pills("cfg", [["todas", "Todas"], ["com", "Com configuração"], ["sem", "Sem configuração"]], f)}</div>
+      ${tabela(["Cliente", "Computador", "Máquina da router", "Ferramentas", "Chapa", "Mesa", "Atualizada", ""], rows.map(({ m, c, l, mq }) => { const r = (c && c.resumo) || {};
+        return `<tr class="clic" data-ficha="m:${esc(m)}">${td("Cliente", `<b>${esc((l && l.empresa) || (c && c.empresa) || mq.empresa || "")}</b>${l ? `<br><span class="mut">${esc(l.email || "")}</span>` : ""}`)}${td("Computador", `<span class="mono">${esc(m)}</span>`)}${td("Máquina da router", c ? `${esc(r.maquina_atual || "")}${r.maquinas > 1 ? ` <span class="mut">+${r.maquinas - 1}</span>` : ""}${r.pp ? `<br><span class="mut">${esc(r.pp)}</span>` : ""}` : '<span class="mut">sem configuração</span>')}${td("Ferramentas", c ? r.ferramentas : "")}${td("Chapa", c ? esc(r.chapa || "") : "")}${td("Mesa", c ? esc(r.mesa || "") : "")}${td("Atualizada", c ? `${brDH(c.atualizado)}<br><span class="mut">${esc(c.versao || "")} · ${Math.round((c.tamanho || 0) / 1024)} KB</span>` : "")}${td("", c ? `<button class="bt pq" data-cfg="${esc(m)}">Ver a configuração</button>` : "")}</tr>`; }), "Nenhuma licença encontrada.")}</div>`;
     },
     aprender() {
       const total = AULAS.length || 20, porMaq = {}, porAula = {};
@@ -614,7 +695,91 @@ tr.clic{cursor:pointer}
     out.push(l.revogada ? `<button class="bt pq sec" data-act="reativar" data-serial="${esc(l.serial)}">Reativar</button>` : `<button class="bt pq ver" data-act="revogar" data-serial="${esc(l.serial)}" data-maq="${esc(l.maquina)}">Revogar</button>`);
     out.push(D.bloq[l.maquina] ? `<button class="bt pq sec" data-act="desbloquear" data-maq="${esc(l.maquina)}">Desbloquear</button>` : `<button class="bt pq sec" data-act="bloquear" data-maq="${esc(l.maquina)}">Bloquear</button>`);
     out.push(`<button class="bt pq sec" data-act="link" data-maq="${esc(l.maquina)}">Link de renovação</button>`);
+    if ((D.configs || []).some((c) => c.maquina === l.maquina)) out.push(`<button class="bt pq sec" data-act="config" data-maq="${esc(l.maquina)}">Configuração</button>`);
     return `<div class="acs">${out.join("")}</div>`;
+  }
+  // ------------------------------------------------------------ a configuração de um computador
+  function achata(v, base, out) {
+    if (v && typeof v === "object") { const ks = Array.isArray(v) ? v.map((_, i) => i) : Object.keys(v); if (!ks.length) out.set(base, Array.isArray(v) ? "[]" : "{}"); ks.forEach((k) => achata(v[k], Array.isArray(v) ? `${base}[${k}]` : (base ? base + "." : "") + k, out)); }
+    else out.set(base, JSON.stringify(v));
+    return out;
+  }
+  const marca = (t, q) => { const e = esc(t); if (!q) return e; const i = String(t).toLowerCase().indexOf(q); return i < 0 ? e : esc(String(t).slice(0, i)) + "<mark>" + esc(String(t).slice(i, i + q.length)) + "</mark>" + esc(String(t).slice(i + q.length)); };
+  function valHtml(v) { if (v === null) return '<span class="z">null</span>'; if (typeof v === "string") return `<span class="s">"${esc(v.length > 400 ? v.slice(0, 400) + "..." : v)}"</span>`; if (typeof v === "number") return `<span class="n">${v}</span>`; if (typeof v === "boolean") return `<span class="b">${v}</span>`; return esc(String(v)); }
+  function arvore(v, k, nivel) {
+    if (v && typeof v === "object") { const n = Array.isArray(v) ? v.length : Object.keys(v).length, ks = Array.isArray(v) ? v.map((_, i) => i) : Object.keys(v);
+      const corpo = ks.map((x) => arvore(v[x], x, nivel + 1)).join("");
+      return k === null ? corpo : `<details${nivel < 1 ? " open" : ""}><summary>${esc(String(k))} <span class="mut">${Array.isArray(v) ? `[${n}]` : `{${n}}`}</span></summary>${corpo}</details>`; }
+    return `<div class="kv"><span class="k">${esc(String(k))}</span>: ${valHtml(v)}</div>`;
+  }
+  function resumoCfg(doc) {
+    const c = doc.config || {}, maqs = c.maquinas || {}, atual = maqs[doc.maquina_atual] || {}, cam = (atual.cam && typeof atual.cam === "object" ? atual.cam : c.cam) || {};
+    const ferr = Array.isArray(cam.ferramentas) ? cam.ferramentas : [];
+    const dl = (pares) => `<dl>${pares.filter((p) => p[1] !== undefined && p[1] !== "" && p[1] !== null).map(([a, b]) => `<dt>${esc(a)}</dt><dd>${b === true ? "Sim" : b === false ? "Não" : typeof b === "object" ? esc(JSON.stringify(b)) : esc(String(b))}</dd>`).join("")}</dl>`;
+    const b = (t, html) => `<div class="bloco"><h3>${esc(t)}</h3>${html}</div>`;
+    return `<div class="res">
+      ${b("Marcenaria", dl([["Nome", c.empresa_nome], ["Contato", c.empresa_contato], ["CNPJ", c.empresa_cnpj], ["Cidade", c.empresa_cidade]]))}
+      ${b("Máquina em uso", dl([["Perfil", doc.maquina_atual], ["Perfis", Object.keys(maqs).join(", ")], ["Pós-processador", cam.pp_nome], ["Comando", cam.comando], ["Troca", cam.troca], ["Magazine", cam.magazine_tipo], ["Posições", cam.magazine_posicoes], ["Z zero", cam.z_zero], ["Altura segura", cam.altura_segura], ["Mesa", `${c.nc_mesa_x} x ${c.nc_mesa_y}`], ["Vácuo", `${c.nc_vacuo_x} x ${c.nc_vacuo_y}`], ["Envio", c.nc_envio]]))}
+      ${b("Chapas e folgas", dl([["Chapa padrão", `${c.chapa_padrao_x} x ${c.chapa_padrao_y}`], ["Folga", c.folga_mm], ["Margem", c.margem_mm], ["Sobra mínima", c.sobra_min_mm], ["Materiais com medida", Object.keys(c.chapas_por_material || {}).length], ["Orientação", c.orientacao_chapa]]))}
+      ${b("Etiquetas e impressos", dl([["Formato", c.etiqueta_formato], ["Tamanho", `${c.etiqueta_largura} x ${c.etiqueta_altura}`], ["QR", c.etiqueta_qr], ["PDF", c.pdf_impressos], ["Nome nos impressos", c.impressos_nome]]))}
+      ${b("Preços", dl([["Hora de máquina", c.hora_maquina], ["Chapa de referência", c.preco_chapa_ref], ["Margem de venda %", c.margem_venda_pct], ["Materiais com preço", Object.keys(c.precos_materiais || {}).length], ["Ferragens com preço", Object.keys(c.precos_ferragens || {}).length]]))}
+      ${b("Uso e envio", dl([["Contadores de uso", c.uso_enviar], ["Configuração na nuvem", c.config_nuvem], ["Equipe", Array.isArray(c.equipe) ? c.equipe.length + " pessoa(s)" : ""], ["Chaves no arquivo", Object.keys(c).length]]))}
+      </div>
+      <div class="bloco" style="margin-top:12px"><h3>Ferramentas (${ferr.length})</h3>${ferr.length ? `<div class="tw"><table class="cards"><thead><tr><th>T</th><th>Nome</th><th>Tipo</th><th>Diâmetro</th><th>Avanço</th><th>Mergulho</th><th>Passe</th><th>RPM</th></tr></thead><tbody>${ferr.map((t) => `<tr>${td("T", esc(t.id ?? t.t ?? ""))}${td("Nome", esc(t.nome || ""))}${td("Tipo", esc(t.tipo || ""))}${td("Diâmetro", esc(t.diametro ?? ""))}${td("Avanço", esc(t.avanco ?? ""))}${td("Mergulho", esc(t.mergulho ?? ""))}${td("Passe", esc(t.passe ?? ""))}${td("RPM", esc(t.rpm ?? ""))}</tr>`).join("")}</tbody></table></div>` : '<p class="mut">Nenhuma ferramenta na configuração.</p>'}</div>`;
+  }
+  async function verConfig(maq) {
+    let atual = null, versoes = [];
+    const fim = fazendo("Abrindo a configuração", "Baixando o arquivo do computador.");
+    try {
+      if (DEMO) { await new Promise((r) => setTimeout(r, 400)); const x = demoConfig(maq); atual = x.atual; versoes = x.versoes; }
+      else {
+        const a = await sb.from("configs").select("*").eq("maquina", maq).maybeSingle();
+        if (a.error || !a.data) throw new Error((a.error && a.error.message) || "sem configuração");
+        atual = a.data;
+        const v = await sb.from("configs_versoes").select("id,versao,hash,tamanho,config,recebido").eq("maquina", maq).order("recebido", { ascending: false }).limit(10);
+        versoes = v.error ? [] : v.data || [];
+      }
+    } catch (e) { fim(); toast("Não deu para abrir a configuração: " + e.message, "err"); return; }
+    fim();
+    const lic = vigentes().find((l) => l.maquina === maq), quem = (lic && lic.empresa) || atual.empresa || maq;
+    if (!versoes.length) versoes = [{ id: 0, versao: atual.versao, hash: atual.hash, config: atual.config, recebido: atual.atualizado }];
+    const st = { aba: "resumo", q: "", vi: 0 };
+    const j = document.createElement("div"); j.className = "cfgv";
+    j.innerHTML = `<div class="cx" role="dialog" aria-label="Configuração"><div class="ch"><div><h2>${esc(quem)}</h2><span class="mut"><span class="mono">${esc(maq)}</span> · atualizada ${brDH(atual.atualizado)} · ${esc(atual.versao || "")} · ${Math.round((atual.tamanho || 0) / 1024)} KB</span></div><span class="esp"></span>
+      <button class="bt pq sec" data-c="copiar">Copiar o JSON</button><button class="bt pq sec" data-c="baixar">Baixar .json</button><button class="bt pq" data-c="fechar">Fechar</button></div>
+      <div class="cb"><div class="pills" data-cab>${[["resumo", "Resumo"], ["json", "JSON completo"], ["mudou", "O que mudou"]].map(([v, t]) => `<button data-a="${v}" class="${v === "resumo" ? "on" : ""}">${t}</button>`).join("")}</div>
+        <select data-c="versao" aria-label="Versão">${versoes.map((v, i) => `<option value="${i}">${i ? "Anterior: " : "Atual: "}${brDH(v.recebido)}</option>`).join("")}</select>
+        <input data-c="busca" placeholder="Procurar uma chave ou um valor (ex.: folga, T3, INMES)"></div>
+      <div class="cm"></div></div>`;
+    document.body.appendChild(j);
+    const doc = () => versoes[st.vi].config;
+    const pinta = () => {
+      $$("[data-a]", j).forEach((b) => b.classList.toggle("on", b.dataset.a === st.aba));
+      const cm = $(".cm", j), q = st.q.toLowerCase();
+      if (st.aba === "resumo" && !q) { cm.innerHTML = resumoCfg(doc()); return; }
+      if (st.aba === "mudou") {
+        const ant = versoes[st.vi + 1];
+        if (!ant) { cm.innerHTML = '<div class="vazio">Esta é a configuração mais antiga guardada: não há outra para comparar.</div>'; return; }
+        const a = achata(ant.config, "", new Map()), b = achata(doc(), "", new Map()), ks = [...new Set([...a.keys(), ...b.keys()])].filter((k) => a.get(k) !== b.get(k) && (!q || k.toLowerCase().includes(q)));
+        cm.innerHTML = `<p class="sub">De ${brDH(ant.recebido)} para ${brDH(versoes[st.vi].recebido)}: ${ks.length} mudança(s).</p><div class="dif">${ks.length ? ks.sort().map((k) => `<div class="lin"><span>${marca(k, q)}</span><span class="de">${a.has(k) ? esc(a.get(k)) : '<span class="mut">não existia</span>'}</span><span class="pa">${b.has(k) ? esc(b.get(k)) : '<span class="mut">saiu</span>'}</span></div>`).join("") : '<div class="vazio">Nada mudou entre as duas.</div>'}</div>`;
+        return;
+      }
+      if (q) { const pares = [...achata(doc(), "", new Map())].filter(([k, v]) => k.toLowerCase().includes(q) || String(v).toLowerCase().includes(q));
+        cm.innerHTML = `<p class="sub">${pares.length} resultado(s) para "${esc(st.q)}"</p><div class="arv">${pares.slice(0, 800).map(([k, v]) => `<div class="kv" style="margin-left:0"><span class="k">${marca(k, q)}</span>: ${marca(v, q)}</div>`).join("")}</div>`; return; }
+      cm.innerHTML = `<div class="arv">${arvore(doc(), null, 0)}</div>`;
+    };
+    const fecha = () => { j.remove(); document.removeEventListener("keydown", esc_); };
+    const esc_ = (e) => { if (e.key === "Escape") fecha(); };
+    document.addEventListener("keydown", esc_);
+    j.addEventListener("click", (e) => { if (e.target === j) fecha(); });
+    $$("[data-a]", j).forEach((b) => b.addEventListener("click", () => { st.aba = b.dataset.a; pinta(); }));
+    $('[data-c="versao"]', j).addEventListener("change", (e) => { st.vi = +e.target.value; pinta(); });
+    $('[data-c="busca"]', j).addEventListener("input", (e) => { st.q = e.target.value.trim(); clearTimeout(j._t); j._t = setTimeout(pinta, 150); });
+    $('[data-c="fechar"]', j).addEventListener("click", fecha);
+    $('[data-c="copiar"]', j).addEventListener("click", () => copiar(JSON.stringify(doc(), null, 2), "JSON copiado."));
+    $('[data-c="baixar"]', j).addEventListener("click", () => { const b = new Blob([JSON.stringify(doc(), null, 2)], { type: "application/json" }), a = document.createElement("a");
+      a.href = URL.createObjectURL(b); a.download = `Configuração RouterFlow ${quem.replace(/[\\/:*?"<>|]/g, "")} ${String(versoes[st.vi].recebido).slice(0, 10)}.json`; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); });
+    pinta();
   }
   async function copiar(t, msg) { try { await navigator.clipboard.writeText(t); toast(msg || "Copiado.", "ok"); } catch (e) { janela("Copie o link", `<div class="seg">${esc(t)}</div>`, [["Fechar", "sec"]]); } }
   async function emitirLic(maq) {
@@ -632,6 +797,7 @@ tr.clic{cursor:pointer}
     acao("emitir", { ...f, maquina: f.maquina.trim().toUpperCase(), valor: String(f.valor || "0").replace(",", ".") }, "Licença emitida.");
   }
   const ACOES = {
+    config: (d) => verConfig(d.maq),
     estender: async (d) => { const f = await janela("Dar tempo grátis", `<p class="mut" style="margin:0">Soma dias na licença do computador <b class="mono">${esc(d.maq)}</b>, a partir do fim da licença atual. Chega sozinha no programa.</p>${campo("Quantos dias", "dias", 'type="number" min="1" max="400" value="30" required')}${campo("Motivo (vai no e-mail)", "motivo", 'placeholder="Ex.: atraso no suporte, indicação, parceria"')}<label style="display:flex;gap:8px;align-items:center;font-size:13.5px"><input type="checkbox" name="avisar" checked> Avisar o cliente por e-mail</label>`, [["Cancelar", "sec"], ["Dar o tempo", ""]]); if (f) acao("estender", { maquina: d.maq, ...f }, "Tempo grátis aplicado."); },
     mais_teste: async (d) => { const f = await janela("Mais dias de teste", `<p class="mut" style="margin:0">Estende o teste do computador <b class="mono">${esc(d.maq)}</b>.</p>${campo("Quantos dias", "dias", 'type="number" min="1" max="60" value="5" required')}<label style="display:flex;gap:8px;align-items:center;font-size:13.5px"><input type="checkbox" name="avisar" checked> Avisar o cliente por e-mail</label>`, [["Cancelar", "sec"], ["Estender o teste", ""]]); if (f) acao("estender_teste", { maquina: d.maq, ...f }, "Teste estendido."); },
     revogar: async (d) => { const f = await janela("Revogar a licença", `<p style="margin:0">A licença <b class="mono">${esc(d.serial)}</b> deixa de valer: o programa trava na próxima consulta pela internet (em até 24 horas, ou ao abrir).</p>${campo("Motivo (aparece para o cliente)", "motivo", 'placeholder="Ex.: pagamento estornado, cópia não autorizada"')}`, [["Cancelar", "sec"], ["Revogar", "ver"]]); if (f) acao("revogar", { serial: d.serial, maquina: d.maq, motivo: f.motivo }, "Licença revogada."); },
@@ -653,11 +819,16 @@ tr.clic{cursor:pointer}
   function ficha(chave) {
     const [tipo, id] = [chave.slice(0, 1), chave.slice(2)];
     let c = null, maqs = [];
-    if (tipo === "c") { c = D.cli[id]; maqs = [...new Set([...D.testes, ...D.licLoja, ...D.pedidos].filter((x) => x.cliente_id === id).map((x) => x.maquina))]; }
+    let man = null;
+    if (tipo === "c") { c = D.cli[id]; maqs = [...new Set([...D.testes, ...D.licLoja, ...D.pedidos].filter((x) => x.cliente_id === id).map((x) => x.maquina).concat(D.licencas.filter((l) => c && l.email && String(l.email).toLowerCase() === String(c.email).toLowerCase()).map((l) => l.maquina)))]; }
+    else if (tipo === "l") { man = clientesManuais()[id]; if (!man) return; maqs = [...man.maqs];
+      c = { id: null, nome: man.empresa || man.email, empresa: man.empresa, email: man.email, whatsapp: man.tel, documento: man.cnpj, cidade: "", criado: man.desde, _man: man }; }
     else { maqs = [id]; const x = [...D.licLoja, ...D.testes, ...D.pedidos].find((y) => y.maquina === id && y.cliente_id); c = x ? D.cli[x.cliente_id] : null; }
     const cid = c && c.id, evs = [];
     D.testes.filter((t) => maqs.includes(t.maquina) || t.cliente_id === cid).forEach((t) => evs.push([t.criado, "Começou o teste de 10 dias", `até ${brD(t.validade)} · ${t.maquina}`, "bl"]));
     D.pedidos.filter((p) => p.cliente_id === cid || maqs.includes(p.maquina)).forEach((p) => { evs.push([p.criado, `Pedido ${p.forma === "pix" ? "no PIX" : "no cartão"} de ${brl(p.valor)}`, `${p.status}${p.cupom ? " · cupom " + p.cupom : ""}`, p.status === "pago" ? "vd" : p.status === "reembolsado" || p.status === "recusado" ? "vm" : "am"]); if (p.pago_em) evs.push([p.pago_em, `Pagou ${brl(p.pago_valor ?? p.valor)}`, p.serial || "", "vd"]); });
+    D.licencas.filter((l) => maqs.includes(l.maquina)).forEach((l) => evs.push([String(l.emitida || "").slice(0, 10) + "T12:00:00", `Licença ${l.gratuita ? "cortesia" : "anual"} emitida pelo painel local`, `${l.serial} até ${brD(l.validade)}${l.status === "REVOGADA" ? " · revogada" : ""}`, l.status === "REVOGADA" ? "vm" : "vd"]));
+    if (c && c._man) c._man.pags.forEach((p) => evs.push([String(p.data || "").slice(0, 10) + "T12:00:00", `Pagamento de ${brl(+p.valor || 0)} (registro local)`, [p.forma, p.descricao].filter(Boolean).join(" · "), "vd"]));
     D.licLoja.filter((l) => maqs.includes(l.maquina)).forEach((l) => evs.push([l.criado, `Licença ${l.tipo} emitida`, `${l.serial} até ${brD(l.validade)}${D.revSet.has(l.serial) ? " · revogada" : ""}`, D.revSet.has(l.serial) ? "vm" : "vd"]));
     D.aceites.filter((a) => maqs.includes(a.maquina) || a.cliente_id === cid).forEach((a) => evs.push([a.criado, "Aceitou os Termos e a Política", `${a.canal} · IP ${a.ip || ""}`, ""]));
     D.emails.filter((m) => c && m.para === c.email).forEach((m) => evs.push([m.criado, "E-mail: " + m.assunto, m.status, m.status === "erro" ? "vm" : ""]));
@@ -668,9 +839,10 @@ tr.clic{cursor:pointer}
     const lics = vigentes().filter((l) => maqs.includes(l.maquina));
     $("#gav-t").innerHTML = `<h2>${esc(c ? c.empresa || c.nome : id)}</h2><span class="mut">${esc(c ? c.nome + " · " + c.email : "Computador " + id)}</span>`;
     $("#gav-m").innerHTML = `${c ? `<div class="acs">${zapUrl(c.whatsapp) ? `<a class="bt pq" target="_blank" rel="noopener" href="${zapUrl(c.whatsapp)}">WhatsApp</a>` : ""}<a class="bt pq sec" href="mailto:${esc(c.email)}">E-mail</a></div>
-      <dl class="def"><dt>WhatsApp</dt><dd>${esc(c.whatsapp || "")}</dd><dt>Cidade</dt><dd>${esc(c.cidade || "")}</dd><dt>Documento</dt><dd class="mono">${esc(c.documento || "")}</dd><dt>Cliente desde</dt><dd>${brD(String(c.criado).slice(0, 10))}</dd><dt>Total pago</dt><dd>${brl(pagos().filter((p) => p.cliente_id === c.id).reduce((a, p) => a + +(p.pago_valor ?? p.valor), 0))}</dd></dl>` : ""}
+      <dl class="def"><dt>WhatsApp</dt><dd>${esc(c.whatsapp || "")}</dd><dt>Cidade</dt><dd>${esc(c.cidade || "")}</dd><dt>Documento</dt><dd class="mono">${esc(c.documento || "")}</dd><dt>Cliente desde</dt><dd>${brD(String(c.criado).slice(0, 10))}</dd><dt>Total pago</dt><dd>${brl(c._man ? c._man.total : pagos().filter((p) => p.cliente_id === c.id).reduce((a, p) => a + +(p.pago_valor ?? p.valor), 0) + D.pagamentos.filter((p) => D.licencas.some((l) => maqs.includes(l.maquina) && String(l.serial).toUpperCase() === String(p.serial || "").toUpperCase())).reduce((a, p) => a + (+p.valor || 0), 0))}</dd>${c._man ? `<dt>Origem</dt><dd>Licença emitida pelo painel local</dd>` : ""}</dl>` : ""}
       ${maqs.map((m) => { const l = lics.find((x) => x.maquina === m), u = usoMaq(m), mq = D.maquinas.find((x) => x.codigo === m) || {}; return `<div class="bloco" style="padding:14px"><div class="cab" style="margin-bottom:8px"><h2 class="mono" style="font-size:14px">${esc(m)}</h2>${l ? chip(...situacao(l)) : chip("sem licença", "c-in")}</div>
-        <dl class="def"><dt>Licença</dt><dd>${l ? `${esc(l.tipo)} até ${brD(l.validade)} <span class="mono mut">${esc(l.serial)}</span>` : "nenhuma"}</dd><dt>Versão</dt><dd>${esc(mq.versao || "")}</dd><dt>Última vez</dt><dd>${mq.ultima ? brDH(mq.ultima) : "nunca"}</dd><dt>Uso (400 dias)</dt><dd>${u.dias} dias, ${Math.round(u.min / 60)} horas, ${u.ch} chapas</dd><dt>Router</dt><dd>${esc(mq.cmd || "")}</dd></dl>
+        <dl class="def"><dt>Licença</dt><dd>${l ? `${esc(l.tipo)} até ${brD(l.validade)} <span class="mono mut">${esc(l.serial)}</span>` : "nenhuma"}</dd><dt>Versão</dt><dd>${esc(mq.versao || "")}</dd><dt>Última vez</dt><dd>${mq.ultima ? brDH(mq.ultima) : "nunca"}</dd><dt>Uso (400 dias)</dt><dd>${u.dias} dias, ${Math.round(u.min / 60)} horas, ${u.ch} chapas</dd><dt>Router</dt><dd>${esc(mq.cmd || "")}</dd>${(() => { const o = ondeUsam(D.uso_dia.filter((x) => x.maquina === m)), t5 = o.telas.filter((x) => x.seg || x.abre).slice(0, 5), b5 = o.botoes.slice(0, 5); return (t5.length ? `<dt>Telas que mais usa</dt><dd>${t5.map((x) => `${esc(nomeTela(x.k))} <span class="mut">${x.seg ? durTxt(x.seg) : x.abre + "x"}</span>`).join("<br>")}</dd>` : "") + (b5.length ? `<dt>Botões que mais clica</dt><dd>${b5.map((x) => `<span class="mono">${esc(x.bt)}</span> <span class="mut">${esc(nomeTela(x.tela))}, ${x.n}</span>`).join("<br>")}</dd>` : ""); })()}</dl>
+        ${(D.configs || []).some((x) => x.maquina === m) ? `<div style="margin-top:8px"><button class="bt pq sec" data-act="config" data-maq="${esc(m)}">Ver a configuração do app</button></div>` : ""}
         <div style="margin-top:10px">${l ? acoesLic(l) : `<div class="acs"><button class="bt pq" data-act="emitir" data-maq="${esc(m)}">Emitir licença</button><button class="bt pq sec" data-act="${D.bloq[m] ? "desbloquear" : "bloquear"}" data-maq="${esc(m)}">${D.bloq[m] ? "Desbloquear" : "Bloquear"}</button></div>`}</div></div>`; }).join("")}
       <div><h2 style="font-size:15px;color:var(--az);margin-bottom:8px">Linha do tempo</h2><div class="linha-t">${evs.length ? evs.map(([q, t, s, cl]) => `<div class="ev ${cl}"><span class="q">${brDH(q)}</span><span><b>${esc(t)}</b>${s ? `<br><span class="mut">${esc(s)}</span>` : ""}</span></div>`).join("") : '<span class="mut">Nada registrado.</span>'}</div></div>`;
     $$("[data-act]", $("#gav-m")).forEach((b) => b.addEventListener("click", () => { const fn = ACOES[b.dataset.act]; if (fn) fn(b.dataset); }));
@@ -689,6 +861,15 @@ tr.clic{cursor:pointer}
   sb.auth.onAuthStateChange((ev) => { if (ev === "SIGNED_OUT" && !DEMO) location.reload(); });
 
   // ------------------------------------------------------------ demonstração (só em localhost, com #demo): dados fictícios
+  function demoConfig(maq) {
+    const base = { routerflow_config: 1, versao: "5.0.0", maquina_atual: "INMES IR-30K", config: { empresa_nome: "Marcenaria Exemplo", empresa_contato: "(34) 90000-0000", empresa_cidade: "Uberlândia, MG", folga_mm: 10, margem_mm: 10, sobra_min_mm: 300,
+      chapa_padrao_x: 2750, chapa_padrao_y: 1850, nc_mesa_x: 2750, nc_mesa_y: 1850, nc_vacuo_x: 3, nc_vacuo_y: 2, nc_envio: "pendrive", etiqueta_formato: "rolo", etiqueta_largura: 100, etiqueta_altura: 60, etiqueta_qr: true, pdf_impressos: true,
+      hora_maquina: 120, preco_chapa_ref: 189, margem_venda_pct: 40, uso_enviar: true, config_nuvem: true, chapas_por_material: { "MDF Branco 15mm": [2750, 1850] },
+      maquinas: { "INMES IR-30K": { cam: { pp_nome: "INMES IR-30K", comando: "ddcs", troca: "auto", magazine_tipo: "linear", magazine_posicoes: 6, z_zero: "mesa", altura_segura: 15, ferramentas: [{ id: 1, nome: "Fresa 6 mm", tipo: "reta", diametro: 6, avanco: 11000, mergulho: 4000, passe: 20, rpm: 18000 }, { id: 3, nome: "Broca 5 mm", tipo: "broca", diametro: 5, avanco: 3000, mergulho: 2000, passe: 20, rpm: 18000 }, { id: 4, nome: "Broca 35 mm", tipo: "broca", diametro: 35, avanco: 3000, mergulho: 1500, passe: 20, rpm: 12000 }] } } } } };
+    const antes = JSON.parse(JSON.stringify(base)); antes.config.folga_mm = 8; antes.config.maquinas["INMES IR-30K"].cam.ferramentas[0].avanco = 9000; delete antes.config.chapas_por_material;
+    const agora = new Date().toISOString(), ontem = new Date(Date.now() - 3 * 864e5).toISOString();
+    return { atual: { maquina: maq, empresa: "Marcenaria Exemplo", versao: "5.0.0", tamanho: 8172, atualizado: agora, config: base }, versoes: [{ id: 2, versao: "5.0.0", config: base, recebido: agora }, { id: 1, versao: "5.0.0", config: antes, recebido: ontem }] };
+  }
   function demo() {
     let s = 7; const r = () => { s = (s * 9301 + 49297) % 233280; return s / 233280; };
     const nomes = ["Marcenaria Exemplo", "Móveis Planejados Silva", "Oficina do Carlos", "Arte em Madeira", "MDF Design", "Casa & Corte", "Planejados Souza", "Madeira Nobre", "Corte Certo", "Ateliê dos Móveis", "Marcenaria Bela Vista", "Projeta Móveis"];
@@ -707,12 +888,18 @@ tr.clic{cursor:pointer}
         licLoja.push({ serial: "LD" + i, maquina: m, cliente_id: id, tipo: "anual", emitida: iso(dp).slice(0, 10), validade: new Date(Date.parse(iso(dp)) + 365 * 864e5).toISOString().slice(0, 10), criado: iso(dp) });
       } else if (r() < .25) pedidos.push({ id: "q" + i, cliente_id: id, maquina: m, plano: "anual", forma: "pix", valor: 2609.1, status: r() < .5 ? "pendente" : "recusado", criado: iso(Math.floor(r() * 10)), link: "https://www.mercadopago.com.br/" });
       maquinas.push({ codigo: m, empresa: nm, versao: r() < .7 ? "5.0.0" : "3.54.2", ultima: iso(Math.floor(r() * (r() < .2 ? 40 : 6))), cmd: ["ddcs", "syntec", "weihong", "mach3", "dsp"][i % 5], arcos: i % 3 ? "1" : "0", prova: i % 4 ? "ok" : "" });
-      for (let k = 0; k < 90; k++) if (r() < .55) uso.push({ maquina: m, dia: iso(k).slice(0, 10), contadores: { minutos: Math.floor(r() * 240), projetos: Math.floor(r() * 3), chapas: Math.floor(r() * 12), programas: Math.floor(r() * 14), pecas: Math.floor(r() * 120) } });
+      for (let k = 0; k < 90; k++) if (r() < .55) { const ct = { minutos: Math.floor(r() * 240), projetos: Math.floor(r() * 3), chapas: Math.floor(r() * 12), programas: Math.floor(r() * 14), pecas: Math.floor(r() * 120) };
+        [["home", 6], ["project", 30], ["router", 22], ["producao", 40], ["pecas", 25], ["projetos", 5], ["prontos", 9], ["sobras", 3], ["vender", 4], ["negocio", 6], ["ajustes", 2]].forEach(([t, w]) => { if (r() < .7) { ct["tela_" + t] = 1 + Math.floor(r() * 5); ct["seg_" + t] = Math.floor(r() * w * 120); } });
+        [["producao:pr5-feita", 30], ["router:si-play", 18], ["project:tr-gerar", 6], ["pecas:ger-add", 12], ["router:pg-mandar", 8], ["home:in-novo", 3], ["prontos:.pt-card", 7], ["producao:.pr5-passo", 25], ["pecas:cr-jeito=zero", 4]].forEach(([k, w]) => { if (r() < .6) ct["clk:" + k] = 1 + Math.floor(r() * w); });
+        uso.push({ maquina: m, dia: iso(k).slice(0, 10), contadores: ct }); }
       for (let a = 1; a <= 20; a++) if (r() < .35) aulas.push({ maquina: m, aula: "t" + String(a).padStart(2, "0"), vista: iso(Math.floor(r() * 60)).slice(0, 10) });
       emails.push({ criado: iso(d0), para: clientes[i].email, modelo: "teste_inicio", assunto: "Seu teste de 10 dias do RouterFlow começou", status: "enviado" });
     }
     for (let k = 0; k < 30; k++) erros.push({ maquina: maquinas[k % maquinas.length].codigo, recebido: iso(Math.floor(r() * 50)), onde: ["simular4.ncLoad", "core.read_csv", "gerador.prevista"][k % 3], mensagem: ["TypeError: Cannot read properties of undefined (reading 'x')", "Coluna de largura não encontrada no arquivo", "Peça sem contorno"][k % 3], versao: "5.0.0", vezes: 1 + Math.floor(r() * 3), pilha: "linha 1\nlinha 2" });
-    return { clientes, testes, pedidos, licencas_loja: licLoja, licencas: [], maquinas, uso_dia: uso, aulas, erros, emails, aceites, pagamentos: [], revogacoes: [{ serial: "LD3", maquina: maq(3), motivo: "pagamento estornado", criado: iso(5), por: "demo" }], bloqueios: [{ maquina: maq(8), motivo: "pagamento em atraso", criado: iso(2) }], cupons: [{ codigo: "FEIRA10", tipo: "pct", valor: 10, validade: iso(-30).slice(0, 10), usos_max: 50, usos: 7, ativo: true, nota: "Feira de Uberlândia" }, { codigo: "INDICA200", tipo: "valor", valor: 200, usos: 2, ativo: true, nota: "Indicação de cliente" }], admin_log: [{ criado: iso(5), admin: "demonstracao@routerflow.com.br", acao: "revogar", alvo: "LD3", detalhe: { motivo: "pagamento estornado" } }, { criado: iso(2), admin: "demonstracao@routerflow.com.br", acao: "bloquear", alvo: maq(8), detalhe: { motivo: "pagamento em atraso" } }] };
+    const configs = maquinas.filter((_, i) => i % 3 !== 2).map((m) => ({ maquina: m.codigo, empresa: m.empresa, versao: m.versao, tamanho: 8000 + m.codigo.length * 37, atualizado: m.ultima, resumo: { maquina_atual: ["INMES IR-30K", "Syntec 6MB", "Weihong NK105", "Mach3"][m.codigo.length % 4], maquinas: 1 + (m.codigo.charCodeAt(9) % 2), ferramentas: 3 + (m.codigo.charCodeAt(10) % 6), chapa: "2750 x 1850", mesa: "2750 x 1850", pp: "INMES IR-30K" } }));
+    const licMan = [["Móveis Planejados Serra", "serra@exemplo.com.br", "(34) 90000-1111", 120, false], ["Oficina do Zé", "ze@exemplo.com.br", "(34) 90000-2222", 300, false], ["Arte em Madeira", "arte@exemplo.com.br", "(34) 90000-3333", 40, true]].map(([e, em, t, d, g], i) => ({ serial: "MAN" + i, maquina: "RF-MANU-" + (1000 + i) + "-AAAA", empresa: e, email: em, telefone: t, cnpj: "", emitida: iso(d).slice(0, 10), validade: new Date(Date.parse(iso(d)) + 365 * 864e5).toISOString().slice(0, 10), status: "ATIVA", gratuita: g ? "1" : "" }));
+    const pagMan = [{ id: "pm0", serial: "MAN0", empresa: "Móveis Planejados Serra", data: iso(120).slice(0, 10), valor: 2490, forma: "pix", descricao: "anual" }, { id: "pm1", serial: "MAN1", empresa: "Oficina do Zé", data: iso(300).slice(0, 10), valor: 2490, forma: "cartão", descricao: "anual" }];
+    return { configs, clientes, testes, pedidos, licencas_loja: licLoja, licencas: licMan, maquinas, uso_dia: uso, aulas, erros, emails, aceites, pagamentos: pagMan, revogacoes: [{ serial: "LD3", maquina: maq(3), motivo: "pagamento estornado", criado: iso(5), por: "demo" }], bloqueios: [{ maquina: maq(8), motivo: "pagamento em atraso", criado: iso(2) }], cupons: [{ codigo: "FEIRA10", tipo: "pct", valor: 10, validade: iso(-30).slice(0, 10), usos_max: 50, usos: 7, ativo: true, nota: "Feira de Uberlândia" }, { codigo: "INDICA200", tipo: "valor", valor: 200, usos: 2, ativo: true, nota: "Indicação de cliente" }], admin_log: [{ criado: iso(5), admin: "demonstracao@routerflow.com.br", acao: "revogar", alvo: "LD3", detalhe: { motivo: "pagamento estornado" } }, { criado: iso(2), admin: "demonstracao@routerflow.com.br", acao: "bloquear", alvo: maq(8), detalhe: { motivo: "pagamento em atraso" } }] };
   }
   passo();
 })();
