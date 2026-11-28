@@ -131,6 +131,13 @@ tr.clic{cursor:pointer}
 .toasts{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:70;display:flex;flex-direction:column;gap:8px;max-width:min(420px,calc(100% - 32px))}
 .toast{background:var(--az);color:#fff;padding:12px 14px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.25);font-size:13.5px}
 .toast.err{background:var(--vm)}.toast.ok{background:var(--vd)}
+.fazendo{position:fixed;inset:0;z-index:80;background:rgba(10,20,35,.45);display:flex;align-items:center;justify-content:center;padding:16px}
+.fazendo .fx{background:#fff;border-radius:16px;padding:22px 24px;display:flex;align-items:center;gap:14px;box-shadow:0 20px 50px rgba(0,0,0,.25);max-width:420px}
+.fazendo .fx b{display:block;color:var(--az);font-size:15px}.fazendo .fx span{color:var(--su);font-size:13px}
+.giro{width:30px;height:30px;border:3.5px solid #dbe4ef;border-top-color:var(--vd);border-radius:50%;animation:gira .8s linear infinite;flex:none}
+@keyframes gira{to{transform:rotate(360deg)}}
+.barra-topo{position:fixed;top:0;left:0;right:0;height:3px;z-index:90;background:linear-gradient(90deg,transparent,var(--vd2),var(--vd),transparent);background-size:50% 100%;background-repeat:no-repeat;animation:corre 1s linear infinite}
+@keyframes corre{from{background-position:-50% 0}to{background-position:150% 0}}
 .demo{background:#fff3e0;color:var(--am);font-weight:700;font-size:12px;padding:3px 9px;border-radius:99px}
 /* celular e tablet */
 @media (max-width:1100px){.c8,.c6,.c4{grid-column:span 12}}
@@ -197,7 +204,7 @@ tr.clic{cursor:pointer}
   <aside class="lado" id="lado">
     <a class="marca"><svg width="30" height="30" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#1f3a5f" stroke="#3b5578"/><path d="M21 49 V15 H35 A9 9 0 0 1 35 33 H29 L42 48" fill="none" stroke="#eef3fa" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="43" cy="49" r="6.3" fill="#22c55e"/></svg><span>Router<i>Flow</i></span></a>
     <nav id="nav"></nav>
-    <div class="rod"><span id="quem"></span><button id="b-sair">Sair</button></div>
+    <div class="rod"><span id="quem"></span><button id="b-atual">Atualizar os dados</button><button id="b-sair">Sair</button></div>
   </aside>
   <div class="fundo-menu" id="fundo-menu"></div>
   <div class="miolo">
@@ -319,6 +326,7 @@ tr.clic{cursor:pointer}
   });
   const sair = async () => { if (!DEMO) await sb.auth.signOut(); location.hash = ""; location.reload(); };
   $("#b-sair").addEventListener("click", sair); $("#b-sair1").addEventListener("click", sair);
+  $("#b-atual").addEventListener("click", () => { document.body.classList.remove("menu"); carregar(); });
 
   // ------------------------------------------------------------ dados
   async function tab(nome, ord, filtro) {
@@ -330,6 +338,7 @@ tr.clic{cursor:pointer}
     return data || [];
   }
   async function carregar() {
+    const bt = document.createElement("div"); bt.className = "barra-topo"; document.body.appendChild(bt);
     try {
       if (DEMO) Object.assign(D, demo());
       else {
@@ -345,12 +354,28 @@ tr.clic{cursor:pointer}
       D.revSet = new Set(D.revogacoes.map((r) => r.serial));
       D.bloq = Object.fromEntries(D.bloqueios.filter((b) => !b.ate || b.ate >= hoje()).map((b) => [b.maquina, b]));
       render();
+      bt.remove();
     } catch (e) {
+      bt.remove();
       $("#conteudo").innerHTML = `<div class="bloco"><b>Não deu para ler os dados.</b><p class="mut">${esc(e.message || e)}</p><p class="mut">Se aparecer "permission denied", confira se o seu e-mail está em rf.admins e se entrou com o código do autenticador.</p></div>`;
     }
   }
+  // a janela de "fazendo" enquanto uma ação roda (bloqueia novos cliques)
+  const FAZENDO = { estender: "Dando o tempo grátis", estender_teste: "Estendendo o teste", emitir: "Emitindo a licença", revogar: "Revogando a licença", reativar: "Reativando a licença",
+    bloquear: "Bloqueando o computador", desbloquear: "Desbloqueando o computador", reembolsar: "Reembolsando pelo Mercado Pago", cancelar_pedido: "Cancelando o pedido",
+    cupom_criar: "Criando o cupom", cupom_ativo: "Mudando o cupom", reenviar: "Reenviando a chave por e-mail" };
+  function fazendo(txt, sub) {
+    const d = document.createElement("div"); d.className = "fazendo"; d.setAttribute("role", "status");
+    d.innerHTML = `<div class="fx"><span class="giro" aria-hidden="true"></span><div><b>${esc(txt)}...</b><span>${esc(sub || "Isso leva alguns segundos. Não feche esta página.")}</span></div></div>`;
+    document.body.appendChild(d);
+    return () => d.remove();
+  }
   async function acao(op, params, okMsg) {
-    if (DEMO) { toast("Demonstração: nada foi alterado.", ""); return { ok: true }; }
+    const fim = fazendo(FAZENDO[op] || "Salvando", op === "reembolsar" ? "O Mercado Pago confirma a devolução. Não feche esta página." : "");
+    try { return await acao0(op, params, okMsg); } finally { fim(); }
+  }
+  async function acao0(op, params, okMsg) {
+    if (DEMO) { await new Promise((r) => setTimeout(r, 900)); toast("Demonstração: nada foi alterado.", ""); return { ok: true }; }
     const { data: { session } } = await sb.auth.getSession();
     const r = await fetch(FN, { method: "POST", headers: { "Content-Type": "application/json", Authorization: "Bearer " + session.access_token }, body: JSON.stringify({ acao: "admin", op, ...params }) })
       .then((x) => x.json()).catch(() => ({ ok: false, erro: "Sem conexão com a loja." }));
